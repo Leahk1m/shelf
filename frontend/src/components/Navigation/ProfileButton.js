@@ -33,12 +33,13 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push('/')
   };
 
   return (
     <>
       {currentUsersFirstName ?
-        <p>Welcome <button className="welcome-demo-btn"onClick={openMenu}>{currentUsersFirstName}</button></p>
+        <p className="welcome-line">Welcome <button className="welcome-demo-btn"onClick={openMenu}>{currentUsersFirstName}</button></p>
       : ''}
       {showMenu && (
         <div className="profile-dropdown">

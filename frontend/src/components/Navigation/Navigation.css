@@ -6,6 +6,8 @@
   background: none;
   border: none;
   cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
 }
 
 .navbar-links {
@@ -36,4 +38,9 @@
 .search-input {
   width: 90%;
   height: 35px;
+}
+
+.welcome-line {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
 }
