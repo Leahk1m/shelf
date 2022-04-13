@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 
 function OneBusinessPage() {
+    const sessionUser = useSelector(state => state.session.user);
     const { businessId } = useParams();
     const businesses = useSelector(state => Object.values(state.business));
     const specificBusiness = businesses.filter(business => business.id == businessId)
@@ -18,6 +19,12 @@ function OneBusinessPage() {
                         <img className="one-biz-photo"src={business.imageUrlTwo} alt="one-biz-pic"/>
                         <img className="one-biz-photo"src={business.imageUrlThree} alt="one-biz-pic"/>
                     </div>
+                    {sessionUser && business.id == sessionUser.id ?
+                        <div className="update-delete-btn-container">
+                            <button>Update Business</button>
+                            <button>Delete Business</button>
+                        </div>
+                    : ''}
                 </div>
             ))}
             <div>
