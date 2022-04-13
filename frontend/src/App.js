@@ -7,6 +7,7 @@ import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import { Modal } from './context/Modal';
 import ShowBusinesses from './components/ShowBusinesses';
+import HomePage from './components/HomePage';
 
 import * as businessActions from './store/business';
 
@@ -30,6 +31,9 @@ function App() {
       )}
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+            <HomePage/>
+          </Route>
           {/* <Route path="/login" >
             <LoginFormPage />
           </Route> */}
