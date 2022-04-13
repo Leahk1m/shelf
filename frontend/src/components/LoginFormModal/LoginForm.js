@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import "./LoginForm.css";
+import { NavLink } from "react-router-dom";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -20,36 +21,51 @@ function LoginForm() {
     );
   };
 
+  const demoLogin = async(e) => {
+    e.preventDefault();
+    dispatch(sessionActions.login({
+      credential: 'demo@aa.io',
+      password: 'password'
+    }))
+  }
+
   return (
-    <>
-      <h1>Log In</h1>
+    <div className="login-modal-container">
+      <h1>Log in to shelf</h1>
+      <h3>New to shelf?</h3> <NavLink to="/signup">Sign up</NavLink>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
-          Email
+        <div className="login-modal-input-container">
           <input
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
+            placeholder="Email"
           />
-        </label>
-        <label>
-          Password
+
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Password"
           />
-        </label>
-        <button type="submit">Log In</button>
+        </div>
+
       </form>
-    </>
+        <div className="login-btns">
+          <button type="submit">Log In</button>
+          <div className="login-modal-demo-container">
+            <button className="demo-login-btn" onClick={demoLogin}>Demo User</button>
+
+          </div>
+      </div>
+    </div>
   );
 }
 

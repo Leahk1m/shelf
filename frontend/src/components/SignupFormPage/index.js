@@ -32,31 +32,33 @@ function SignupFormPage() {
 
   return (
     <div className="signup-pg-container">
-      <h1>Sign Up</h1>
+      <h1 className="signup-for-shelf">Sign up for shelf</h1>
+      <h3>Connect with great local businesses </h3>
+      <div className="signup-msg">
+        <p>By continuing, you agree to shelf's Terms of Service</p>
+        <p className="priv-policy-msg">and Privacy Policy</p>
+      </div>
       <div className="signup-form-container">
         <form onSubmit={handleSubmit}>
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
 
-          <label>
+          <div className="signup-input-container">
             <input
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               placeholder="First name"
             />
-          </label>
 
-          <label>
             <input
               type="text"
               value={lastName}
               onChange={(e) => setlastName(e.target.value)}
               placeholder="Last name"
             />
-          </label>
-          <label>
+
             <input
               type="text"
               value={email}
@@ -64,17 +66,7 @@ function SignupFormPage() {
               required
               placeholder="Email"
             />
-          </label>
-          {/* <label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              placeholder=""
-            />
-          </label> */}
-          <label>
+
             <input
               type="password"
               value={password}
@@ -82,8 +74,7 @@ function SignupFormPage() {
               required
               placeholder="Password"
             />
-          </label>
-          <label>
+
             <input
               type="password"
               value={confirmPassword}
@@ -91,7 +82,7 @@ function SignupFormPage() {
               required
               placeholder="Confirm password"
             />
-          </label>
+          </div>
           <button type="submit">Sign Up</button>
         </form>
       </div>

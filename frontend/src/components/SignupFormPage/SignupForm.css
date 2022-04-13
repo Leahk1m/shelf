@@ -1,0 +1,26 @@
+.signup-pg-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.signup-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+}
+
+.priv-policy-msg {
+    margin-left: 104px;
+    margin-top: -13px;
+}
+
+.signup-msg {
+    margin-top: -23px;
+}
+
+.signup-for-shelf {
+    margin-bottom: -3px;
+    color: #d32323;
+}

@@ -1,0 +1,23 @@
+.login-modal-container {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-modal-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+}
+
+.login-modal-demo-container {
+    
+}
