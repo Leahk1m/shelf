@@ -1,10 +1,73 @@
-.pantry-img {
-    height: 750px;
-    width: 100%;
-    opacity: 0.8;
-    
-}
 
 .home-pg-shelf-logo {
-    z-index: 1;
+    margin-bottom: 30px;
+    margin-top: -120px;
+}
+
+.splash-search-container {
+    width: 100%;
+    background-image: url(https://github.com/Leahk1m/shelf_app/blob/firstbranch/frontend/src/components/IconPics/pantry.jpeg?raw=true);
+    height: 600px;
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.double-search {
+    background: white;
+    display: flex;
+    grid-gap: 10px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 45%;
+    height: 45px;
+    font-size: 20px;
+    border-radius: 7px;
+    border: 1px solid #8080802b;
+}
+
+.magnifying {
+    width: 10%;
+    height: 100%;
+    border: none;
+    background-color: #dd0101;
+    border-radius: 0px 7px 7px 0px;
+}
+
+.find-near-p {
+    width: 5%;
+    text-align: center;
+    padding-left: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: grey;
+}
+
+.find-name {
+    width: 45%;
+    height: 70%;
+    border: none;
+    border-right: 1px solid #8080807d;
+    font-size: 17px;
+    font-family: 'Montserrat', sans-serif;
+}
+.find-name:focus {
+    outline: none;
+}
+
+.find-location {
+    width: 35%;
+    height: 90%;
+    border: none;
+    font-size: 17px;
+    font-family: 'Montserrat', sans-serif;
+}
+.find-location:focus {
+    outline:none;
 }

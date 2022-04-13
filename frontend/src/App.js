@@ -10,6 +10,7 @@ import ShowBusinesses from './components/ShowBusinesses';
 import HomePage from './components/HomePage';
 import NewBusinessFormPage from './components/NewBusinessFormPage';
 import OneBusinessPage from './components/OneBusinessPage';
+import UpdateBusinessPage from './components/UpdateBusinessPage';
 
 import * as businessActions from './store/business';
 
@@ -50,8 +51,11 @@ function App() {
           <Route path='/add-business'>
             <NewBusinessFormPage/>
           </Route>
-          <Route path='/business/:businessId'>
+          <Route exact path='/business/:businessId'>
             <OneBusinessPage/>
+          </Route>
+          <Route path='/business/:businessId/edit'>
+            <UpdateBusinessPage />
           </Route>
         </Switch>
       )}
