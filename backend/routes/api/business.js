@@ -10,6 +10,11 @@ router.get('/', asyncHandler(async(_req, res) => {
     return res.json(businesses);
 }));
 
+router.post('/', asyncHandler(async(req, res) => {
+    const details = req.body;
+    const business = await Business.create(details);
+    res.json(business)
+}));
 
 
 
