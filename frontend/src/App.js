@@ -9,6 +9,7 @@ import { Modal } from './context/Modal';
 import ShowBusinesses from './components/ShowBusinesses';
 import HomePage from './components/HomePage';
 import NewBusinessFormPage from './components/NewBusinessFormPage';
+import OneBusinessPage from './components/OneBusinessPage';
 
 import * as businessActions from './store/business';
 
@@ -25,12 +26,12 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <button onClick={() => setShowModal(true)}>Modal</button>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <h1>Hello I am a Modal</h1>
-        </Modal>
-      )}
+      {/* <button onClick={() => setShowModal(true)}>Modal</button> */}
+      {/* {showModal && (
+        // <Modal onClose={() => setShowModal(false)}>
+        //   <h1>Hello I am a Modal</h1>
+        // </Modal>
+      )} */}
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <Route path='/add-business'>
             <NewBusinessFormPage/>
+          </Route>
+          <Route path='/business/:businessId'>
+            <OneBusinessPage/>
           </Route>
         </Switch>
       )}

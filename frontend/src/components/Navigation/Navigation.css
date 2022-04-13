@@ -12,4 +12,28 @@
   text-decoration: none;
   color: black;
   font-family: 'Montserrat', sans-serif;
+  width: 25%;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+
+
+}
+
+.main-nav-links {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.search-container {
+  width: 50%;
+}
+
+.search-input {
+  width: 90%;
+  height: 35px;
 }
