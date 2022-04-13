@@ -9,7 +9,7 @@ function ShowBusinesses() {
     return(
         <div>
            {businesses.map(business => (
-               <div>
+               <div key={business.id}>
                    {business.title}
                    <img src={business.imageUrl} style={{width: '200px', height:'200px'}} alt="explore-pics"/>
                </div>

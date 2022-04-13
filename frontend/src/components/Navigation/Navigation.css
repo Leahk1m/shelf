@@ -7,3 +7,9 @@
   border: none;
   cursor: pointer;
 }
+
+.navbar-links {
+  text-decoration: none;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+}

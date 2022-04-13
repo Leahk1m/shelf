@@ -1,3 +1,4 @@
+import { csrfFetch } from './csrf';
 const LOAD_BUSINESS = 'business/LOAD_BUSINESS';
 const CREATE_BUSINESS = 'business/CREATE_BUSINESS';
 const DELETE_BUSINESS = 'business/DELETE_BUSINESS';
@@ -34,6 +35,34 @@ export const allUserBusinesses = () => async (dispatch) => {
     }
 }
 
+export const addNewBusiness = (business) => async(dispatch) => {
+    const { ownerId, title, description, address, city, state, zipCode, category, imageUrl, imageUrlTwo, imageUrlThree } = business
+    const response = await csrfFetch(`/api/business/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            ownerId,
+            title,
+            description,
+            address,
+            city,
+            state,
+            zipCode,
+            category,
+            imageUrl,
+            imageUrlTwo,
+            imageUrlThree
+        }),
+    });
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(createBusiness(data))
+    }
+    return response
+}
+
 const initialState = {};
 
 const businessReducer = (state = initialState, action) => {
@@ -44,6 +73,9 @@ const businessReducer = (state = initialState, action) => {
                 newState[business.id] = business
             });
             return {...newState};
+        case CREATE_BUSINESS:
+            newState[action.business.id] = action.business;
+            return newState;
         default:
             return state;
     }

@@ -8,6 +8,7 @@ import Navigation from './components/Navigation';
 import { Modal } from './context/Modal';
 import ShowBusinesses from './components/ShowBusinesses';
 import HomePage from './components/HomePage';
+import NewBusinessFormPage from './components/NewBusinessFormPage';
 
 import * as businessActions from './store/business';
 
@@ -18,6 +19,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(businessActions.allUserBusinesses())
+    // dispatch(businessActions.addNewBusiness())
   }, [dispatch]);
 
   return (
@@ -41,8 +43,11 @@ function App() {
             <SignupFormPage />
           </Route>
 
-          <Route path='/business'>
+          <Route exact path='/business'>
             <ShowBusinesses/>
+          </Route>
+          <Route path='/add-business'>
+            <NewBusinessFormPage/>
           </Route>
         </Switch>
       )}
