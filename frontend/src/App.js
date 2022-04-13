@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {/* <Navigation isLoaded={isLoaded} /> */}
       {/* <button onClick={() => setShowModal(true)}>Modal</button> */}
       {/* {showModal && (
         // <Modal onClose={() => setShowModal(false)}>
@@ -36,7 +36,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-            <HomePage/>
+            <HomePage isLoaded={isLoaded}/>
           </Route>
           {/* <Route path="/login" >
             <LoginFormPage />
