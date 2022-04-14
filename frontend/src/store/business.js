@@ -7,23 +7,23 @@ const DELETE_BUSINESS = 'business/DELETE_BUSINESS';
 const loadBusiness = (businesses) => ({
     type: LOAD_BUSINESS,
     businesses
-})
+});
 
 const createBusiness = (business) => ({
     type: CREATE_BUSINESS,
     business
 
-})
+});
 
 const updateBusiness = (business) => ({
     type: UPDATE_BUSINESS,
     business
-})
+});
 
 const deleteBusiness = (id) => ({
     type: DELETE_BUSINESS,
     id
-})
+});
 
 
 export const allUserBusinesses = () => async (dispatch) => {
@@ -66,7 +66,6 @@ export const addNewBusiness = (business) => async(dispatch) => {
 
 export const updateMyBusiness = (business, businessId) => async (dispatch) => {
     const { ownerId, title, description, address, city, state, zipCode, category, imageUrl, imageUrlTwo, imageUrlThree } = business
-    console.log("WHEHEHEHE")
     const response = await csrfFetch(`/api/business/edit/${businessId}`, {
         method: 'PUT',
         headers: {

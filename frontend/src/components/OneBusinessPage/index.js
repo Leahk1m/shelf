@@ -4,10 +4,13 @@ import './OneBusinessPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as businessActions from '../../store/business';
 import * as reviewActions from '../../store/review';
+import iconPic from '../IconPics/user-icon.jpeg';
 
 function OneBusinessPage() {
     const sessionUser = useSelector(state => state.session.user);
     const { businessId } = useParams();
+
+    // const allUsers = useSelector(state => state.)
 
     const businesses = useSelector(state => Object.values(state.business));
     const specificBusiness = businesses.filter(business => business.id == businessId)
@@ -34,7 +37,6 @@ function OneBusinessPage() {
 
     return(
         <div>
-            {specificReviews ? <p>whee</p> : <p>noooo</p>}
             {specificBusiness.map(business => (
                 <div key={business.id}>
                     {business.title}
@@ -56,13 +58,14 @@ function OneBusinessPage() {
 
             {specificReviews?.map(review => (
                 <div key={review.id}>
+                    <img className="user-icon-pic"src={iconPic}/>
                     <p>{review.post}</p>
 
                 </div>
             ))}
 
             <div>
-                <button className="write-review-btn">  Write a Review</button>
+                <button className="write-review-btn" onClick={() => history.push(`/business/reviews/${businessId}`)}>  Write a Review</button>
             </div>
             {/* {console.log('spec-bis', specificBusiness)} */}
             {/* {console.log('spec-biz-id', specificBusiness[0].id)}
