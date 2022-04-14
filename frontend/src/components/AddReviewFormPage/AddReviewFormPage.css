@@ -1,0 +1,16 @@
+input[type="radio"] {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
+    transition: color 200ms;
+    transition: background-color 200ms;
+    width: 25px;
+    height: 25px;
+    /* background-color: red; */
+}
+
+.rating-stars {
+    display: flex;
+}

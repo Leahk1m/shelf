@@ -72,19 +72,10 @@ function OneBusinessPage() {
                     ))}
 
                 </div>
-            : <p>no reviews</p>}
-
-
+            : <p>No Reviews Yet</p>}
             <div>
                 <button className="write-review-btn" onClick={() => history.push(`/business/reviews/${businessId}`)}>  Write a Review</button>
             </div>
-            {/* {console.log('spec-bis', specificBusiness)} */}
-            {/* {console.log('spec-biz-id', specificBusiness[0].id)}
-            {console.log('reviews', reviews)}
-            {console.log('spec-review', specificReviews)}
-            {console.log('reviewbisid', reviews[0].businessId)} */}
-
-
         </div>
     );
 
