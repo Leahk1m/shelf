@@ -9,6 +9,7 @@ function SignupFormPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const [firstName, setFirstName] = useState("");
   const [lastName, setlastName] = useState("");
+  const [city, setCity] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -20,7 +21,7 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ firstName, lastName, email, password }))
+      return dispatch(sessionActions.signup({ firstName, lastName, city, email, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -56,6 +57,13 @@ function SignupFormPage() {
               value={lastName}
               onChange={(e) => setlastName(e.target.value)}
               placeholder="Last name"
+            />
+
+            <input
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            placeholder="City"
             />
 
             <input

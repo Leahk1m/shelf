@@ -53,6 +53,7 @@ function HomePage({isLoaded}) {
                         <input className="find-location"
                         type="text"
                         placeholder="Bay Area, CA ONLY for now"
+                        readOnly = {true}
                         />
                         <button className="magnifying">🔍</button>
                     </div>
