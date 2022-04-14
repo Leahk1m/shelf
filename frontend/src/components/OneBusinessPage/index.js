@@ -16,7 +16,13 @@ function OneBusinessPage() {
     const specificBusiness = businesses.filter(business => business.id == businessId)
 
     const reviews = useSelector(state => Object.values(state.review));
-    const specificReviews = reviews.filter(review => +review.businessId == +specificBusiness[0].id);
+
+    let specificReviews;
+    if(specificBusiness.length > 0 && reviews.length > 0) {
+        specificReviews = reviews.filter(review => review.businessId == specificBusiness[0].id);
+
+    }
+
 
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
@@ -56,13 +62,18 @@ function OneBusinessPage() {
 
             <h2>Recommended Reviews</h2>
 
-            {specificReviews?.map(review => (
-                <div key={review.id}>
-                    <img className="user-icon-pic"src={iconPic}/>
-                    <p>{review.post}</p>
+            {specificReviews ?
+                <div>
+                    {specificReviews.map(review => (
+                        <div key={review.id}>
+                            <img className="user-icon-pic"src={iconPic}/>
+                            <p>{review.post}</p>
+                        </div>
+                    ))}
 
                 </div>
-            ))}
+            : <p>no reviews</p>}
+
 
             <div>
                 <button className="write-review-btn" onClick={() => history.push(`/business/reviews/${businessId}`)}>  Write a Review</button>

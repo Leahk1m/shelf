@@ -1,6 +1,7 @@
 .explore-biz-pic {
     width: 300px;
     height: 300px;
+    object-fit: cover;
 }
 
 .indiv-biz-container {
@@ -11,4 +12,3 @@
     padding-top: 30px;
 
 }
-    
