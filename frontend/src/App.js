@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(businessActions.allUserBusinesses())
-    // dispatch(businessActions.addNewBusiness())
+
   }, [dispatch]);
 
   return (
@@ -44,7 +44,6 @@ function App() {
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
-
           <Route exact path='/business'>
             <ShowBusinesses/>
           </Route>
@@ -54,7 +53,7 @@ function App() {
           <Route exact path='/business/:businessId'>
             <OneBusinessPage/>
           </Route>
-          <Route path='/business/:businessId/edit'>
+          <Route path='/business/edit/:businessId'>
             <UpdateBusinessPage />
           </Route>
         </Switch>

@@ -15,7 +15,7 @@ function OneBusinessPage() {
 
     const goToBusinessEditPage = async(e) => {
         e.preventDefault();
-        history.push(`/business/${businessId}/edit`)
+        history.push(`/business/edit/${businessId}`)
     }
 
     // const handleUpdateSubmit = async(e) => {

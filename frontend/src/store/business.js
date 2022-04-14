@@ -66,7 +66,8 @@ export const addNewBusiness = (business) => async(dispatch) => {
 
 export const updateMyBusiness = (business, businessId) => async (dispatch) => {
     const { ownerId, title, description, address, city, state, zipCode, category, imageUrl, imageUrlTwo, imageUrlThree } = business
-    const response = await fetch(`/api/business/${businessId}`, {
+    console.log("WHEHEHEHE")
+    const response = await csrfFetch(`/api/business/edit/${businessId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -93,7 +94,6 @@ export const updateMyBusiness = (business, businessId) => async (dispatch) => {
     }
     return response
 }
-
 
 
 const initialState = {};
