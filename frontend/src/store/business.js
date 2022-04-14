@@ -101,7 +101,7 @@ export const deleteMyBusiness = (businessId) => async(dispatch) => {
     })
     if(response.ok) {
         const data = await response.json();
-        dispatch(deleteBusiness(data))
+        dispatch(deleteBusiness(data.id))
     }
 }
 

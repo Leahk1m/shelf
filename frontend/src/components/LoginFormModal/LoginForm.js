@@ -56,10 +56,9 @@ function LoginForm() {
             placeholder="Password"
           />
         </div>
-
+        <button type="submit">Log In</button>
       </form>
         <div className="login-btns">
-          <button type="submit">Log In</button>
           <div className="login-modal-demo-container">
             <button className="demo-login-btn" onClick={demoLogin}>Demo User</button>
 
