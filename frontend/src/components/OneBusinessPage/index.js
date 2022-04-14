@@ -10,8 +10,16 @@ function OneBusinessPage() {
     const businesses = useSelector(state => Object.values(state.business));
     const specificBusiness = businesses.filter(business => business.id == businessId)
     const [errors, setErrors] = useState([]);
+    const dispatch = useDispatch();
 
     const history = useHistory();
+
+    const deleteBusiness = async(e) => {
+        e.preventDefault();
+        dispatch(businessActions.deleteMyBusiness(+businessId))
+            .then(() => history.push(`/profile`))
+
+    }
 
     const goToBusinessEditPage = async(e) => {
         e.preventDefault();
@@ -42,7 +50,7 @@ function OneBusinessPage() {
                     {sessionUser && business.id == sessionUser.id ?
                         <div className="update-delete-btn-container">
                             <button onClick={goToBusinessEditPage}>Update Business</button>
-                            <button>Delete Business</button>
+                            <button onClick={deleteBusiness}>Delete Business</button>
                         </div>
                     : ''}
                 </div>

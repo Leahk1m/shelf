@@ -29,6 +29,13 @@ function UpdateBusinessPage() {
 
     const [errors, setErrors] = useState([]);
 
+    // const deleteBusiness = async(e) => {
+    //     e.preventDefault();
+    //     dispatch(businessActions.deleteMyBusiness(businessId))
+    //         .then(() => history.push(`/profile`))
+
+    // }
+
     const handleEditSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);

@@ -95,6 +95,15 @@ export const updateMyBusiness = (business, businessId) => async (dispatch) => {
     return response
 }
 
+export const deleteMyBusiness = (businessId) => async(dispatch) => {
+    const response = await csrfFetch(`/api/business/${businessId}`, {
+        method: 'DELETE',
+    })
+    if(response.ok) {
+        const data = await response.json();
+        dispatch(deleteBusiness(data))
+    }
+}
 
 const initialState = {};
 
@@ -111,6 +120,9 @@ const businessReducer = (state = initialState, action) => {
             return newState;
         case UPDATE_BUSINESS:
             newState[action.business.id] = action.business;
+            return newState;
+        case DELETE_BUSINESS:
+            delete newState[action.id];
             return newState;
         default:
             return state;
