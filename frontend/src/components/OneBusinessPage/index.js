@@ -47,12 +47,12 @@ function OneBusinessPage() {
                         <img className="one-biz-photo"src={business.imageUrlTwo} alt="one-biz-pic"/>
                         <img className="one-biz-photo"src={business.imageUrlThree} alt="one-biz-pic"/>
                     </div>
-                    {sessionUser && business.id == sessionUser.id ?
+                    {sessionUser && business.ownerId == sessionUser.id ?
                         <div className="update-delete-btn-container">
                             <button onClick={goToBusinessEditPage}>Update Business</button>
                             <button onClick={deleteBusiness}>Delete Business</button>
                         </div>
-                    : ''}
+                    : <p>hello</p>}
                 </div>
             ))}
             <div>

@@ -44,10 +44,10 @@ function App() {
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
-          <Route exact path='/business'>
+          <Route exact path='/businesses'>
             <ShowBusinesses/>
           </Route>
-          <Route path='/add-business'>
+          <Route path='/host'>
             <NewBusinessFormPage/>
           </Route>
           <Route exact path='/business/:businessId'>

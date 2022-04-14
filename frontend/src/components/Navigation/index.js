@@ -35,9 +35,9 @@ function Navigation({ isLoaded }){
 
       <div className="main-nav-links">
         {sessionUser ?
-          <NavLink className="navbar-links" exact to="/add-business">Add Business</NavLink>
+          <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
         : ''}
-        <NavLink className="navbar-links" to="/business">Businesses</NavLink>
+        <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
         {isLoaded && sessionLinks}
 
       </div>

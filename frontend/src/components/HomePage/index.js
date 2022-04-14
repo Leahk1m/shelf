@@ -30,10 +30,10 @@ function HomePage({isLoaded}) {
                 <div className="splash-navbar-container">
                     {/* <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink> */}
 
-                    <NavLink className="splash-navbar-links" to="/business">Businesses</NavLink>
+                    <NavLink className="splash-navbar-links" to="/businesses">Businesses</NavLink>
                     <div className="splash-main-nav-links">
                         {sessionUser ?
-                        <NavLink className="splash-navbar-links" exact to="/add-business">Add Business</NavLink>
+                        <NavLink className="splash-navbar-links" exact to="/host">Add Business</NavLink>
                         : ''}
                         {isLoaded && sessionLinks}
 
