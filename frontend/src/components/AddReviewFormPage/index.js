@@ -20,10 +20,10 @@ function AddReview() {
 
     const [errors, setErrors] = useState([]);
 
-    const handleSubmit = async (e) => {
+    const handleReviewSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(reviewActions.addNewReview({ userId, }))
+        await dispatch(reviewActions.addNewReview({ userId, businessId, rating, post }))
             .then(() => history.push('/businesses'))
             .catch(async (res) => {
                 const data = await res.json();
@@ -31,7 +31,6 @@ function AddReview() {
                     setErrors(data.errors)
                 }
             })
-
     }
 
     return (
@@ -67,17 +66,14 @@ function AddReview() {
 
             </div>
             <div>
-                <form className="new-review-form">
+                <form className="new-review-form" onSubmit={handleReviewSubmit}>
                     <textarea
                     type="textarea"
                     value={post}
                     required
                     onChange={(e) => setPost(e.target.value)}
                     />
-                    <input
-                    type="number"
-                    />
-
+                    <button type="submit">Add your review</button>
                 </form>
             </div>
         </div>
