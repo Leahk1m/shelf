@@ -16,6 +16,28 @@ router.post('/', asyncHandler(async(req, res) => {
     res.json(business)
 }));
 
+router.put('/edit/:businessId', asyncHandler(async(req, res) => {
+    const id = +req.params.businessId;
+
+    await Business.update(req.body, {
+        where: { id },
+        returning: true,
+        plain: true,
+    });
+    const business = await Business.findByPk(id);
+    return res.json(business);
+
+}));
+
+router.delete('/:businessId', asyncHandler(async(req, res) => {
+    const id = +req.params.businessId;
+    const business = await Business.findByPk(id);
+    if(!business) throw new Error('Cannot find business');
+
+    await Business.destroy({ where: {id: business.id}})
+    return res.json({ id: business.id})
+
+}));
 
 
 module.exports = router;
