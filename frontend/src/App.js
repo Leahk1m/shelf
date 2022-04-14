@@ -46,7 +46,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path='/businesses'>
-            <ShowBusinesses/>
+            <ShowBusinesses isLoaded={isLoaded}/>
           </Route>
           <Route path='/host'>
             <NewBusinessFormPage/>

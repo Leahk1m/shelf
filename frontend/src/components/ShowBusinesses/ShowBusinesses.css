@@ -2,3 +2,12 @@
     width: 300px;
     height: 300px;
 }
+
+.indiv-biz-container {
+    display: flex;
+    align-items: center;
+    margin-left: 13%;
+    gap: 25px;
+    padding-top: 30px;
+   
+}
