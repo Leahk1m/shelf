@@ -5,8 +5,8 @@ const bcrypt = require("bcryptjs");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject() {
-      const { id, username, email } = this; // context will be the User instance
-      return { id, username, email };
+      const { id, firstName, lastName, city, email } = this; // context will be the User instance
+      return { id, firstName, lastName, city, email };
     }
     validatePassword(password) {
       return bcrypt.compareSync(password, this.hashedPassword.toString());
@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       const user = await User.scope('loginUser').findOne({
         where: {
           [Op.or]: {
-            username: credential,
             email: credential,
           },
         },
@@ -28,10 +27,12 @@ module.exports = (sequelize, DataTypes) => {
         return await User.scope('currentUser').findByPk(user.id);
       }
     }
-    static async signup({ username, email, password }) {
+    static async signup({ firstName, lastName, city, email, password }) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
-        username,
+        firstName,
+        lastName,
+        city,
         email,
         hashedPassword,
       });
@@ -43,17 +44,38 @@ module.exports = (sequelize, DataTypes) => {
   };
   User.init(
     {
-      username: {
+      // username: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      //   validate: {
+      //     len: [4, 30],
+      //     isNotEmail(value) {
+      //       if (Validator.isEmail(value)) {
+      //         throw new Error("Cannot be an email.");
+      //       }
+      //     },
+      //   },
+      // },
+      firstName: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [4, 30],
-          isNotEmail(value) {
-            if (Validator.isEmail(value)) {
-              throw new Error("Cannot be an email.");
-            }
-          },
         },
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [4, 30],
+        },
+      },
+      city: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        valdate: {
+          len: [4, 30],
+        }
       },
       email: {
         type: DataTypes.STRING,

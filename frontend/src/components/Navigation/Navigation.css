@@ -1,3 +1,46 @@
 .profile-dropdown {
   position: absolute;
 }
+
+.welcome-demo-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+.navbar-links {
+  text-decoration: none;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  width: 25%;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #8080803b;
+}
+
+
+.main-nav-links {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.search-container {
+  width: 50%;
+}
+
+.search-input {
+  width: 90%;
+  height: 35px;
+}
+
+.welcome-line {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}

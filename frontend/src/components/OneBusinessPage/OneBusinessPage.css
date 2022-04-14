@@ -1,0 +1,10 @@
+.one-biz-photo {
+    width: 80%;
+    height: 400px;
+}
+
+.one-biz-pic-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

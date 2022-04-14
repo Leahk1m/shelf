@@ -14,19 +14,73 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Business.init({
-    ownerId: DataTypes.INTEGER,
-    title: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    address: DataTypes.STRING,
-    city: DataTypes.STRING,
-    state: DataTypes.STRING,
-    zipCode: DataTypes.INTEGER,
-    lat: DataTypes.DECIMAL,
-    lng: DataTypes.DECIMAL,
-    category: DataTypes.STRING,
-    imageUrl: DataTypes.TEXT,
-    imageUrlTwo: DataTypes.TEXT,
-    imageUrlThree: DataTypes.TEXT
+    ownerId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4, 50]
+      },
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [10, 50]
+      }
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4, 30]
+      }
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4, 30]
+      }
+    },
+    zipCode: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    lat: {
+      type: DataTypes.DECIMAL,
+    },
+    lng: {
+      type: DataTypes.DECIMAL,
+
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4, 30]
+      }
+    },
+    imageUrl: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    imageUrlTwo: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    imageUrlThree: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Business',

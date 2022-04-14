@@ -23,6 +23,14 @@ function LoginFormPage() {
       });
   };
 
+  const demoLogin = async(e) => {
+    e.preventDefault();
+    dispatch(sessionActions.login({
+      credential: 'demo@aa.io',
+      password: 'password'
+    }));
+  }
+
   return (
     <>
       <h1>Log In</h1>
@@ -33,7 +41,7 @@ function LoginFormPage() {
           ))}
         </ul>
         <label>
-          Username or Email
+          Email
           <input
             type="text"
             value={credential}
@@ -52,6 +60,9 @@ function LoginFormPage() {
         </label>
         <button type="submit">Log In</button>
       </form>
+      <div className="login-demo">
+        <button className="demo-login-btn" onClick={demoLogin}>Demo User</button>
+      </div>
     </>
   );
 }

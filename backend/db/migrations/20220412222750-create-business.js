@@ -26,11 +26,11 @@ module.exports = {
       },
       city: {
         allowNull: false,
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(30)
       },
       state: {
         allowNull: false,
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(30)
       },
       zipCode: {
         allowNull: false,
@@ -44,7 +44,7 @@ module.exports = {
       },
       category: {
         allowNull: false,
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(30)
       },
       imageUrl: {
         allowNull: false,

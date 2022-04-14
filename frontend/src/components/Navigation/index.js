@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
+import shelfIcon from '../IconPics/shelf.png';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -23,12 +24,27 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+    <div className="navbar-container">
+      <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
+
+    <div className="search-container">
+      <input className="search-input"
+      type="text"
+      />
+    </div>
+
+      <div className="main-nav-links">
+        {sessionUser ?
+          <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
+        : ''}
+        <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+
+      </div>
+
+    </div>
+
+
   );
 }
 

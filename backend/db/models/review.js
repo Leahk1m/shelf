@@ -14,10 +14,26 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Review.init({
-    userId: DataTypes.INTEGER,
-    businessId: DataTypes.INTEGER,
-    rating: DataTypes.INTEGER,
-    post: DataTypes.TEXT
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+
+    },
+    businessId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+
+    },
+    post: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+
+    },
   }, {
     sequelize,
     modelName: 'Review',
