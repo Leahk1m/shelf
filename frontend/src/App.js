@@ -14,6 +14,7 @@ import UpdateBusinessPage from './components/UpdateBusinessPage';
 import ProfilePage from './components/ProfilePage';
 
 import * as businessActions from './store/business';
+import * as reviewActions from './store/review';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,7 +22,8 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-    dispatch(businessActions.allUserBusinesses())
+    dispatch(businessActions.allUserBusinesses());
+    dispatch(reviewActions.allUserReviews());
 
   }, [dispatch]);
 

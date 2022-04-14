@@ -3,12 +3,18 @@ import { useParams, useHistory } from 'react-router-dom';
 import './OneBusinessPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as businessActions from '../../store/business';
+import * as reviewActions from '../../store/review';
 
 function OneBusinessPage() {
     const sessionUser = useSelector(state => state.session.user);
     const { businessId } = useParams();
+
     const businesses = useSelector(state => Object.values(state.business));
     const specificBusiness = businesses.filter(business => business.id == businessId)
+
+    const reviews = useSelector(state => Object.values(state.review));
+    const specificReviews = reviews.filter(review => +review.businessId == +specificBusiness[0].id);
+
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
 
@@ -26,19 +32,9 @@ function OneBusinessPage() {
         history.push(`/business/edit/${businessId}`)
     }
 
-    // const handleUpdateSubmit = async(e) => {
-    //     e.preventDefault();
-    //     setErrors([]);
-    //     await dispatch(businessActions.updateMyBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrl, imageUrlTwo, imageUrlThree }))
-    //         .catch(async (res) => {
-    //             const data = await res.json();
-
-    //             if(data && data.errors) setErrors(data.errors);
-    //         })
-    //         .then(() => history.push(`/business/${businessId}`))
-    // }
     return(
         <div>
+            {specificReviews ? <p>whee</p> : <p>noooo</p>}
             {specificBusiness.map(business => (
                 <div key={business.id}>
                     {business.title}
@@ -55,9 +51,24 @@ function OneBusinessPage() {
                     : <p>hello</p>}
                 </div>
             ))}
+
+            <h2>Recommended Reviews</h2>
+
+            {specificReviews?.map(review => (
+                <div key={review.id}>
+                    <p>{review.post}</p>
+
+                </div>
+            ))}
+
             <div>
                 <button className="write-review-btn">  Write a Review</button>
             </div>
+            {/* {console.log('spec-bis', specificBusiness)} */}
+            {/* {console.log('spec-biz-id', specificBusiness[0].id)}
+            {console.log('reviews', reviews)}
+            {console.log('spec-review', specificReviews)}
+            {console.log('reviewbisid', reviews[0].businessId)} */}
 
 
         </div>
