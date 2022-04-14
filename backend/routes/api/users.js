@@ -15,6 +15,9 @@ const validateSignup = [
   check('lastName')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a last name.'),
+  check('city')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a city'),
   check('email')
     .exists({ checkFalsy: true })
     .isEmail()
@@ -39,8 +42,8 @@ router.post(
   '',
   validateSignup,
   asyncHandler(async (req, res) => {
-    const { firstName, lastName, email, password} = req.body;
-    const user = await User.signup({ firstName, lastName, email, password });
+    const { firstName, lastName, city, email, password} = req.body;
+    const user = await User.signup({ firstName, lastName, city, email, password });
 
     await setTokenCookie(res, user);
 

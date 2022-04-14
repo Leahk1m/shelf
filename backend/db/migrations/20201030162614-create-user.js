@@ -21,6 +21,10 @@ module.exports = {
       //   allowNull: false,
       //   unique: true,
       // },
+      city: {
+        allowNull: false,
+        type: Sequelize.STRING(30)
+      },
       email: {
         type: Sequelize.STRING(256),
         allowNull: false,

@@ -8,6 +8,7 @@ module.exports = {
       {
         firstName: 'Demo User',
         lastName: 'Trial',
+        city: 'App Academy',
         email: 'demo@aa.io',
         // username: 'Demo-lition',
         hashedPassword: bcrypt.hashSync('password'),
@@ -15,6 +16,7 @@ module.exports = {
       {
         firstName: 'Leah',
         lastName: 'Kim',
+        city: 'San Jose',
         email: 'leah@aa.io',
         // username: 'Leahk1m',
         hashedPassword: bcrypt.hashSync('password'),
@@ -22,6 +24,7 @@ module.exports = {
       {
         firstName: 'John',
         lastName: 'Angcla',
+        city: 'Bay Point',
         email: 'john@aa.io',
         // username: 'shinobu',
         hashedPassword: bcrypt.hashSync('password'),
