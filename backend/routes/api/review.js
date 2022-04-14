@@ -10,6 +10,13 @@ router.get('/', asyncHandler(async(_req, res) => {
     return res.json(reviews);
 }));
 
+router.post('/', asyncHandler(async(req, res) => {
+    const details = req.body;
+    const review = await Review.create(details);
+    res.json(review)
+
+}));
+
 
 
 module.exports = router;
