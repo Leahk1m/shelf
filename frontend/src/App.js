@@ -52,7 +52,7 @@ function App() {
           <Route exact path='/businesses'>
             <ShowBusinesses isLoaded={isLoaded}/>
           </Route>
-          <Route path='/host'>
+          <Route exact path='/host'>
             <NewBusinessFormPage/>
           </Route>
           <Route exact path='/business/:businessId'>
@@ -68,7 +68,7 @@ function App() {
             <AddReviewFormPage />
           </Route>
           <Route exact path='/business/reviews/edit/:reviewId'>
-            <EditReviewFormPage />
+            <EditReviewFormPage isLoaded={isLoaded}/>
           </Route>
         </Switch>
       )}
