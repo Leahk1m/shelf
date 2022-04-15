@@ -11,11 +11,12 @@ import shelfIcon from '../IconPics/shelf.png';
 function EditReviewFormPage({ isLoaded }) {
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session.user.id);
+    const profilePhoto = useSelector((state) => state.session.user.profilePhoto);
     const reviews = useSelector((state) => Object.values(state.review));
     const { reviewId } = useParams();
     const myReview = reviews.filter((review) => review.id == +reviewId);
-    const userFirstName = myReview[0].firstName;
-    const userLastName = myReview[0].lastName;
+    const firstName = myReview[0].firstName;
+    const lastName = myReview[0].lastName;
     const businessId = myReview[0].businessId;
     const history = useHistory();
 
@@ -43,7 +44,7 @@ function EditReviewFormPage({ isLoaded }) {
     const handleUpdateReviewSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(reviewActions.updateMyReview({ userFirstName, userLastName, userId, businessId, rating, post }, +reviewId))
+        await dispatch(reviewActions.updateMyReview({ firstName, lastName, profilePhoto, userId, businessId, rating, post }, +reviewId))
             .then(() => history.push(`/business/${businessId}`))
             .catch(async (res) => {
                 const data = await res.json();

@@ -106,11 +106,12 @@ function OneBusinessPage({ isLoaded }) {
                 <div>
                     {specificReviews.map(review => (
                         <div key={review.id}>
-                            <img className="user-icon-pic"src={iconPic}/>
+                            <p>{review.firstName} {review.lastName}</p>
+                            <img className="review-prof-icon"src={review.profilePhoto}/>
                             <div>
-                                <p>{review.post}</p>
                                 <p>{review.rating}</p>
-                                <img src={review.profilePhoto}/>
+                                <p>{review.post}</p>
+                                {/* <img className="review-prof-icon" src={review.profilePhoto}/> */}
                                 {review.userId == sessionUser.id ?
                                     <div>
                                         <button onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>update comment</button>
