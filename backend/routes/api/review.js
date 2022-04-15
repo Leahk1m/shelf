@@ -17,6 +17,18 @@ router.post('/', asyncHandler(async(req, res) => {
 
 }));
 
+router.put('/edit/:businessId', asyncHandler(async(req, res) => {
+    const id = +req.params.businessId;
+
+    await Review.update(req.body, {
+        where: { id },
+        returning: true,
+        plain: true,
+    });
+    const review = await Review.findByPk(id);
+    return res.json(review);
+}));
+
 
 
 module.exports = router;
