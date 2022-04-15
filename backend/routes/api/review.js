@@ -17,8 +17,8 @@ router.post('/', asyncHandler(async(req, res) => {
 
 }));
 
-router.put('/edit/:businessId', asyncHandler(async(req, res) => {
-    const id = +req.params.businessId;
+router.put('/edit/:reviewId', asyncHandler(async(req, res) => {
+    const id = +req.params.reviewId;
 
     await Review.update(req.body, {
         where: { id },
