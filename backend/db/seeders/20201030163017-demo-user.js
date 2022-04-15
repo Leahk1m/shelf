@@ -8,6 +8,7 @@ module.exports = {
       {
         firstName: 'Demo User',
         lastName: 'Trial',
+        profilePhoto: '',
         city: 'App Academy',
         email: 'demo@aa.io',
         // username: 'Demo-lition',
