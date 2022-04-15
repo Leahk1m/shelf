@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Typewriter from 'typewriter-effect';
+import { useDispatch } from 'react-redux';
 
 function Demo() {
     return(

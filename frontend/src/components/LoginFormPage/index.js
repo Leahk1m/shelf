@@ -62,7 +62,7 @@ function LoginFormPage() {
         <button type="submit">Log In</button>
       </form>
       <div className="login-demo">
-        <button className="demo-login-btn" onClick={ <Typewriter onInit={(typewriter) => typewriter.typeString('hello').start()}/>}>Demo User</button>
+        {/* <button className="demo-login-btn" onClick={ <Typewriter onInit={(typewriter) => typewriter.typeString('hello').start()}/>}>Demo User</button> */}
       </div>
     </>
   );
