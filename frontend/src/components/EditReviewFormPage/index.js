@@ -14,14 +14,14 @@ function EditReviewFormPage({ isLoaded }) {
     const reviews = useSelector((state) => Object.values(state.review));
     const { reviewId } = useParams();
     const myReview = reviews.filter((review) => review.id == +reviewId);
-    const userFirstName = myReview.firstName;
-    const userLastName = myReview.lastName;
-    const businessId = myReview.businessId;
+    const userFirstName = myReview[0].firstName;
+    const userLastName = myReview[0].lastName;
+    const businessId = myReview[0].businessId;
     const history = useHistory();
 
-    const [rating, setRating] = useState(null);
+    const [rating, setRating] = useState(myReview[0].rating);
     const [hover, setHover] = useState(null);
-    const [post, setPost] = useState("");
+    const [post, setPost] = useState(myReview[0].post);
     const [errors, setErrors] = useState([]);
 
 

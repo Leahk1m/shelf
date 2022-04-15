@@ -53,7 +53,7 @@ function App() {
             <ShowBusinesses isLoaded={isLoaded}/>
           </Route>
           <Route exact path='/host'>
-            <NewBusinessFormPage/>
+            <NewBusinessFormPage isLoaded={isLoaded}/>
           </Route>
           <Route exact path='/business/:businessId'>
             <OneBusinessPage/>
