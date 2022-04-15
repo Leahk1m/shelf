@@ -8,7 +8,7 @@ module.exports = {
       {
         firstName: 'Demo User',
         lastName: 'Trial',
-        profilePhoto: '',
+        profilePhoto: 'https://github.com/Leahk1m/shelf_app/blob/main/frontend/src/components/IconPics/demo-prof-photo.jpg?raw=true',
         city: 'App Academy',
         email: 'demo@aa.io',
         // username: 'Demo-lition',
@@ -17,6 +17,7 @@ module.exports = {
       {
         firstName: 'Leah',
         lastName: 'Kim',
+        profilePhoto: '',
         city: 'San Jose',
         email: 'leah@aa.io',
         // username: 'Leahk1m',
