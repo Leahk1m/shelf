@@ -5,6 +5,7 @@ import largeShelfLogo from '../IconPics/large-shelf.png';
 import { NavLink } from 'react-router-dom';
 import ProfileButton from '../Navigation/ProfileButton';
 import LoginFormModal from '../LoginFormModal';
+import magnify from '../IconPics/mag.png';
 
 function HomePage({isLoaded}) {
     const sessionUser = useSelector(state => state.session.user);
@@ -55,7 +56,7 @@ function HomePage({isLoaded}) {
                         placeholder="Bay Area, CA ONLY for now"
                         readOnly = {true}
                         />
-                        <button className="magnifying">🔍</button>
+                        <button className="magnifying"><img className="mag-glass-icon"src={magnify}/></button>
                     </div>
                 </div>
             </div>

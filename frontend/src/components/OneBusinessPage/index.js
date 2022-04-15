@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, NavLink } from 'react-router-dom';
 import './OneBusinessPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as businessActions from '../../store/business';
 import * as reviewActions from '../../store/review';
 import iconPic from '../IconPics/user-icon.jpeg';
+import ProfileButton from '../Navigation/ProfileButton';
+import LoginFormModal from '../LoginFormModal';
+import shelfIcon from '../IconPics/shelf.png';
 
-function OneBusinessPage() {
+function OneBusinessPage({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
     const { businessId } = useParams();
 
@@ -20,6 +23,20 @@ function OneBusinessPage() {
         specificReviews = reviews.filter(review => review.businessId == specificBusiness[0].id);
 
     }
+
+    let sessionLinks;
+  if (sessionUser) {
+    sessionLinks = (
+      <ProfileButton user={sessionUser} />
+    );
+  } else {
+    sessionLinks = (
+      <>
+        <LoginFormModal />
+        <NavLink to="/signup">Sign Up</NavLink>
+      </>
+    );
+  }
 
 
     const [errors, setErrors] = useState([]);
@@ -47,6 +64,25 @@ function OneBusinessPage() {
 
     return(
         <div>
+             <div className="navbar-container">
+                <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
+
+            <div className="search-container">
+                <input className="search-input"
+                type="text"
+                />
+                </div>
+
+                <div className="main-nav-links">
+                    {sessionUser ?
+                    <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
+                    : ''}
+                    <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                    {isLoaded && sessionLinks}
+
+                </div>
+            </div>
+
             {specificBusiness.map(business => (
                 <div key={business.id}>
                         <p className="one-biz-title">{business.title}</p>
