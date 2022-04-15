@@ -9,6 +9,8 @@ import shelfIcon from '../IconPics/shelf.png';
 
 function ProfilePage({ isLoaded }) {
     const sessionUser = useSelector((state) => state.session.user);
+    const businesses = useSelector(state => Object.values(state.business));
+    const myBusinesses = businesses.filter((business) => business.ownerId == sessionUser.id);
 
     let sessionLinks;
     if (sessionUser) {
@@ -48,8 +50,21 @@ function ProfilePage({ isLoaded }) {
             <div className="user-profile-info">
                 <h1>{sessionUser.firstName}</h1>
                 <p>From {sessionUser.city}</p>
+            </div>
 
-
+            <div className="user-prof-biz-list">
+                <h1>My Businesses</h1>
+                    {myBusinesses ?
+                        <div>
+                            {myBusinesses.map(business => (
+                                <div key={business.id}>
+                                    <h2>{business.title}</h2>
+                                    <p>{business.address}</p>
+                                    <img src={business.imageUrl}/>
+                                </div>
+                            ))}
+                        </div>
+                    : <p>You have no businesses</p>}
             </div>
         </div>
     );

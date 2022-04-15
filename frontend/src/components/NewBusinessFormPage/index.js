@@ -43,7 +43,7 @@ function NewBusinessFormPage({ isLoaded }) {
         e.preventDefault();
         setErrors([]);
         await dispatch(businessActions.addNewBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrl, imageUrlTwo, imageUrlThree}))
-            .then(() => history.push('/businesses'))
+            .then(() => history.push('/profile'))
             .catch(async (res) => {
                 const data = await res.json();
                 if(data && data.errors) {
