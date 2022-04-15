@@ -11,6 +11,7 @@ function AddReview() {
     const userId = useSelector((state) => state.session.user.id);
     const userFirstName = useSelector((state) => state.session.user.firstName);
     const userLastName = useSelector((state) => state.session.user.lastName);
+    const profilePhoto = useSelector((state) => state.session.user.profilePhoto);
     const { businessId } = useParams();
     const history = useHistory();
 
@@ -23,7 +24,7 @@ function AddReview() {
     const handleReviewSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(reviewActions.addNewReview({ userFirstName, userLastName, userId, businessId, rating, post }))
+        await dispatch(reviewActions.addNewReview({ userFirstName, userLastName, profilePhoto, userId, businessId, rating, post }))
             .then(() => history.push(`/business/${businessId}`))
             .catch(async (res) => {
                 const data = await res.json();

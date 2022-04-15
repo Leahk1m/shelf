@@ -50,6 +50,7 @@ function ProfilePage({ isLoaded }) {
             <div className="user-profile-info">
                 <h1>{sessionUser.firstName}</h1>
                 <p>From {sessionUser.city}</p>
+                <img src={sessionUser.profilePhoto}/>
             </div>
 
             <div className="user-prof-biz-list">
