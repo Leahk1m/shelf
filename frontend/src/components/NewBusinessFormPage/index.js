@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import ProfileButton from "../Navigation/ProfileButton";
+import LoginFormModal from "../LoginFormModal";
 import './NewBusinessFormPage.css';
 import * as businessActions from '../../store/business'
+import shelfIcon from '../IconPics/shelf.png';
 
-function NewBusinessFormPage() {
+function NewBusinessFormPage({ isLoaded }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const [title, setTitle] = useState("");
@@ -18,12 +21,23 @@ function NewBusinessFormPage() {
     const [imageUrl, setImageUrl] = useState("");
     const [imageUrlTwo, setImageUrlTwo] = useState("");
     const [imageUrlThree, setImageUrlThree] = useState("");
-
     const ownerId = useSelector((state) => state.session.user.id)
-
     const history = useHistory();
-
     const [errors, setErrors] = useState([]);
+
+    let sessionLinks;
+    if (sessionUser) {
+      sessionLinks = (
+        <ProfileButton user={sessionUser} />
+      );
+    } else {
+      sessionLinks = (
+        <>
+          <LoginFormModal />
+          <NavLink to="/signup">Sign Up</NavLink>
+        </>
+      );
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,6 +55,23 @@ function NewBusinessFormPage() {
 
     return(
         <div className="new-business-form-container">
+             <div className="navbar-container">
+                <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
+                <div className="search-container">
+                    <input className="search-input"
+                    type="text"
+                    />
+                </div>
+
+                <div className="main-nav-links">
+                    {sessionUser ?
+                    <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
+                    : ''}
+                    <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                    {isLoaded && sessionLinks}
+                </div>
+            </div>
+
             <h1>Fresh and New Business</h1>
             <div className="new-biz-form-input-container">
                 {/* {sessionUser ? */}

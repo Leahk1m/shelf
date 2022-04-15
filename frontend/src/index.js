@@ -12,6 +12,7 @@ import configureStore from './store';
 import { restoreCSRF, csrfFetch } from "./store/csrf";
 import * as sessionActions from './store/session';
 import * as businessActions from './store/business';
+import * as reviewActions from './store/review';
 
 const store = configureStore();
 
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV !== "production") {
   window.store = store;
   window.sessionActions = sessionActions;
   window.businessActions = businessActions;
+  window.reviewActions = reviewActions;
 }
 
 // const Carrot = () => (

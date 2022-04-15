@@ -45,7 +45,7 @@ function OneBusinessPage() {
         <div>
             {specificBusiness.map(business => (
                 <div key={business.id}>
-                    {business.title}
+                        <p className="one-biz-title">{business.title}</p>
                     <div className="one-biz-pic-container">
                         <img className="one-biz-photo"src={business.imageUrl} alt="one-biz-pic"/>
                         <img className="one-biz-photo"src={business.imageUrlTwo} alt="one-biz-pic"/>
@@ -56,7 +56,7 @@ function OneBusinessPage() {
                             <button onClick={goToBusinessEditPage}>Update Business</button>
                             <button onClick={deleteBusiness}>Delete Business</button>
                         </div>
-                    : <p>hello</p>}
+                    : ''}
                 </div>
             ))}
 
@@ -72,7 +72,7 @@ function OneBusinessPage() {
                                 <p>{review.rating}</p>
                                 {review.userId == sessionUser.id ?
                                     <div>
-                                        <button>update comment</button>
+                                        <button onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>update comment</button>
                                         <button>delete comment</button>
                                     </div>
                                 : ''}

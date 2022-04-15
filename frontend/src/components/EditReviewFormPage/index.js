@@ -1,29 +1,49 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, NavLink } from "react-router-dom";
 import * as reviewActions from '../../store/review';
-import './AddReviewFormPage.css';
-import { FaStar } from 'react-icons/fa';
+import ProfileButton from "../Navigation/ProfileButton";
+import LoginFormModal from "../LoginFormModal";
+import './EditReviewFormPage.css';
 import { AiFillStar } from 'react-icons/ai';
+import shelfIcon from '../IconPics/shelf.png';
 
-function AddReview() {
+function EditReviewFormPage({ isLoaded }) {
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session.user.id);
-    const userFirstName = useSelector((state) => state.session.user.firstName);
-    const userLastName = useSelector((state) => state.session.user.lastName);
-    const { businessId } = useParams();
+    const reviews = useSelector((state) => Object.values(state.review));
+    const { reviewId } = useParams();
+    const myReview = reviews.filter((review) => review.id == +reviewId);
+    const userFirstName = myReview[0].firstName;
+    const userLastName = myReview[0].lastName;
+    const businessId = myReview[0].businessId;
     const history = useHistory();
 
-    const [rating, setRating] = useState(null);
+    const [rating, setRating] = useState(myReview[0].rating);
     const [hover, setHover] = useState(null);
-    const [post, setPost] = useState("");
-
+    const [post, setPost] = useState(myReview[0].post);
     const [errors, setErrors] = useState([]);
 
-    const handleReviewSubmit = async (e) => {
+
+    const sessionUser = useSelector((state) => state.session.user);
+    let sessionLinks;
+    if (sessionUser) {
+        sessionLinks = (
+        <ProfileButton user={sessionUser} />
+        );
+    } else {
+        sessionLinks = (
+        <>
+            <LoginFormModal />
+            <NavLink to="/signup">Sign Up</NavLink>
+        </>
+        );
+    }
+
+    const handleUpdateReviewSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(reviewActions.addNewReview({ userFirstName, userLastName, userId, businessId, rating, post }))
+        await dispatch(reviewActions.updateMyReview({ userFirstName, userLastName, userId, businessId, rating, post }, +reviewId))
             .then(() => history.push(`/business/${businessId}`))
             .catch(async (res) => {
                 const data = await res.json();
@@ -35,6 +55,23 @@ function AddReview() {
 
     return (
         <div>
+            <div className="navbar-container">
+                <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
+                <div className="search-container">
+                    <input className="search-input"
+                    type="text"
+                    />
+                </div>
+
+                <div className="main-nav-links">
+                    {sessionUser ?
+                    <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
+                    : ''}
+                    <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                    {isLoaded && sessionLinks}
+                </div>
+            </div>
+
             <div className="rating-stars">
                 {[...Array(5)].map((star, i) => {
                     const ratingVal = i + 1;
@@ -66,7 +103,7 @@ function AddReview() {
 
             </div>
             <div>
-                <form className="new-review-form" onSubmit={handleReviewSubmit}>
+                <form className="new-review-form" onSubmit={handleUpdateReviewSubmit}>
                     <textarea
                     type="textarea"
                     value={post}
@@ -80,4 +117,4 @@ function AddReview() {
     );
 }
 
-export default AddReview;
+export default EditReviewFormPage;
