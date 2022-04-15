@@ -14,6 +14,9 @@ const createReview = (review) => ({
     review
 });
 
+const updateReview = (review) => ({
+
+});
 
 export const allUserReviews = () => async (dispatch) => {
     const response = await fetch('/api/review');

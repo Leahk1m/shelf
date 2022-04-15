@@ -67,7 +67,17 @@ function OneBusinessPage() {
                     {specificReviews.map(review => (
                         <div key={review.id}>
                             <img className="user-icon-pic"src={iconPic}/>
-                            <p>{review.post}</p>
+                            <div>
+                                <p>{review.post}</p>
+                                <p>{review.rating}</p>
+                                {review.userId == sessionUser.id ?
+                                    <div>
+                                        <button>update comment</button>
+                                        <button>delete comment</button>
+                                    </div>
+                                : ''}
+
+                            </div>
                         </div>
                     ))}
 
