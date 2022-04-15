@@ -10,8 +10,6 @@ function OneBusinessPage() {
     const sessionUser = useSelector(state => state.session.user);
     const { businessId } = useParams();
 
-    // const allUsers = useSelector(state => state.)
-
     const businesses = useSelector(state => Object.values(state.business));
     const specificBusiness = businesses.filter(business => business.id == businessId)
 
@@ -39,6 +37,12 @@ function OneBusinessPage() {
     const goToBusinessEditPage = async(e) => {
         e.preventDefault();
         history.push(`/business/edit/${businessId}`)
+    }
+
+    const deleteReview = async(e) => {
+        e.preventDefault();
+        dispatch(reviewActions.deleteMyReview(+specificReviews[0].id))
+
     }
 
     return(
@@ -73,7 +77,7 @@ function OneBusinessPage() {
                                 {review.userId == sessionUser.id ?
                                     <div>
                                         <button onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>update comment</button>
-                                        <button>delete comment</button>
+                                        <button onClick={deleteReview}>delete comment</button>
                                     </div>
                                 : ''}
 
