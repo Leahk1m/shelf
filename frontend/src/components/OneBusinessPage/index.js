@@ -72,7 +72,7 @@ function OneBusinessPage() {
                                 <p>{review.rating}</p>
                                 {review.userId == sessionUser.id ?
                                     <div>
-                                        <button>update comment</button>
+                                        <button onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>update comment</button>
                                         <button>delete comment</button>
                                     </div>
                                 : ''}

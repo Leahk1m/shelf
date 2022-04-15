@@ -13,6 +13,7 @@ import OneBusinessPage from './components/OneBusinessPage';
 import UpdateBusinessPage from './components/UpdateBusinessPage';
 import ProfilePage from './components/ProfilePage';
 import AddReviewFormPage from './components/AddReviewFormPage';
+import EditReviewFormPage from './components/EditReviewFormPage';
 
 import * as businessActions from './store/business';
 import * as reviewActions from './store/review';
@@ -65,6 +66,9 @@ function App() {
           </Route>
           <Route exact path='/business/reviews/:businessId'>
             <AddReviewFormPage />
+          </Route>
+          <Route exact path='/business/reviews/edit/:reviewId'>
+            <EditReviewFormPage />
           </Route>
         </Switch>
       )}
