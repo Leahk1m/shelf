@@ -8,7 +8,7 @@ module.exports = {
       {
         firstName: 'Demo User',
         lastName: 'Trial',
-        profilePhoto: 'https://github.com/Leahk1m/shelf_app/blob/main/frontend/src/components/IconPics/demo-prof-photo.jpg?raw=true',
+        profilePhoto: 'https://github.com/Leahk1m/shelf_app/blob/main/frontend/src/components/IconPics/biz-owner-pic.jpg?raw=true',
         city: 'App Academy',
         email: 'demo@aa.io',
         // username: 'Demo-lition',
@@ -17,7 +17,7 @@ module.exports = {
       {
         firstName: 'Leah',
         lastName: 'Kim',
-        profilePhoto: '',
+        profilePhoto: 'https://github.com/Leahk1m/shelf_app/blob/main/frontend/src/components/IconPics/bread-cat.jpg?raw=true',
         city: 'San Jose',
         email: 'leah@aa.io',
         // username: 'Leahk1m',
@@ -26,6 +26,7 @@ module.exports = {
       {
         firstName: 'John',
         lastName: 'Angcla',
+        profilePhoto: 'https://github.com/Leahk1m/shelf_app/blob/main/frontend/src/components/IconPics/eating-bear.jpg?raw=true',
         city: 'Bay Point',
         email: 'john@aa.io',
         // username: 'shinobu',
