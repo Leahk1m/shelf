@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import "./LoginForm.css";
 import { NavLink } from "react-router-dom";
+import Typewriter from 'typewriter-effect';
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ function LoginForm() {
       </form>
         <div className="login-btns">
           <div className="login-modal-demo-container">
-            <button className="demo-login-btn" onClick={demoLogin}>Demo User</button>
+            <button className="demo-login-btn" onClick={() => <Typewriter onInit={(typewriter) => typewriter.typeString('hello').start()}/>}>Demo User</button>
 
           </div>
       </div>

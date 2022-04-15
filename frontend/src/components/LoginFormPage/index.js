@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './LoginForm.css';
+import Typewriter from 'typewriter-effect';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -25,10 +26,10 @@ function LoginFormPage() {
 
   const demoLogin = async(e) => {
     e.preventDefault();
-    dispatch(sessionActions.login({
-      credential: 'demo@aa.io',
-      password: 'password'
-    }));
+    // dispatch(sessionActions.login({
+    //   credential: 'demo@aa.io',
+    //   password: 'password'
+    // }));
   }
 
   return (
@@ -61,7 +62,7 @@ function LoginFormPage() {
         <button type="submit">Log In</button>
       </form>
       <div className="login-demo">
-        <button className="demo-login-btn" onClick={demoLogin}>Demo User</button>
+        <button className="demo-login-btn" onClick={ <Typewriter onInit={(typewriter) => typewriter.typeString('hello').start()}/>}>Demo User</button>
       </div>
     </>
   );
