@@ -15,6 +15,8 @@ const createReview = (review) => ({
 });
 
 const updateReview = (review) => ({
+    type: UPDATE_REVIEW,
+    review
 
 });
 
@@ -53,6 +55,29 @@ export const addNewReview = (review) => async (dispatch) => {
 }
 
 
+export const updateMyReview = (review, businessId) => async (dispatch) => {
+    const { userFirstName, userLastName, userId, businessId, rating, post } = review;
+    const response = await csrfFetch(`/api/review/edit/${businessId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            userFirstName,
+            userLastName,
+            userId,
+            businessId,
+            rating,
+            post
+        })
+    });
+    if(response.ok) {
+        const data = await response.json();
+        await dispatch(updateReview(data))
+    }
+    return response
+}
+
 
 const initialState = {};
 
@@ -65,6 +90,9 @@ const reviewReducer = (state = initialState, action) => {
             });
             return {...newState};
         case CREATE_REVIEW:
+            newState[action.review.id] = action.review;
+            return newState;
+        case UPDATE_REVIEW:
             newState[action.review.id] = action.review;
             return newState;
         default:

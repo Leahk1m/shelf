@@ -23,7 +23,7 @@ function AddReview() {
     const handleReviewSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(reviewActions.addNewReview({ userId, businessId, rating, post }))
+        await dispatch(reviewActions.addNewReview({ userFirstName, userLastName, userId, businessId, rating, post }))
             .then(() => history.push('/businesses'))
             .catch(async (res) => {
                 const data = await res.json();
