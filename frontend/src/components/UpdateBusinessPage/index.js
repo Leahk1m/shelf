@@ -39,7 +39,6 @@ function UpdateBusinessPage() {
     const handleEditSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        console.log({ ownerId, title, description, address, city, state, zipCode, category, imageUrl, imageUrlTwo, imageUrlThree}, +businessId)
         await dispatch(businessActions.updateMyBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrl, imageUrlTwo, imageUrlThree}, +businessId))
             .then(() => history.push(`/business/${businessId}`))
             .catch(async (res) => {
