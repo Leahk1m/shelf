@@ -12,8 +12,10 @@ import NewBusinessFormPage from './components/NewBusinessFormPage';
 import OneBusinessPage from './components/OneBusinessPage';
 import UpdateBusinessPage from './components/UpdateBusinessPage';
 import ProfilePage from './components/ProfilePage';
+import AddReviewFormPage from './components/AddReviewFormPage';
 
 import * as businessActions from './store/business';
+import * as reviewActions from './store/review';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,7 +23,8 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-    dispatch(businessActions.allUserBusinesses())
+    dispatch(businessActions.allUserBusinesses());
+    dispatch(reviewActions.allUserReviews());
 
   }, [dispatch]);
 
@@ -54,11 +57,14 @@ function App() {
           <Route exact path='/business/:businessId'>
             <OneBusinessPage/>
           </Route>
-          <Route path='/business/edit/:businessId'>
+          <Route exact path='/business/edit/:businessId'>
             <UpdateBusinessPage />
           </Route>
-          <Route path='/profile'>
+          <Route exact path='/profile'>
             <ProfilePage isLoaded={isLoaded} />
+          </Route>
+          <Route exact path='/business/reviews/:businessId'>
+            <AddReviewFormPage />
           </Route>
         </Switch>
       )}

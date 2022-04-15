@@ -3,12 +3,27 @@ import { useParams, useHistory } from 'react-router-dom';
 import './OneBusinessPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as businessActions from '../../store/business';
+import * as reviewActions from '../../store/review';
+import iconPic from '../IconPics/user-icon.jpeg';
 
 function OneBusinessPage() {
     const sessionUser = useSelector(state => state.session.user);
     const { businessId } = useParams();
+
+    // const allUsers = useSelector(state => state.)
+
     const businesses = useSelector(state => Object.values(state.business));
     const specificBusiness = businesses.filter(business => business.id == businessId)
+
+    const reviews = useSelector(state => Object.values(state.review));
+
+    let specificReviews;
+    if(specificBusiness.length > 0 && reviews.length > 0) {
+        specificReviews = reviews.filter(review => review.businessId == specificBusiness[0].id);
+
+    }
+
+
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
 
@@ -26,17 +41,6 @@ function OneBusinessPage() {
         history.push(`/business/edit/${businessId}`)
     }
 
-    // const handleUpdateSubmit = async(e) => {
-    //     e.preventDefault();
-    //     setErrors([]);
-    //     await dispatch(businessActions.updateMyBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrl, imageUrlTwo, imageUrlThree }))
-    //         .catch(async (res) => {
-    //             const data = await res.json();
-
-    //             if(data && data.errors) setErrors(data.errors);
-    //         })
-    //         .then(() => history.push(`/business/${businessId}`))
-    // }
     return(
         <div>
             {specificBusiness.map(business => (
@@ -55,11 +59,33 @@ function OneBusinessPage() {
                     : <p>hello</p>}
                 </div>
             ))}
+
+            <h2>Recommended Reviews</h2>
+
+            {specificReviews ?
+                <div>
+                    {specificReviews.map(review => (
+                        <div key={review.id}>
+                            <img className="user-icon-pic"src={iconPic}/>
+                            <div>
+                                <p>{review.post}</p>
+                                <p>{review.rating}</p>
+                                {review.userId == sessionUser.id ?
+                                    <div>
+                                        <button>update comment</button>
+                                        <button>delete comment</button>
+                                    </div>
+                                : ''}
+
+                            </div>
+                        </div>
+                    ))}
+
+                </div>
+            : <p>No Reviews Yet</p>}
             <div>
-                <button className="write-review-btn">  Write a Review</button>
+                <button className="write-review-btn" onClick={() => history.push(`/business/reviews/${businessId}`)}>  Write a Review</button>
             </div>
-
-
         </div>
     );
 
