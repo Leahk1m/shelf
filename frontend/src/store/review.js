@@ -38,7 +38,7 @@ export const allUserReviews = () => async (dispatch) => {
 
 
 export const addNewReview = (review) => async (dispatch) => {
-    const { firstName, lastName, userId, businessId, rating, post } = review;
+    const { firstName, lastName, profilePhoto, userId, businessId, rating, post } = review;
     const response = await csrfFetch(`/api/review`, {
         method: 'POST',
         headers : {
@@ -47,6 +47,7 @@ export const addNewReview = (review) => async (dispatch) => {
         body: JSON.stringify({
             firstName,
             lastName,
+            profilePhoto,
             userId,
             businessId,
             rating,

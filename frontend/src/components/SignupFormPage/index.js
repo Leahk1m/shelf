@@ -14,6 +14,7 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [profilePhoto, setProfilePhoto] = useState("");
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -21,7 +22,7 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ firstName, lastName, city, email, password }))
+      return dispatch(sessionActions.signup({ firstName, lastName, profilePhoto, city, email, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -88,6 +89,15 @@ function SignupFormPage() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
               placeholder="Confirm password"
+            />
+
+            <input
+            type="text"
+            value={profilePhoto}
+            onChange={(e) => setProfilePhoto(e.target.value)}
+            required
+            placeholder="Profile photo(image url)"
+
             />
           </div>
           <button type="submit">Sign Up</button>

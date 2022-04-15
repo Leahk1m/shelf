@@ -110,6 +110,7 @@ function OneBusinessPage({ isLoaded }) {
                             <div>
                                 <p>{review.post}</p>
                                 <p>{review.rating}</p>
+                                <p>{review.profilePhoto}</p>
                                 {review.userId == sessionUser.id ?
                                     <div>
                                         <button onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>update comment</button>
