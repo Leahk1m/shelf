@@ -3,15 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import * as reviewActions from '../../store/review';
 import './AddReviewFormPage.css';
-import { FaStar } from 'react-icons/fa';
 import { AiFillStar } from 'react-icons/ai';
 
 function AddReview() {
     const dispatch = useDispatch();
-    const userId = useSelector((state) => state.session.user.id);
-    const firstName = useSelector((state) => state.session.user.firstName);
-    const lastName = useSelector((state) => state.session.user.lastName);
-    const profilePhoto = useSelector((state) => state.session.user.profilePhoto);
+    const userId = useSelector((state) => state.session.user?.id);
+    const firstName = useSelector((state) => state.session.user?.firstName);
+    const lastName = useSelector((state) => state.session.user?.lastName);
+    const profilePhoto = useSelector((state) => state.session.user?.profilePhoto);
     const { businessId } = useParams();
     const history = useHistory();
 
@@ -20,6 +19,10 @@ function AddReview() {
     const [post, setPost] = useState("");
 
     const [errors, setErrors] = useState([]);
+
+    if(!userId) {
+        history.push('/login')
+    }
 
     const handleReviewSubmit = async (e) => {
         e.preventDefault();
@@ -48,7 +51,7 @@ function AddReview() {
                             onClick={() => setRating(ratingVal)}
 
                             />
-                            <div style={ratingVal <= (hover || rating) ? {backgroundColor:'#e00707'} : {backgroundColor:'#e4e5e9'}}>
+                            <div key={i} style={ratingVal <= (hover || rating) ? {backgroundColor:'#e00707'} : {backgroundColor:'#e4e5e9'}}>
 
                                 <AiFillStar
                                 className="star"
@@ -66,7 +69,7 @@ function AddReview() {
                     })}
 
             </div>
-            <div>
+            <div >
                 <form className="new-review-form" onSubmit={handleReviewSubmit}>
                     <textarea
                     type="textarea"

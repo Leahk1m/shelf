@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './HomePage.css';
 import largeShelfLogo from '../IconPics/new-shelf.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import ProfileButton from '../Navigation/ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import magnify from '../IconPics/mag.png';
@@ -10,6 +10,7 @@ import magnify from '../IconPics/mag.png';
 function HomePage({isLoaded}) {
     const sessionUser = useSelector(state => state.session.user);
     const [search, setSearch] = useState('');
+    const history = useHistory();
 
     let sessionLinks;
     if (sessionUser) {
@@ -20,7 +21,8 @@ function HomePage({isLoaded}) {
         sessionLinks = (
         <>
             <LoginFormModal />
-            <NavLink className="splash-navbar-links" to="/signup">Sign Up</NavLink>
+            <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
+            {/* <NavLink className="splash-navbar-links" to="/signup">Sign Up</NavLink> */}
         </>
         );
     }

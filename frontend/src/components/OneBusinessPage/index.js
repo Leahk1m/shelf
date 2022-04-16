@@ -16,8 +16,7 @@ function OneBusinessPage({ isLoaded }) {
     const { businessId } = useParams();
 
     const businesses = useSelector(state => Object.values(state.business));
-    const specificBusiness = businesses.filter(business => business.id == businessId)
-
+    const specificBusiness = businesses.filter(business => business.id == businessId);
     const reviews = useSelector(state => Object.values(state.review));
 
     let specificReviews;
@@ -104,51 +103,18 @@ function OneBusinessPage({ isLoaded }) {
 
             <h2>Recommended Reviews</h2>
 
-            {specificReviews ?
+            {reviews && specificReviews ?
                 <div>
                     {specificReviews.map(review => (
                         <div key={review.id}>
                             <p>{review.firstName} {review.lastName}</p>
                             <img className="review-prof-icon"src={review.profilePhoto}/>
-                            <div>
-
-                                {review.rating == 1 ?
-                                    <div>
-                                        {[...Array(5)].map((star, i) => {
-                                            const ratingStar = i + 1;
-
-                                            return(
-                                                <div style={{backgroundColor:'#e00707'}}>
-                                                    <AiFillStar
-                                                    className="rating-star"
-                                                    color={'white'}
-                                                    size={30}
-
-
-                                                     />
-                                                </div>
-                                            )
-                                        })}
-                                    </div>
-
-                                : ''}
-
-
-
-
-
-
-                                {/* <p>{review.rating}</p> */}
-                                <p>{review.post}</p>
-                                {/* <img className="review-prof-icon" src={review.profilePhoto}/> */}
-                                {review.userId == sessionUser.id ?
+                                {sessionUser && review.userId == sessionUser.id ?
                                     <div>
                                         <button onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>update comment</button>
                                         <button onClick={deleteReview}>delete comment</button>
                                     </div>
                                 : ''}
-
-                            </div>
                         </div>
                     ))}
 

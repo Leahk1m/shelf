@@ -35,7 +35,8 @@ function SignupFormPage() {
   return (
     <div className="signup-pg-container">
       <div className="signup-red-nav">
-        <img className="signup-nav-shelf-icon"src={shelfIcon} alt="shelf-icon"/>
+        <NavLink className="shelf-signup-navlink" to="/"> <img className="signup-nav-shelf-icon"src={shelfIcon} alt="shelf-icon"/></NavLink>
+
 
       </div>
       <h1 className="signup-for-shelf">Sign up for shelf</h1>
@@ -109,7 +110,7 @@ function SignupFormPage() {
             />
           </div>
           <button className="signup-btn"type="submit">Sign Up</button>
-          <NavLink to="/">Changed your mind?</NavLink>
+          <NavLink className="changed-mind" to="/">Changed your mind?</NavLink>
         </form>
       </div>
     </div>

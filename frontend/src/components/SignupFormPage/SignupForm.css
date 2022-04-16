@@ -35,7 +35,7 @@
 }
 
 .signup-nav-shelf-icon {
-    width: 10%;
+    width: 20%;
 
 }
 
@@ -54,4 +54,15 @@
 .signup-btn:hover {
     background-color: #c20304;
     transition: 0.5s;
+}
+
+.changed-mind {
+    text-decoration: none;
+}
+
+.shelf-signup-navlink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }

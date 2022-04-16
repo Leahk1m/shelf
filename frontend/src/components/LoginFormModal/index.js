@@ -10,16 +10,16 @@ function LoginFormModal() {
   const [showTypewriter, setShowTypewriter] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      dispatch(sessionActions.login({
-        credential: 'demo@aa.io',
-        password: 'password'
-    }))
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     dispatch(sessionActions.login({
+  //       credential: 'demo@aa.io',
+  //       password: 'password'
+  //   }))
 
-    }, 4000)
-    return () => clearTimeout(timer);
-  }, [showTypewriter])
+  //   }, 4000)
+  //   return () => clearTimeout(timer);
+  // }, [showTypewriter])
 
   // if(showTypewriter) {
   //   const timer = setTimeout(() => {
