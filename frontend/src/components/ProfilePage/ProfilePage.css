@@ -1,12 +1,50 @@
 .user-profile-info {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
     background-color: #e6e6e6;
-    height: 250px;
+    height: 200px;
 }
 
 /* .entry-content {
     overflow: visible;
 } */
+
+.my-prof-photo {
+    width: 10%;
+    margin-right: 40%;
+    border: 1px solid black;
+}
+
+
+.prof-business-photo {
+    width: 30%;
+}
+
+.my-businesses-prof-title {
+    margin-bottom: -5px;
+}
+
+.user-prof-biz-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.my-prof-biz-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.user-profile-city-p {
+    margin-top: -3px;
+}
+
+.prof-my-name {
+    margin-top: 2%;
+}

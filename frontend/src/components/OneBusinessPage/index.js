@@ -8,6 +8,8 @@ import iconPic from '../IconPics/user-icon.jpeg';
 import ProfileButton from '../Navigation/ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import shelfIcon from '../IconPics/shelf.png';
+import { AiFillStar } from 'react-icons/ai';
+
 
 function OneBusinessPage({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -109,7 +111,34 @@ function OneBusinessPage({ isLoaded }) {
                             <p>{review.firstName} {review.lastName}</p>
                             <img className="review-prof-icon"src={review.profilePhoto}/>
                             <div>
-                                <p>{review.rating}</p>
+
+                                {review.rating == 1 ?
+                                    <div>
+                                        {[...Array(5)].map((star, i) => {
+                                            const ratingStar = i + 1;
+
+                                            return(
+                                                <div style={{backgroundColor:'#e00707'}}>
+                                                    <AiFillStar
+                                                    className="rating-star"
+                                                    color={'white'}
+                                                    size={30}
+
+
+                                                     />
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+
+                                : ''}
+
+
+
+
+
+
+                                {/* <p>{review.rating}</p> */}
                                 <p>{review.post}</p>
                                 {/* <img className="review-prof-icon" src={review.profilePhoto}/> */}
                                 {review.userId == sessionUser.id ?

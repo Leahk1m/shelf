@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './HomePage.css';
-import largeShelfLogo from '../IconPics/large-shelf.png';
+import largeShelfLogo from '../IconPics/new-shelf.png';
 import { NavLink } from 'react-router-dom';
 import ProfileButton from '../Navigation/ProfileButton';
 import LoginFormModal from '../LoginFormModal';

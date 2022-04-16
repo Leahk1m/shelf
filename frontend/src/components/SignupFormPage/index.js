@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
+import shelfIcon from '../IconPics/new-shelf.png';
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -33,6 +34,10 @@ function SignupFormPage() {
 
   return (
     <div className="signup-pg-container">
+      <div className="signup-red-nav">
+        <img className="signup-nav-shelf-icon"src={shelfIcon} alt="shelf-icon"/>
+
+      </div>
       <h1 className="signup-for-shelf">Sign up for shelf</h1>
       <h3>Connect with great local businesses </h3>
       <div className="signup-msg">
@@ -46,19 +51,22 @@ function SignupFormPage() {
           </ul>
 
           <div className="signup-input-container">
-            <input
-              type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              placeholder="First name"
-            />
+            <div className="signup-names-container">
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="First name"
+              />
 
-            <input
-              type="text"
-              value={lastName}
-              onChange={(e) => setlastName(e.target.value)}
-              placeholder="Last name"
-            />
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setlastName(e.target.value)}
+                placeholder="Last name"
+              />
+
+            </div>
 
             <input
             type="text"
@@ -100,7 +108,8 @@ function SignupFormPage() {
 
             />
           </div>
-          <button type="submit">Sign Up</button>
+          <button className="signup-btn"type="submit">Sign Up</button>
+          <NavLink to="/">Changed your mind?</NavLink>
         </form>
       </div>
     </div>
