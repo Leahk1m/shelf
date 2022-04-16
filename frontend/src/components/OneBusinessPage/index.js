@@ -9,11 +9,16 @@ import ProfileButton from '../Navigation/ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import shelfIcon from '../IconPics/shelf.png';
 import { AiFillStar } from 'react-icons/ai';
+import { Modal } from '../../context/Modal';
+import Demo from '../LoginFormModal/Demo';
+import LoginForm from '../LoginFormModal/LoginForm';
 
 
 function OneBusinessPage({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
     const { businessId } = useParams();
+    const [showModal, setShowModal] = useState(false);
+    const [showTypewriter, setShowTypewriter] = useState(false);
 
     const businesses = useSelector(state => Object.values(state.business));
     const specificBusiness = businesses.filter(business => business.id == businessId);
@@ -44,6 +49,15 @@ function OneBusinessPage({ isLoaded }) {
     const dispatch = useDispatch();
 
     const history = useHistory();
+
+    const checkingUser = (e) => {
+        e.preventDefault();
+        if(sessionUser) {
+            history.push(`/business/reviews/${businessId}`)
+        } else {
+            setShowModal(true);
+        }
+    }
 
     const deleteBusiness = async(e) => {
         e.preventDefault();
@@ -121,7 +135,20 @@ function OneBusinessPage({ isLoaded }) {
                 </div>
             : <p>No Reviews Yet</p>}
             <div>
-                <button className="write-review-btn" onClick={() => history.push(`/business/reviews/${businessId}`)}>  Write a Review</button>
+                <button className="write-review-btn" onClick={checkingUser}>  Write a Review</button>
+                {showModal && (
+                    <Modal onClose={() => [setShowModal(false), setShowTypewriter(false)]}>
+                    {showTypewriter ?
+                    <Demo/>
+                    :
+                    <LoginForm />
+                    }
+                <button onClick={() => setShowTypewriter(true)}>Demo User Type</button>
+                    {/* {showTypewriter ?
+                        <Demo />
+                    : ''} */}
+                    </Modal>
+                )}
             </div>
         </div>
     );

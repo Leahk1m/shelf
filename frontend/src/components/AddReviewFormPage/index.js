@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import * as reviewActions from '../../store/review';
 import './AddReviewFormPage.css';
 import { AiFillStar } from 'react-icons/ai';
+import LoginFormModal from "../LoginFormModal";
 
 function AddReview() {
     const dispatch = useDispatch();
@@ -20,9 +21,9 @@ function AddReview() {
 
     const [errors, setErrors] = useState([]);
 
-    if(!userId) {
-        history.push('/login')
-    }
+    // if(!userId) {
+    //     history.push('/login')
+    // }
 
     const handleReviewSubmit = async (e) => {
         e.preventDefault();
