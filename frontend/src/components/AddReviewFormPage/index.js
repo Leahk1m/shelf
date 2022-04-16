@@ -21,9 +21,9 @@ function AddReview() {
 
     const [errors, setErrors] = useState([]);
 
-    // if(!userId) {
-    //     history.push('/login')
-    // }
+    if(!userId) {
+        history.push('/login')
+    }
 
     const handleReviewSubmit = async (e) => {
         e.preventDefault();

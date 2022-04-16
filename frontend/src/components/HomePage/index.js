@@ -20,7 +20,7 @@ function HomePage({isLoaded}) {
     } else {
         sessionLinks = (
         <>
-            <LoginFormModal />
+            <button onClick={() => history.push('/login')}>Log in</button>
             <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
             {/* <NavLink className="splash-navbar-links" to="/signup">Sign Up</NavLink> */}
         </>

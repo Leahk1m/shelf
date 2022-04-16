@@ -17,9 +17,6 @@ import LoginForm from '../LoginFormModal/LoginForm';
 function OneBusinessPage({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
     const { businessId } = useParams();
-    const [showModal, setShowModal] = useState(false);
-    const [showTypewriter, setShowTypewriter] = useState(false);
-
     const businesses = useSelector(state => Object.values(state.business));
     const specificBusiness = businesses.filter(business => business.id == businessId);
     const reviews = useSelector(state => Object.values(state.review));
@@ -38,7 +35,7 @@ function OneBusinessPage({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
-        <LoginFormModal />
+        <button onClick={() => history.push('/login')}>Log in</button>
         <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
       </>
     );
@@ -55,27 +52,27 @@ function OneBusinessPage({ isLoaded }) {
         if(sessionUser) {
             history.push(`/business/reviews/${businessId}`)
         } else {
-            setShowModal(true);
+            history.push('/login')
         }
-    }
+    };
 
     const deleteBusiness = async(e) => {
         e.preventDefault();
         dispatch(businessActions.deleteMyBusiness(+businessId))
             .then(() => history.push(`/profile`))
 
-    }
+    };
 
     const goToBusinessEditPage = async(e) => {
         e.preventDefault();
         history.push(`/business/edit/${businessId}`)
-    }
+    };
 
     const deleteReview = async(e) => {
         e.preventDefault();
         dispatch(reviewActions.deleteMyReview(+specificReviews[0].id))
 
-    }
+    };
 
     return(
         <div>
@@ -136,19 +133,7 @@ function OneBusinessPage({ isLoaded }) {
             : <p>No Reviews Yet</p>}
             <div>
                 <button className="write-review-btn" onClick={checkingUser}>  Write a Review</button>
-                {showModal && (
-                    <Modal onClose={() => [setShowModal(false), setShowTypewriter(false)]}>
-                    {showTypewriter ?
-                    <Demo/>
-                    :
-                    <LoginForm />
-                    }
-                <button onClick={() => setShowTypewriter(true)}>Demo User Type</button>
-                    {/* {showTypewriter ?
-                        <Demo />
-                    : ''} */}
-                    </Modal>
-                )}
+
             </div>
         </div>
     );

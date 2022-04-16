@@ -26,10 +26,10 @@ function LoginFormPage() {
 
   const demoLogin = async(e) => {
     e.preventDefault();
-    // dispatch(sessionActions.login({
-    //   credential: 'demo@aa.io',
-    //   password: 'password'
-    // }));
+    dispatch(sessionActions.login({
+      credential: 'demo@aa.io',
+      password: 'password'
+    }));
   }
 
   return (
@@ -62,6 +62,7 @@ function LoginFormPage() {
         <button type="submit">Log In</button>
       </form>
       <div className="login-demo">
+        <button onClick={demoLogin}>Demo Login</button>
         {/* <button className="demo-login-btn" onClick={ <Typewriter onInit={(typewriter) => typewriter.typeString('hello').start()}/>}>Demo User</button> */}
       </div>
     </>
