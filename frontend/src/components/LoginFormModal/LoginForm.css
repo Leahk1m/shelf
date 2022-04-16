@@ -18,9 +18,6 @@
     gap: 64px;
 }
 
-.login-modal-demo-container {
-
-}
 
 #modal-content {
     width: 500px;
@@ -29,4 +26,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.login-modal-btn {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.login-modal-btn:hover {
+    border-bottom: 2px solid white;
+    font-weight: bold;
+
 }

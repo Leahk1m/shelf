@@ -39,7 +39,7 @@ function OneBusinessPage({ isLoaded }) {
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
       </>
     );
   }
