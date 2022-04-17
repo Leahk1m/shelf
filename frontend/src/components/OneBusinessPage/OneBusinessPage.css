@@ -65,3 +65,51 @@
     background-color: rgb(216, 214, 214);
 
 }
+
+.yes-delete-btn {
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    height: 25px;
+
+}
+.yes-delete-btn:hover {
+    background-color: rgb(216, 214, 214);
+
+}
+
+.no-delete-btn {
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    height: 25px;
+
+}
+.no-delete-btn:hover {
+    background-color: rgb(216, 214, 214);
+
+}
+
+.write-review-btn {
+    width: 10%;
+    height: 35px;
+    background-color: #d32324;
+    margin-top: 30px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.write-review-btn:hover {
+    background-color: #c20304;
+
+
+}
+
+.outline-star {
+    font-size: 23px;
+}

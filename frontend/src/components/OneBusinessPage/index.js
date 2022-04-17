@@ -14,6 +14,7 @@ import Demo from '../LoginFormModal/Demo';
 import LoginForm from '../LoginFormModal/LoginForm';
 import { AiOutlineEllipsis } from 'react-icons/ai';
 import { RiArrowDropDownLine} from 'react-icons/ri';
+import { AiOutlineStar } from 'react-icons/ai';
 
 
 function OneBusinessPage({ isLoaded }) {
@@ -114,8 +115,14 @@ function OneBusinessPage({ isLoaded }) {
                             {showBizDropdown ?
                                 <div>
                                     <button className="update-biz-dropdown-btn"onClick={goToBusinessEditPage}>Update Business</button>
-                                    <button className="delete-biz-dropdown-btn"onClick={deleteBusiness}>Delete Business</button>
-                                    
+                                    <button className="delete-biz-dropdown-btn"onClick={() => setYouSureDeleteBiz(true)}>Delete Business</button>
+                                    {youSureDeleteBiz ?
+                                        <div>
+                                            <p>Are you sure?</p>
+                                            <button className="yes-delete-btn" onClick={deleteBusiness}>Yes</button>
+                                            <button className="no-delete-btn" onClick={() => setYouSureDeleteBiz(false)}>No</button>
+                                        </div>
+                                    : ''}
                                 </div>
                             : ''}
                         </div>
@@ -123,7 +130,7 @@ function OneBusinessPage({ isLoaded }) {
                 </div>
             ))}
              <div>
-                <button className="write-review-btn" onClick={checkingUser}>  Write a Review</button>
+                <button className="write-review-btn" onClick={checkingUser}><AiOutlineStar className="outline-star"/>Write a Review</button>
 
             </div>
 
@@ -137,6 +144,8 @@ function OneBusinessPage({ isLoaded }) {
                             <img className="review-prof-icon"src={review.profilePhoto}/>
                                 {sessionUser && review.userId == sessionUser.id ?
                                     <div>
+                                        <p>{review.rating}</p>
+                                        <p>{review.post}</p>
                                         <div>
                                             <AiOutlineEllipsis onClick={() => setShowRevDropdown(prev => prev === false ? true : false)} />
                                         </div>
