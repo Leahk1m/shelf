@@ -1,0 +1,20 @@
+.update-business-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding-bottom: 300px;
+    background-image: url(https://github.com/Leahk1m/shelf_app/blob/offmain/frontend/src/components/IconPics/fruit-bg.png?raw=true);
+
+}
+
+.update-biz-inputs {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+}

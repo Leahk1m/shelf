@@ -15,6 +15,7 @@ import ProfilePage from './components/ProfilePage';
 import AddReviewFormPage from './components/AddReviewFormPage';
 import EditReviewFormPage from './components/EditReviewFormPage';
 
+
 import * as businessActions from './store/business';
 import * as reviewActions from './store/review';
 
@@ -39,6 +40,7 @@ function App() {
         // </Modal>
       )} */}
       {isLoaded && (
+        <>
         <Switch>
           <Route exact path='/'>
             <HomePage isLoaded={isLoaded}/>
@@ -74,6 +76,11 @@ function App() {
             <EditReviewFormPage isLoaded={isLoaded}/>
           </Route>
         </Switch>
+
+        <footer>
+          This is the footer
+        </footer>
+        </>
       )}
     </>
   );

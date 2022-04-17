@@ -52,80 +52,77 @@ function UpdateBusinessPage() {
         <div className="update-business-form-container">
             <h1>Update Business</h1>
             <div className="update-biz-form-input-container">
-                {/* {sessionUser ? */}
                 <form className="update-biz-form" onSubmit={handleEditSubmit}>
-                    {/* {thisBusiness.map(business => ( */}
-                        <div>
-                            <input
-                            type="text"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            placeholder="Title"
-                            />
-                            <input
-                            type="text"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            placeholder="Description"
-                            />
-                            <input
-                            type="text"
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
-                            placeholder="Address"
-                            />
-                            <input
-                            type="text"
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                            placeholder="City"
-                            />
-                            <input
-                            type="text"
-                            value={state}
-                            onChange={(e) => setState(e.target.value)}
-                            placeholder="State"
-                            />
-                            <input
-                            type="text"
-                            value={zipCode}
-                            onChange={(e) => setZipCode(e.target.value)}
-                            placeholder="Zip code"
-                            />
-                            <input
-                            type="text"
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
-                            placeholder="Category"
-                            />
-                            {/* <select value={category} onChange={(e) => setCategory(e.target.value)}>
-                                <option value="Traditional"></option>
-                                <option value="Industrial"></option>
-                                <option value="Modern"></option>
-                                <option value="Rustic"></option>
-                                <option value="Other"></option>
-                            </select> */}
-                            <input
-                            type="text"
-                            value={imageUrl}
-                            onChange={(e) => setImageUrl(e.target.value)}
-                            placeholder="Image Url"
-                            />
-                            <input
-                            type="text"
-                            value={imageUrlTwo}
-                            onChange={(e) => setImageUrlTwo(e.target.value)}
-                            placeholder="Second Image Url"
-                            />
-                            <input
-                            type="text"
-                            value={imageUrlThree}
-                            onChange={(e) => setImageUrlThree(e.target.value)}
-                            placeholder="Third Image Url"
-                            />
-                            <button type="submit">Update spot</button>
-                        </div>
-                    {/* ))} */}
+                    <div className="update-biz-inputs">
+                        <input
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="Title"
+                        />
+                        <input
+                        type="text"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        placeholder="Description"
+                        />
+                        <input
+                        type="text"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        placeholder="Address"
+                        />
+                        <input
+                        type="text"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        placeholder="City"
+                        />
+                        <input
+                        type="text"
+                        value={state}
+                        onChange={(e) => setState(e.target.value)}
+                        placeholder="State"
+                        />
+                        <input
+                        type="text"
+                        value={zipCode}
+                        onChange={(e) => setZipCode(e.target.value)}
+                        placeholder="Zip code"
+                        />
+                        <input
+                        type="text"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        placeholder="Category"
+                        />
+                        {/* <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                            <option value="Traditional"></option>
+                            <option value="Industrial"></option>
+                            <option value="Modern"></option>
+                            <option value="Rustic"></option>
+                            <option value="Other"></option>
+                        </select> */}
+                        <input
+                        type="text"
+                        value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)}
+                        placeholder="Image Url"
+                        />
+                        <input
+                        type="text"
+                        value={imageUrlTwo}
+                        onChange={(e) => setImageUrlTwo(e.target.value)}
+                        placeholder="Second Image Url"
+                        />
+                        <input
+                        type="text"
+                        value={imageUrlThree}
+                        onChange={(e) => setImageUrlThree(e.target.value)}
+                        placeholder="Third Image Url"
+                        />
+                        <button type="submit">Update spot</button>
+                    </div>
                 </form>
             </div>
             <ul>
