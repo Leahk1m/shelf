@@ -69,18 +69,14 @@ module.exports = (sequelize, DataTypes) => {
         len: [4, 30]
       }
     },
-    imageUrl: {
-      type: DataTypes.TEXT,
+    imageUrls: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
+      validate: {
+        len: [1, 3]
+      }
     },
-    imageUrlTwo: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    imageUrlThree: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
+
   }, {
     sequelize,
     modelName: 'Business',
