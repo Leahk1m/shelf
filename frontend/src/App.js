@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
-// import LoginFormPage from "./components/LoginFormPage";
+import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import { Modal } from './context/Modal';
@@ -14,6 +14,7 @@ import UpdateBusinessPage from './components/UpdateBusinessPage';
 import ProfilePage from './components/ProfilePage';
 import AddReviewFormPage from './components/AddReviewFormPage';
 import EditReviewFormPage from './components/EditReviewFormPage';
+
 
 import * as businessActions from './store/business';
 import * as reviewActions from './store/review';
@@ -39,6 +40,7 @@ function App() {
         // </Modal>
       )} */}
       {isLoaded && (
+        <>
         <Switch>
           <Route exact path='/'>
             <HomePage isLoaded={isLoaded}/>
@@ -48,6 +50,9 @@ function App() {
           </Route> */}
           <Route path='/signup'>
             <SignupFormPage />
+          </Route>
+          <Route exact path='/login'>
+            <LoginFormPage />
           </Route>
           <Route exact path='/businesses'>
             <ShowBusinesses isLoaded={isLoaded}/>
@@ -71,6 +76,11 @@ function App() {
             <EditReviewFormPage isLoaded={isLoaded}/>
           </Route>
         </Switch>
+
+        <footer>
+          This is the footer
+        </footer>
+        </>
       )}
     </>
   );

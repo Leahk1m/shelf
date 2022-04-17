@@ -11,7 +11,8 @@ function ProfilePage({ isLoaded }) {
     const sessionUser = useSelector((state) => state.session.user);
     const businesses = useSelector(state => Object.values(state.business));
     const myBusinesses = businesses.filter((business) => business.ownerId == sessionUser.id);
-
+    const history = useHistory();
+    
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
@@ -20,8 +21,8 @@ function ProfilePage({ isLoaded }) {
     } else {
         sessionLinks = (
         <>
-            <LoginFormModal />
-            <NavLink to="/signup">Sign Up</NavLink>
+            <button onClick={() => history.push('/login')}>Log in</button>
+            <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
         </>
         );
     }
@@ -48,20 +49,20 @@ function ProfilePage({ isLoaded }) {
             </div>
 
             <div className="user-profile-info">
-                <h1>{sessionUser.firstName}</h1>
-                <p>From {sessionUser.city}</p>
-                <img src={sessionUser.profilePhoto}/>
+                <h1 className="prof-my-name">{sessionUser.firstName}</h1>
+                <p className="user-prof-city-p">From {sessionUser.city}</p>
+                <img className="my-prof-photo"src={sessionUser.profilePhoto}/>
             </div>
 
             <div className="user-prof-biz-list">
-                <h1>My Businesses</h1>
+                <h1 className="my-businesses-prof-title">My Businesses</h1>
                     {myBusinesses ?
                         <div>
                             {myBusinesses.map(business => (
-                                <div key={business.id}>
+                                <div className="my-prof-biz-info" key={business.id}>
                                     <h2>{business.title}</h2>
                                     <p>{business.address}</p>
-                                    <img src={business.imageUrl}/>
+                                    <img className="prof-business-photo"src={business.imageUrl}/>
                                 </div>
                             ))}
                         </div>

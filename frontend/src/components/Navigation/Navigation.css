@@ -44,3 +44,8 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
 }
+
+.nav-prof-icon {
+  width: 25%;
+  border-radius: 6px;
+}

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
+import shelfIcon from '../IconPics/new-shelf.png';
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -33,11 +34,13 @@ function SignupFormPage() {
 
   return (
     <div className="signup-pg-container">
+      <div className="signup-red-nav">
+        <NavLink className="shelf-signup-navlink" to="/"> <img className="signup-nav-shelf-icon"src={shelfIcon} alt="shelf-icon"/></NavLink>
+      </div>
       <h1 className="signup-for-shelf">Sign up for shelf</h1>
       <h3>Connect with great local businesses </h3>
       <div className="signup-msg">
-        <p>By continuing, you agree to shelf's Terms of Service</p>
-        <p className="priv-policy-msg">and Privacy Policy</p>
+        <p className="signup-msg-p">By continuing, you agree to shelf's Terms of Service and Privacy Policy</p>
       </div>
       <div className="signup-form-container">
         <form onSubmit={handleSubmit}>
@@ -46,61 +49,70 @@ function SignupFormPage() {
           </ul>
 
           <div className="signup-input-container">
-            <input
+            <div className="signup-names-container">
+              <input className="signup-name-input"
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="First name"
+              />
+
+              <input className="signup-name-input"
+                type="text"
+                value={lastName}
+                onChange={(e) => setlastName(e.target.value)}
+                placeholder="Last name"
+              />
+            </div>
+
+            <div className="signup-other-info-cont">
+              <input className="signup-input"
               type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              placeholder="First name"
-            />
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              placeholder="City"
+              />
 
-            <input
+              <input className="signup-input"
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Email"
+              />
+
+              <input className="signup-input"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="Password"
+              />
+
+              <input className="signup-input"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+                placeholder="Confirm password"
+              />
+
+              <input className="signup-input"
               type="text"
-              value={lastName}
-              onChange={(e) => setlastName(e.target.value)}
-              placeholder="Last name"
-            />
-
-            <input
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            placeholder="City"
-            />
-
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={profilePhoto}
+              onChange={(e) => setProfilePhoto(e.target.value)}
               required
-              placeholder="Email"
-            />
+              placeholder="Profile photo(image url)"
 
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="Password"
-            />
-
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              placeholder="Confirm password"
-            />
-
-            <input
-            type="text"
-            value={profilePhoto}
-            onChange={(e) => setProfilePhoto(e.target.value)}
-            required
-            placeholder="Profile photo(image url)"
-
-            />
+              />
+            </div>
           </div>
-          <button type="submit">Sign Up</button>
+          <button className="signup-btn"type="submit">Sign Up</button>
+          <div className="back-to-login">
+            <p className="already-on-shelf-p">Already on shelf? <NavLink className="changed-mind" to="/login">Log in</NavLink></p>
+
+          </div>
+
         </form>
       </div>
     </div>

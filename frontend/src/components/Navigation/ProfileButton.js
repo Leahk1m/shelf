@@ -7,6 +7,7 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const currentUsersFirstName = useSelector(state => Object.values(state.session.user.firstName))
+  const currentUsersProfilePhoto = useSelector(state => state.session.user.profilePhoto)
   const history = useHistory();
 
   const openMenu = () => {
@@ -39,7 +40,10 @@ function ProfileButton({ user }) {
   return (
     <>
       {currentUsersFirstName ?
-        <p className="welcome-line">Welcome <button className="welcome-demo-btn"onClick={openMenu}>{currentUsersFirstName}</button></p>
+        // <button onClick={openMenu}> <img src={currentUsersProfilePhoto} alt="user-prof-icon-nav"/></button>
+        <img className="nav-prof-icon"onClick={openMenu} src={currentUsersProfilePhoto} alt="user-prof-icon-nav"/>
+
+        // <p className="welcome-line">Welcome <button className="welcome-demo-btn"onClick={openMenu}>{currentUsersFirstName}</button></p>
       : ''}
       {showMenu && (
         <div className="profile-dropdown">

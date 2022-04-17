@@ -14,3 +14,11 @@ input[type="radio"] {
 .rating-stars {
     display: flex;
 }
+
+.review-rating-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}

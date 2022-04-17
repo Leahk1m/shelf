@@ -33,8 +33,8 @@ function NewBusinessFormPage({ isLoaded }) {
     } else {
       sessionLinks = (
         <>
-          <LoginFormModal />
-          <NavLink to="/signup">Sign Up</NavLink>
+            <button onClick={() => history.push('/login')}>Log in</button>
+            <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
         </>
       );
     }
@@ -72,79 +72,87 @@ function NewBusinessFormPage({ isLoaded }) {
                 </div>
             </div>
 
-            <h1>Fresh and New Business</h1>
+            <h1 className="add-biz-title-h1">Let's add your business</h1>
+            <p className="lets-add-biz-info-p">Add information about your business below. Once your business is set up, <br/>it will appear in the search results and your business page <br/>will be available for views and reviews!</p>
             <div className="new-biz-form-input-container">
                 {/* {sessionUser ? */}
+                <p className="new-biz-directions">Let's start with a title</p>
                 <form className="new-biz-form" onSubmit={handleSubmit}>
-                    <input
+                    <input className="new-biz-input"
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Title"
                     />
-                    <input
+                    <div className="new-biz-addy-info">
+                        <p className="new-biz-directions">Let's get your business address</p>
+                        <input className="new-biz-addy-input"
+                        type="text"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        placeholder="Address"
+                        />
+                        <input className="new-biz-addy-input"
+                        type="text"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        placeholder="City"
+                        />
+                        <input className="new-biz-addy-input"
+                        type="text"
+                        value={state}
+                        onChange={(e) => setState(e.target.value)}
+                        placeholder="State"
+                        />
+                        <input className="new-biz-addy-input"
+                        type="text"
+                        value={zipCode}
+                        onChange={(e) => setZipCode(e.target.value)}
+                        placeholder="Zip code"
+                        />
+                    </div>
+                    <p className="new-biz-directions" id="vibes">What's the vibe like?</p>
+                    {/* <input className="new-biz-input"
+                    type="text"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    placeholder="Category"
+                    /> */}
+                    <select className="new-biz-category-input"defaultValue="Select category" onChange={(e) => setCategory(e.target.value)}>
+                        <option value="Traditional">Traditional</option>
+                        <option value="Health-conscious">Health-conscious</option>
+                        <option value="Modern">Modern</option>
+                        <option value="Rustic">Rustic</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <p className="new-biz-directions">Tell us more about your business - its hours, what inspired it, or whatever you want customers to know</p>
+                    <textarea className="new-biz-text-area"
                     type="text"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Description"
                     />
-                    <input
-                    type="text"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    placeholder="Address"
-                    />
-                    <input
-                    type="text"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    placeholder="City"
-                    />
-                    <input
-                    type="text"
-                    value={state}
-                    onChange={(e) => setState(e.target.value)}
-                    placeholder="State"
-                    />
-                    <input
-                    type="text"
-                    value={zipCode}
-                    onChange={(e) => setZipCode(e.target.value)}
-                    placeholder="Zip code"
-                    />
-                    <input
-                    type="text"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    placeholder="Category"
-                    />
-                    {/* <select value={category} onChange={(e) => setCategory(e.target.value)}>
-                        <option value="Traditional"></option>
-                        <option value="Industrial"></option>
-                        <option value="Modern"></option>
-                        <option value="Rustic"></option>
-                        <option value="Other"></option>
-                    </select> */}
-                    <input
+                    <p className="new-biz-directions">Finally, show off your place with three photos!</p>
+                    <input className="new-biz-input"
                     type="text"
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
                     placeholder="Image Url"
                     />
-                    <input
+                    <input className="new-biz-input"
                     type="text"
                     value={imageUrlTwo}
                     onChange={(e) => setImageUrlTwo(e.target.value)}
                     placeholder="Second Image Url"
                     />
-                    <input
+                    <input className="new-biz-input"
                     type="text"
                     value={imageUrlThree}
                     onChange={(e) => setImageUrlThree(e.target.value)}
                     placeholder="Third Image Url"
                     />
 
-                    <button type="submit">Let's add your spot!</button>
+                    <button className="add-business-btn"type="submit">I'm ready to add my business!</button>
                 </form>
                 {/* : <p>Please log in to add a new business</p>} */}
             </div>

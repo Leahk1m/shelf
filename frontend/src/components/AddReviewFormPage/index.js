@@ -3,16 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import * as reviewActions from '../../store/review';
 import './AddReviewFormPage.css';
-import { FaStar } from 'react-icons/fa';
 import { AiFillStar } from 'react-icons/ai';
+import LoginFormModal from "../LoginFormModal";
 
 function AddReview() {
     const dispatch = useDispatch();
-    const userId = useSelector((state) => state.session.user.id);
-    const userFirstName = useSelector((state) => state.session.user.firstName);
-    const userLastName = useSelector((state) => state.session.user.lastName);
-    const profilePhoto = useSelector((state) => state.session.user.profilePhoto);
+    const userId = useSelector((state) => state.session.user?.id);
+    const firstName = useSelector((state) => state.session.user?.firstName);
+    const lastName = useSelector((state) => state.session.user?.lastName);
+    const profilePhoto = useSelector((state) => state.session.user?.profilePhoto);
     const { businessId } = useParams();
+    const businesses = useSelector(state => Object.values(state?.business));
+    const specificBusiness = businesses.filter(business => business?.id == businessId);
     const history = useHistory();
 
     const [rating, setRating] = useState(null);
@@ -21,10 +23,14 @@ function AddReview() {
 
     const [errors, setErrors] = useState([]);
 
+    if(!userId) {
+        history.push('/login')
+    }
+
     const handleReviewSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(reviewActions.addNewReview({ userFirstName, userLastName, profilePhoto, userId, businessId, rating, post }))
+        await dispatch(reviewActions.addNewReview({ firstName, lastName, profilePhoto, userId, businessId, rating, post }))
             .then(() => history.push(`/business/${businessId}`))
             .catch(async (res) => {
                 const data = await res.json();
@@ -35,7 +41,8 @@ function AddReview() {
     }
 
     return (
-        <div>
+        <div className="review-rating-cont">
+            <p>{specificBusiness[0]?.title}</p>
             <div className="rating-stars">
                 {[...Array(5)].map((star, i) => {
                     const ratingVal = i + 1;
@@ -48,7 +55,7 @@ function AddReview() {
                             onClick={() => setRating(ratingVal)}
 
                             />
-                            <div style={ratingVal <= (hover || rating) ? {backgroundColor:'#e00707'} : {backgroundColor:'#e4e5e9'}}>
+                            <div key={i} style={ratingVal <= (hover || rating) ? {backgroundColor:'#e00707'} : {backgroundColor:'#e4e5e9'}}>
 
                                 <AiFillStar
                                 className="star"
@@ -66,7 +73,7 @@ function AddReview() {
                     })}
 
             </div>
-            <div>
+            <div >
                 <form className="new-review-form" onSubmit={handleReviewSubmit}>
                     <textarea
                     type="textarea"

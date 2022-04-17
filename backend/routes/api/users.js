@@ -10,18 +10,36 @@ const router = express.Router();
 
 const validateSignup = [
   check('firstName')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a first name.'),
-  check('lastName')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a last name.'),
-  check('city')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a city'),
-  check('email')
-    .exists({ checkFalsy: true })
-    .isEmail()
-    .withMessage('Please provide a valid email.'),
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide your first name')
+        .isLength({ min: 3, max: 20 })
+        .withMessage('First name must be at least 3 characters long')
+        .matches(/^[A-Za-z\s]+$/)
+        .withMessage('Please provide a valid first name'),
+    check('lastName')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide your last name')
+        .isLength({ min: 3, max: 20 })
+        .withMessage('Last name must be at least 3 characters long')
+        .matches(/^[A-Za-z\s]+$/)
+        .withMessage('Please provide a valid last name'),
+    check('profilePhoto')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a profile photo')
+        .isURL({ require_protocol: false, require_host: false })
+        .matches(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)
+        .withMessage('Please input a proper url for your profile photo'),
+    check('city')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a city')
+        .isLength({ min: 4, max: 25 })
+        .withMessage('City must have at least 4 characters')
+        .matches(/^[A-Za-z\s]+$/)
+        .withMessage('Please provide a valid city'),
+    check('email')
+        .exists({ checkFalsy: true })
+        .isEmail()
+        .withMessage('Please provide a valid email'),
   // check('username')
   //   .exists({ checkFalsy: true })
   //   .isLength({ min: 4 })
@@ -30,11 +48,11 @@ const validateSignup = [
   //   .not()
   //   .isEmail()
   //   .withMessage('Username cannot be an email.'),
-  check('password')
-    .exists({ checkFalsy: true })
-    .isLength({ min: 6 })
-    .withMessage('Password must be 6 characters or more.'),
-  handleValidationErrors,
+    check('password')
+      .exists({ checkFalsy: true })
+      .isLength({ min: 6 })
+      .withMessage('Password must be 6 characters or longer'),
+    handleValidationErrors,
 ];
 
 // Sign up
