@@ -27,12 +27,16 @@ const validateBusiness = [
         .exists({ checkFalsy: true })
         .withMessage('Please provide a city')
         .isLength({ min: 4, max: 25 })
-        .withMessage('City must have at least 4 characters'),
+        .withMessage('City must have at least 4 characters')
+        .matches(/^[A-Za-z\s]+$/)
+        .withMessage('Please provide a valid city'),
     check('state')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a state')
         .isLength({ min: 4, max: 20 })
-        .withMessage('State must have at least 4 characters'),
+        .withMessage('State must have at least 4 characters')
+        .matches(/^[A-Za-z\s]+$/)
+        .withMessage('Please provide a valid state'),
     check('zipCode')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a zip code')
