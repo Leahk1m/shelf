@@ -15,4 +15,53 @@
     border-radius: 100%;
 }
 
+.comment-edit-dropdown {
+    width: 100%;
+}
 
+.update-comment-btn {
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    height: 25px;
+}
+.update-comment-btn:hover {
+    background-color: rgb(216, 214, 214);
+}
+
+.delete-comment-btn {
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    height: 25px;
+
+}
+.delete-comment-btn:hover {
+    background-color: rgb(216, 214, 214);
+
+
+}
+
+
+.update-biz-dropdown-btn {
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    height: 25px;
+
+}
+.update-biz-dropdown-btn:hover {
+    background-color: rgb(216, 214, 214);
+
+}
+
+.delete-biz-dropdown-btn {
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    height: 25px;
+}
+.delete-biz-dropdown-btn:hover {
+    background-color: rgb(216, 214, 214);
+
+}

@@ -12,6 +12,8 @@ import { AiFillStar } from 'react-icons/ai';
 import { Modal } from '../../context/Modal';
 import Demo from '../LoginFormModal/Demo';
 import LoginForm from '../LoginFormModal/LoginForm';
+import { AiOutlineEllipsis } from 'react-icons/ai';
+import { RiArrowDropDownLine} from 'react-icons/ri';
 
 
 function OneBusinessPage({ isLoaded }) {
@@ -20,6 +22,9 @@ function OneBusinessPage({ isLoaded }) {
     const businesses = useSelector(state => Object.values(state.business));
     const specificBusiness = businesses.filter(business => business.id == businessId);
     const reviews = useSelector(state => Object.values(state.review));
+    const [showRevDropdown, setShowRevDropdown] = useState(prev => prev === false ? true : false);
+    const [showBizDropdown, setShowBizDropdown] = useState(prev => prev === false ? true : false);
+    const [youSureDeleteBiz, setYouSureDeleteBiz] = useState(false);
 
     let specificReviews;
     if(specificBusiness.length > 0 && reviews.length > 0) {
@@ -105,12 +110,22 @@ function OneBusinessPage({ isLoaded }) {
                     </div>
                     {sessionUser && business.ownerId == sessionUser.id ?
                         <div className="update-delete-btn-container">
-                            <button onClick={goToBusinessEditPage}>Update Business</button>
-                            <button onClick={deleteBusiness}>Delete Business</button>
+                            <RiArrowDropDownLine onClick={() => setShowBizDropdown(prev => prev === false ? true : false)}/>
+                            {showBizDropdown ?
+                                <div>
+                                    <button className="update-biz-dropdown-btn"onClick={goToBusinessEditPage}>Update Business</button>
+                                    <button className="delete-biz-dropdown-btn"onClick={deleteBusiness}>Delete Business</button>
+                                    
+                                </div>
+                            : ''}
                         </div>
                     : ''}
                 </div>
             ))}
+             <div>
+                <button className="write-review-btn" onClick={checkingUser}>  Write a Review</button>
+
+            </div>
 
             <h2>Recommended Reviews</h2>
 
@@ -122,8 +137,16 @@ function OneBusinessPage({ isLoaded }) {
                             <img className="review-prof-icon"src={review.profilePhoto}/>
                                 {sessionUser && review.userId == sessionUser.id ?
                                     <div>
-                                        <button onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>update comment</button>
-                                        <button onClick={deleteReview}>delete comment</button>
+                                        <div>
+                                            <AiOutlineEllipsis onClick={() => setShowRevDropdown(prev => prev === false ? true : false)} />
+                                        </div>
+                                        {showRevDropdown ?
+                                            <div className="comment-edit-dropdown">
+                                                <button className="update-comment-btn"onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>Edit comment</button>
+                                                <button className="delete-comment-btn" onClick={deleteReview}>Delete comment</button>
+
+                                            </div>
+                                        : ''}
                                     </div>
                                 : ''}
                         </div>
@@ -131,10 +154,7 @@ function OneBusinessPage({ isLoaded }) {
 
                 </div>
             : <p>No Reviews Yet</p>}
-            <div>
-                <button className="write-review-btn" onClick={checkingUser}>  Write a Review</button>
 
-            </div>
         </div>
     );
 
