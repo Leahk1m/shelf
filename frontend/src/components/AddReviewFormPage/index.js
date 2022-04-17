@@ -13,6 +13,8 @@ function AddReview() {
     const lastName = useSelector((state) => state.session.user?.lastName);
     const profilePhoto = useSelector((state) => state.session.user?.profilePhoto);
     const { businessId } = useParams();
+    const businesses = useSelector(state => Object.values(state?.business));
+    const specificBusiness = businesses.filter(business => business?.id == businessId);
     const history = useHistory();
 
     const [rating, setRating] = useState(null);
@@ -39,7 +41,8 @@ function AddReview() {
     }
 
     return (
-        <div>
+        <div className="review-rating-cont">
+            <p>{specificBusiness[0]?.title}</p>
             <div className="rating-stars">
                 {[...Array(5)].map((star, i) => {
                     const ratingVal = i + 1;
@@ -81,9 +84,6 @@ function AddReview() {
                     <button type="submit">Add your review</button>
                 </form>
             </div>
-             <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
         </div>
     );
 }
