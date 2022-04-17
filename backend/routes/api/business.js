@@ -46,16 +46,19 @@ const validateBusiness = [
         .exists({ checkFalsy: true })
         .withMessage('Please provide an image')
         .isURL({ require_protocol: false, require_host: false })
+        .matches(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)
         .withMessage('Please input a proper url for your first image'),
     check('imageUrlTwo')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a second image')
         .isURL({ require_protocol: false, require_host: false })
+        .matches(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)
         .withMessage('Please input a proper url for your second image'),
     check('imageUrlThree')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a third image')
         .isURL({ require_protocol: false, require_host: false })
+        .matches(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)
         .withMessage('Please input a proper url for your third image'),
     handleValidationErrors,
 

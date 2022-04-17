@@ -13,22 +13,29 @@ const validateSignup = [
         .exists({ checkFalsy: true })
         .withMessage('Please provide your first name')
         .isLength({ min: 3, max: 20 })
-        .withMessage('First name must be at least 3 characters long'),
+        .withMessage('First name must be at least 3 characters long')
+        .matches(/^[A-Za-z\s]+$/)
+        .withMessage('Please provide a valid first name'),
     check('lastName')
         .exists({ checkFalsy: true })
         .withMessage('Please provide your last name')
         .isLength({ min: 3, max: 20 })
-        .withMessage('Last name must be at least 3 characters long'),
+        .withMessage('Last name must be at least 3 characters long')
+        .matches(/^[A-Za-z\s]+$/)
+        .withMessage('Please provide a valid last name'),
     check('profilePhoto')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a profile photo')
         .isURL({ require_protocol: false, require_host: false })
+        .matches(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)
         .withMessage('Please input a proper url for your profile photo'),
     check('city')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a city')
         .isLength({ min: 4, max: 25 })
-        .withMessage('City must have at least 4 characters'),
+        .withMessage('City must have at least 4 characters')
+        .matches(/^[A-Za-z\s]+$/)
+        .withMessage('Please provide a valid city'),
     check('email')
         .exists({ checkFalsy: true })
         .isEmail()
