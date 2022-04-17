@@ -32,6 +32,7 @@
     justify-content: center;
     align-content: center;
     background-color: #d32324;
+    height: 70px;
 }
 
 .signup-nav-shelf-icon {
@@ -40,24 +41,26 @@
 }
 
 .signup-btn {
-    width: 80%;
+    width: 100%;
     height: 35px;
-    margin-left: 10%;
     background-color: #d32324;
     margin-top: 30px;
     border: none;
     color: white;
     font-size: 15px;
+    border-radius: 5px;
 
 }
 
 .signup-btn:hover {
     background-color: #c20304;
-    transition: 0.5s;
 }
 
 .changed-mind {
     text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    color: grey;
+    font-size: 15px;
 }
 
 .shelf-signup-navlink {
@@ -65,4 +68,35 @@
     align-items: center;
     justify-content: center;
     align-content: center;
+}
+
+.signup-input {
+    width: 100%;
+    height: 25px;
+    overflow: hidden;
+}
+
+.signup-other-info-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 15px;
+}
+
+.signup-name-input {
+    height: 25px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.already-on-shelf-p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
+
+.back-to-login {
+    display: flex;
+    flex-direction: row-reverse;
 }

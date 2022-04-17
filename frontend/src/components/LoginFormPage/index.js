@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import './LoginForm.css';
 import Typewriter from 'typewriter-effect';
+import shelfIcon from '../IconPics/new-shelf.png';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -33,39 +34,53 @@ function LoginFormPage() {
   }
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-      <div className="login-demo">
-        <button onClick={demoLogin}>Demo Login</button>
-        {/* <button className="demo-login-btn" onClick={ <Typewriter onInit={(typewriter) => typewriter.typeString('hello').start()}/>}>Demo User</button> */}
+    <div className="login-form-container">
+      <div className="signup-red-nav">
+        <NavLink className="shelf-signup-navlink" to="/"> <img className="signup-nav-shelf-icon"src={shelfIcon} alt="shelf-icon"/></NavLink>
       </div>
-    </>
+
+      <div className="log-in-container-form">
+        <h2 className="login-to-shelf-title">Log in to shelf</h2>
+        <p className="new-to-shelf">New to shelf? <NavLink className="login-pg-signup-nav-link" to="/signup">Sign up</NavLink></p>
+        <p className="by-logging-in-p">By logging in, you agree to shelf's <br/>Terms of Service and Privacy Policy</p>
+
+        <form className="login-form"onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+
+          <div className="login-form-input-cont">
+            <input className="login-form-input"
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+              placeholder="E-mail"
+            />
+
+            <input className="login-form-input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="Password"
+            />
+          </div>
+          <button className="login-form-login-btn"type="submit">Log In</button>
+        </form>
+
+        <div className="or-divider-container">
+          <p className="or-p">OR</p>
+          <div className="line-divider-div"/>
+        </div>
+        <button className="demo-login-btn"onClick={demoLogin}>Continue as Demo User</button>
+        {/* <button className="demo-login-btn" onClick={ <Typewriter onInit={(typewriter) => typewriter.typeString('hello').start()}/>}>Demo User</button> */}
+
+      </div>
+
+    </div>
   );
 }
 

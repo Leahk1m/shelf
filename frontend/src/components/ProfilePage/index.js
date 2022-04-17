@@ -11,7 +11,8 @@ function ProfilePage({ isLoaded }) {
     const sessionUser = useSelector((state) => state.session.user);
     const businesses = useSelector(state => Object.values(state.business));
     const myBusinesses = businesses.filter((business) => business.ownerId == sessionUser.id);
-
+    const history = useHistory();
+    
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
@@ -20,8 +21,8 @@ function ProfilePage({ isLoaded }) {
     } else {
         sessionLinks = (
         <>
-            <LoginFormModal />
-            <NavLink to="/signup">Sign Up</NavLink>
+            <button onClick={() => history.push('/login')}>Log in</button>
+            <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
         </>
         );
     }
