@@ -37,26 +37,33 @@ export const allUserBusinesses = () => async (dispatch) => {
 }
 
 export const addNewBusiness = (business) => async(dispatch) => {
-    const { ownerId, title, description, address, city, state, zipCode, category, imageUrl, imageUrlTwo, imageUrlThree } = business
+    const { ownerId, title, description, address, city, state, zipCode, category, imageUrls } = business
+
+    const formData = new FormData();
+    formData.append('ownerId', ownerId)
+    formData.append('title', title)
+    formData.append('description', description)
+    formData.append('address', address)
+    formData.append('city', city)
+    formData.append('state', state)
+    formData.append('zipCode', zipCode)
+    formData.append('category', category)
+
+    //for multiple files
+    if (imageUrls && imageUrls.length !== 0) {
+        for (var i = 0; i < imageUrls.length; i++) {
+          formData.append("imageUrls", imageUrls[i]);
+        }
+      }
+
     const response = await csrfFetch(`/api/business/`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
         },
-        body: JSON.stringify({
-            ownerId,
-            title,
-            description,
-            address,
-            city,
-            state,
-            zipCode,
-            category,
-            imageUrl,
-            imageUrlTwo,
-            imageUrlThree
-        }),
+        body: formData,
     });
+    
     if (response.ok) {
         const data = await response.json();
         dispatch(createBusiness(data))

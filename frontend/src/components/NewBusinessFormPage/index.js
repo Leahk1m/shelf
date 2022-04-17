@@ -18,9 +18,10 @@ function NewBusinessFormPage({ isLoaded }) {
     const [state, setState] = useState("");
     const [zipCode, setZipCode] = useState("");
     const [category, setCategory] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
-    const [imageUrlTwo, setImageUrlTwo] = useState("");
-    const [imageUrlThree, setImageUrlThree] = useState("");
+    const [imageUrls, setImageUrls] = useState([]);
+    // const [imageUrl, setImageUrl] = useState("");
+    // const [imageUrlTwo, setImageUrlTwo] = useState("");
+    // const [imageUrlThree, setImageUrlThree] = useState("");
     const ownerId = useSelector((state) => state.session.user.id)
     const history = useHistory();
     const [errors, setErrors] = useState([]);
@@ -42,7 +43,7 @@ function NewBusinessFormPage({ isLoaded }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(businessActions.addNewBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrl, imageUrlTwo, imageUrlThree}))
+        await dispatch(businessActions.addNewBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrls }))
             .then(() => history.push('/profile'))
             .catch(async (res) => {
                 const data = await res.json();
@@ -50,7 +51,11 @@ function NewBusinessFormPage({ isLoaded }) {
                     setErrors(data.errors)
                 }
             })
-
+    }
+    //this is for multiple file uploads
+    const updateFiles = (e) => {
+        const files = e.target.files;
+        setImageUrls(files);
     }
 
     return(
@@ -133,7 +138,14 @@ function NewBusinessFormPage({ isLoaded }) {
                     placeholder="Description"
                     />
                     <p className="new-biz-directions">Finally, show off your place with three photos!</p>
-                    <input className="new-biz-input"
+                    <label>
+                        Image Upload (Max 3 Imgs)
+                        <input
+                        type="file"
+                        multiple
+                        onChange={updateFiles} />
+                    </label>
+                    {/* <input className="new-biz-input"
                     type="text"
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
@@ -150,7 +162,7 @@ function NewBusinessFormPage({ isLoaded }) {
                     value={imageUrlThree}
                     onChange={(e) => setImageUrlThree(e.target.value)}
                     placeholder="Third Image Url"
-                    />
+                    /> */}
 
                     <button className="add-business-btn"type="submit">I'm ready to add my business!</button>
                 </form>

@@ -105,9 +105,14 @@ function OneBusinessPage({ isLoaded }) {
                 <div key={business.id}>
                         <p className="one-biz-title">{business.title}</p>
                     <div className="one-biz-pic-container">
-                        <img className="one-biz-photo"src={business.imageUrl} alt="one-biz-pic"/>
+                        {
+                            business.imageUrls.map((img, i) => (
+                                <img src={img} key={(i + 1) * 3} className="banner-image-array"/>
+                            ))
+                        }
+                        {/* <img className="one-biz-photo"src={business.imageUrl} alt="one-biz-pic"/>
                         <img className="one-biz-photo"src={business.imageUrlTwo} alt="one-biz-pic"/>
-                        <img className="one-biz-photo"src={business.imageUrlThree} alt="one-biz-pic"/>
+                        <img className="one-biz-photo"src={business.imageUrlThree} alt="one-biz-pic"/> */}
                     </div>
                     {sessionUser && business.ownerId == sessionUser.id ?
                         <div className="update-delete-btn-container">
