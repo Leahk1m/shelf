@@ -11,6 +11,15 @@
     gap: 23px;
 }
 
+.signup-form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
 .priv-policy-msg {
     margin-left: 104px;
     margin-top: -13px;
@@ -18,6 +27,11 @@
 
 .signup-msg {
     margin-top: -23px;
+}
+.signup-msg-p {
+    font-size: 12px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .signup-for-shelf {
@@ -61,6 +75,9 @@
     font-family: 'Montserrat', sans-serif;
     color: grey;
     font-size: 15px;
+}
+.changed-mind:hover {
+    border-bottom: 1px solid grey;
 }
 
 .shelf-signup-navlink {

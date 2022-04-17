@@ -9,9 +9,10 @@ import shelfIcon from '../IconPics/shelf.png';
 
 function ShowBusinesses({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
+    const userProfilePhoto = sessionUser.profilePhoto;
     const businesses = useSelector(state => Object.values(state.business));
     const history = useHistory();
-     
+
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (

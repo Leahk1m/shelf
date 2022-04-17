@@ -40,8 +40,7 @@ function SignupFormPage() {
       <h1 className="signup-for-shelf">Sign up for shelf</h1>
       <h3>Connect with great local businesses </h3>
       <div className="signup-msg">
-        <p>By continuing, you agree to shelf's Terms of Service</p>
-        <p className="priv-policy-msg">and Privacy Policy</p>
+        <p className="signup-msg-p">By continuing, you agree to shelf's Terms of Service and Privacy Policy</p>
       </div>
       <div className="signup-form-container">
         <form onSubmit={handleSubmit}>

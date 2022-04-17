@@ -72,7 +72,8 @@ function NewBusinessFormPage({ isLoaded }) {
                 </div>
             </div>
 
-            <h1>Fresh and New Business</h1>
+            <h1>Let's add your business</h1>
+            <p className="lets-add-biz-info-p">Add information about your business below. Once your business is set up, it will appear in the search results and your business page will be available for views and reviews!</p>
             <div className="new-biz-form-input-container">
                 {/* {sessionUser ? */}
                 <form className="new-biz-form" onSubmit={handleSubmit}>
