@@ -81,6 +81,9 @@ function AddReview() {
                     <button type="submit">Add your review</button>
                 </form>
             </div>
+             <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
         </div>
     );
 }

@@ -9,19 +9,19 @@ import './UpdateBusinessPage.css';
 function UpdateBusinessPage() {
     const { businessId } = useParams();
     const businesses = useSelector(state => Object.values(state.business));
-    const thisBusiness = businesses.filter((business) => business.id == businessId);
+    const thisBusiness = businesses.filter((business) => business?.id == businessId);
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const [title, setTitle] = useState(thisBusiness[0].title);
-    const [description, setDescription] = useState(thisBusiness[0].description);
-    const [address, setAddress] = useState(thisBusiness[0].address);
-    const [city, setCity] = useState(thisBusiness[0].city);
-    const [state, setState] = useState(thisBusiness[0].state);
-    const [zipCode, setZipCode] = useState(thisBusiness[0].zipCode);
-    const [category, setCategory] = useState(thisBusiness[0].category);
-    const [imageUrl, setImageUrl] = useState(thisBusiness[0].imageUrl);
-    const [imageUrlTwo, setImageUrlTwo] = useState(thisBusiness[0].imageUrlTwo);
-    const [imageUrlThree, setImageUrlThree] = useState(thisBusiness[0].imageUrlThree);
+    const [title, setTitle] = useState(thisBusiness[0]?.title);
+    const [description, setDescription] = useState(thisBusiness[0]?.description);
+    const [address, setAddress] = useState(thisBusiness[0]?.address);
+    const [city, setCity] = useState(thisBusiness[0]?.city);
+    const [state, setState] = useState(thisBusiness[0]?.state);
+    const [zipCode, setZipCode] = useState(thisBusiness[0]?.zipCode);
+    const [category, setCategory] = useState(thisBusiness[0]?.category);
+    const [imageUrl, setImageUrl] = useState(thisBusiness[0]?.imageUrl);
+    const [imageUrlTwo, setImageUrlTwo] = useState(thisBusiness[0]?.imageUrlTwo);
+    const [imageUrlThree, setImageUrlThree] = useState(thisBusiness[0]?.imageUrlThree);
 
     const ownerId = useSelector((state) => state.session.user.id)
 
