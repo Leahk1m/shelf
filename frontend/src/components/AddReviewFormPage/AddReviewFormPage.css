@@ -65,7 +65,7 @@ input[type="radio"] {
 }
 
 .submit-review-btn {
-    width: 100%;
+    width: 50%;
     height: 35px;
     background-color: #d32324;
     margin-top: 30px;
@@ -130,8 +130,9 @@ input[type="radio"] {
     flex-direction: column;
     border-radius: 10px;
     background: white;
-    box-shadow: 7px 8px 10px 0 #898989bd;
+    box-shadow: 7px 8px 10px 0 #d7d6d6bd;
 }
+
 
 .rate-message {
     margin-left: 5%;
@@ -150,4 +151,29 @@ input[type="radio"] {
     background: white;
     border-radius: 10px;
     border: 1px solid rgb(214, 214, 214);
+}
+
+.biz-review-prof-icon-add-pg {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+.review-content-add-pg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    z-index: 1;
+    position: relative;
+
+}
+
+.review-photo-name {
+    position: absolute;
+}
+
+.biz-review-post-add-pg {
+    margin-top: -5px;
 }

@@ -49,7 +49,7 @@ function HomePage({isLoaded}) {
                         <p className="find-near-p">Find</p>
                         <input className="find-name"
                         type="text"
-                        placeholder="Rustic, traditional, modern stores..."
+                        placeholder="Family-owned, Health-conscious, Rustic stores..."
                         />
 
                         <p className="find-near-p">Near</p>
@@ -62,8 +62,29 @@ function HomePage({isLoaded}) {
                     </div>
                 </div>
             </div>
-        </div>
 
+            <div className="explore-grocer-cont">
+                <h2 className="find-best-grocer-p">Find the best artisanal grocers to restyle your pantry</h2>
+                <div className="categories-div">
+                    <div className="fam-owned-cont">
+                        <h3 className="categories-title">Family-owned</h3>
+                    </div>
+
+                    <div className="healthy-cont">
+                        <h3 className="categories-title">Health-conscious</h3>
+                    </div>
+
+                    <div className="rustic-cont">
+                        <h3 className="categories-title">Rustic</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div className="shelf-bay-area">
+                <h2 className="shelf-bay-area-p">shelf Bay Area</h2>
+                <p>Hot and New Businesses</p>
+            </div>
+        </div>
     );
 }
 

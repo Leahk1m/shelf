@@ -109,10 +109,14 @@ function AddReview({ isLoaded }) {
                             {
                                 specificBizReviews.map((bizReview, i) => (
                                     <div key={i} className="individual-reviews-container">
-                                        {console.log(bizReview)}
                                         <div className="review-photo-name">
-                                            <img src={bizReview.profilePhoto} alt="rev-prof" />
+                                            <img className="biz-review-prof-icon-add-pg"src={bizReview.profilePhoto} alt="rev-prof" />
                                             <p>{`${bizReview.firstName} ${bizReview.lastName}`}</p>
+                                        </div>
+
+                                        <div className="review-content-add-pg">
+                                            <p>{bizReview.rating}</p>
+                                            <p className="biz-review-post-add-pg">{bizReview.post}</p>
                                         </div>
                                     </div>
                                 ))

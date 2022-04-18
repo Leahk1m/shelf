@@ -130,14 +130,10 @@ function UpdateBusinessPage({ isLoaded }) {
                         onChange={(e) => setZipCode(e.target.value)}
                         placeholder="Zip code"
                         />
-                        <input
-                        type="text"
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                        placeholder="Category"
-                        />
-                        <select className="select-update-biz-category"defaultValue="Select category" onChange={(e) => setCategory(e.target.value)}>
+                        <select className="select-update-biz-category"value={category} onChange={(e) => setCategory(e.target.value)}>
+                            <option value="DEFAULT" disabled>Choose a category ...</option>
                             <option value="Traditional">Traditional</option>
+                            <option value="Family-run">Family-run</option>
                             <option value="Health-conscious">Health-conscious</option>
                             <option value="Modern">Modern</option>
                             <option value="Rustic">Rustic</option>

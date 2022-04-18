@@ -138,3 +138,44 @@
     font-weight: bold;
 
 }
+
+.shelf-bay-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.shelf-bay-area-p {
+    color: #c02013;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.explore-grocer-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+
+}
+
+.find-best-grocer-p {
+    color: #c02013;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.categories-div {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.categories-title {
+    font-family: 'Montserrat', sans-serif;
+
+}
