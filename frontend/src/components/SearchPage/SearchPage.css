@@ -1,0 +1,16 @@
+
+.search-business-pic {
+    height: 200px;
+    width: 200px;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-top: 3px;
+}
+
+.search-business-info-cont {
+
+}
+
+.search-biz-info {
+    display: flex;
+}

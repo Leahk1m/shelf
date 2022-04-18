@@ -145,11 +145,13 @@
     justify-content: center;
     align-content: center;
     flex-direction: column;
+    background-color: white;
 }
 
 .shelf-bay-area-p {
     color: #c02013;
     font-family: 'Montserrat', sans-serif;
+
 }
 
 .explore-grocer-cont {
@@ -189,6 +191,7 @@
     height: 200px;
     object-fit: cover;
     border-radius: 5px 5px 0px 0px;
+    cursor: pointer;
 }
 
 .fam-owned-cont {

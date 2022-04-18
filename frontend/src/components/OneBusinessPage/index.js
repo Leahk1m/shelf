@@ -4,12 +4,12 @@ import './OneBusinessPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as businessActions from '../../store/business';
 import * as reviewActions from '../../store/review';
-// import iconPic from '../IconPics/user-icon.jpeg';
+
 import ProfileButton from '../Navigation/ProfileButton';
-// import LoginFormModal from '../LoginFormModal';
+
 import shelfIcon from '../IconPics/shelf.png';
 // import { AiFillStar } from 'react-icons/ai';
-// import { Modal } from '../../context/Modal';
+
 // import Demo from '../LoginFormModal/Demo';
 // import LoginForm from '../LoginFormModal/LoginForm';
 import { AiOutlineEllipsis } from 'react-icons/ai';
@@ -34,19 +34,18 @@ function OneBusinessPage({ isLoaded }) {
     }
 
     let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = (
-      <ProfileButton user={sessionUser} />
-    );
-  } else {
-    sessionLinks = (
-      <>
-        <button onClick={() => history.push('/login')}>Log in</button>
-        <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
-      </>
-    );
-  }
-
+    if (sessionUser) {
+        sessionLinks = (
+        <ProfileButton user={sessionUser} />
+        );
+    } else {
+        sessionLinks = (
+        <>
+            <button onClick={() => history.push('/login')}>Log in</button>
+            <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
+        </>
+        );
+    }
 
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
@@ -82,13 +81,13 @@ function OneBusinessPage({ isLoaded }) {
 
     return(
         <div>
-             <div className="navbar-container">
+            <div className="navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
-            <div className="search-container">
-                <input className="search-input"
-                type="text"
-                />
+                <div className="search-container">
+                    <input className="search-input"
+                    type="text"
+                    />
                 </div>
 
                 <div className="main-nav-links">
@@ -165,7 +164,6 @@ function OneBusinessPage({ isLoaded }) {
                                 : ''}
                         </div>
                     ))}
-
                 </div>
             : <p>No Reviews Yet</p>}
 

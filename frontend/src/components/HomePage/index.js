@@ -67,16 +67,16 @@ function HomePage({isLoaded}) {
                 <h2 className="find-best-grocer-p">Find the best artisanal grocers to restyle your pantry</h2>
                 <div className="categories-div">
                     <div className="fam-owned-cont">
-                        <img className="cat-type-img"src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/family.jpg?raw=true' alt="fam-owned"/>
+                        <img onClick={() => history.push('/search/family-owned')} className="cat-type-img"src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/family.jpg?raw=true' alt="fam-owned"/>
                         <h3 className="categories-title">Family-owned</h3>
                     </div>
 
                     <div className="modern-cont">
-                        <img className="cat-type-img" src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/modern.png?raw=true' alt="modern"/>
+                        <img onClick={() => history.push('/search/modern')} className="cat-type-img" src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/new-modern.jpg?raw=true' alt="modern"/>
                         <h3 className="categories-title">Modern</h3>
                     </div>
 
-                    <div className="rustic-cont">
+                    <div onClick={() => history.push('/search/rustic')} className="rustic-cont">
                         <img className="cat-type-img"src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/rustic.png?raw=true' alt="rustic"/>
                         <h3 className="categories-title">Rustic</h3>
                     </div>

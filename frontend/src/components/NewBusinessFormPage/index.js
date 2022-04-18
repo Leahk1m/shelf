@@ -16,7 +16,6 @@ function NewBusinessFormPage({ isLoaded }) {
     const [state, setState] = useState("");
     const [zipCode, setZipCode] = useState("");
     const [category, setCategory] = useState("");
-    const [defaultVal, setDefaultVal] = useState("Select category")
     const [imageUrls, setImageUrls] = useState([]);
     const ownerId = useSelector((state) => state.session?.user?.id)
     const history = useHistory();
@@ -124,8 +123,7 @@ function NewBusinessFormPage({ isLoaded }) {
                         />
                     </div>
                     <p className="new-biz-directions" id="vibes">What's the vibe like?</p>
-                    <select className="new-biz-category-input" value={"plz"} onChange={(e) => setCategory(e.target.value)}>
-                        <option value="DEFAULT" disabled>Choose a category ...</option>
+                    <select className="new-biz-category-input" defaultValue="Select category"onChange={(e) => setCategory(e.target.value)}>
                         <option value="Traditional">Traditional</option>
                         <option value="Family-run">Family-run</option>
                         <option value="Health-conscious">Health-conscious</option>

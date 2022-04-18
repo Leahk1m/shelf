@@ -14,6 +14,7 @@ import UpdateBusinessPage from './components/UpdateBusinessPage';
 import ProfilePage from './components/ProfilePage';
 import AddReviewFormPage from './components/AddReviewFormPage';
 import EditReviewFormPage from './components/EditReviewFormPage';
+import SearchPage from './components/SearchPage';
 
 
 import * as businessActions from './store/business';
@@ -44,6 +45,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <HomePage isLoaded={isLoaded}/>
+          </Route>
+          <Route exact path='/search/:searchTerm'>
+            <SearchPage isLoaded={isLoaded}/>
           </Route>
           {/* <Route path="/login" >
             <LoginFormPage />
