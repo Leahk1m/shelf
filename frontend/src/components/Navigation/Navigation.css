@@ -38,6 +38,10 @@
 .search-input {
   width: 90%;
   height: 35px;
+  box-shadow: 4px 5px 20px #e3e2e2;
+  outline: none;
+  border: none;
+  border-radius: 3px;
 }
 
 .welcome-line {
@@ -46,6 +50,6 @@
 }
 
 .nav-prof-icon {
-  width: 25%;
+  width: 15%;
   border-radius: 6px;
 }

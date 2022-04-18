@@ -11,6 +11,8 @@ function SearchPage({isLoaded}) {
     const businesses = useSelector(state => Object.values(state.business));
     const searchTerm = useParams();
     const catBusinesses = businesses.filter((business) => business.category.toLowerCase() == searchTerm.searchTerm);
+    const reviews = useSelector((state) => Object.values(state.review));
+    // const specificBizReviews = reviews.filter((review) => review?.businessId == catBusinesses[0]?.id);
 
     let sessionLinks;
     if (sessionUser) {
@@ -26,9 +28,18 @@ function SearchPage({isLoaded}) {
         );
     }
 
+    const specificBizReview = (num) => {
+        const thisReview = reviews.filter((review) => review.businessId === num);
+        return (<p>{thisReview[0]?.post}</p>);
+
+    }
 
     return(
         <div>
+            {console.log(reviews)}
+            {console.log(catBusinesses)}
+            {/* {console.log(specificBizReviews)} */}
+
             <div className="navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
@@ -48,16 +59,25 @@ function SearchPage({isLoaded}) {
                 </div>
             </div>
 
-            {catBusinesses.map((business) => (
-                <div className="search-business-info-cont">
-                    <div className="search-biz-info">
-                        <img  onClick={() => history.push(`/business/${business.id}`)}className="search-business-pic"src={business.imageUrls[0]} alt="search-business"/>
-                        <p>{business.title}</p>
+            <div className="search-pg-contents-div">
+                <h3 className="all-results-title">All results</h3>
+                {catBusinesses.map((business) => (
+                    <div className="search-business-info-cont">
+                        <div className="search-biz-info">
+                            <img  onClick={() => history.push(`/business/${business.id}`)}className="search-business-pic"src={business.imageUrls[0]} alt="search-business"/>
+
+                            <div className="search-biz-title-rating-review">
+                                <p>{business.title}</p>
+                                <p>{business.rating}</p>
+                                {specificBizReview(business.id)}
+
+                            </div>
+                        </div>
 
                     </div>
+                ))}
 
-                </div>
-            ))}
+            </div>
 
         </div>
     );

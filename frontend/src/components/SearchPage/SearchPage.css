@@ -5,12 +5,46 @@
     border-radius: 4px;
     object-fit: cover;
     margin-top: 3px;
+    cursor: pointer;
 }
 
 .search-business-info-cont {
+    width: 100%;
+    height: 300px;
 
 }
 
 .search-biz-info {
+    text-decoration: none;
+    width: 50%;
+    min-width: 680px;
+    max-width: 800px;
+    height: 205px;
+    border: 1px solid #ebebeb;
+    border-radius: 4px;
+    padding: 24px;
+    margin: -16px 35px;
     display: flex;
+    gap: 30px;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+}
+
+.search-pg-contents-div {
+    margin-left: 10%;
+
+}
+
+.all-results-title {
+    margin-top: 2%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.search-biz-title-rating-review {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
