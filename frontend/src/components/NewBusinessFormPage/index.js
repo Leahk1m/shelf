@@ -90,7 +90,7 @@ function NewBusinessFormPage({ isLoaded }) {
             <p className="lets-add-biz-info-p">Add information about your business below. Once your business is set up, <br/>it will appear in the search results and your business page <br/>will be available for views and reviews!</p>
             <div className="new-biz-form-input-container">
                 <p className="new-biz-directions">Let's start with a title</p>
-                <form className="new-biz-form" onSubmit={ passedImgsLength ? handleSubmit : preventRefresh}>
+                <form className="new-biz-form" onSubmit={ passedImgsLength ? handleSubmit : preventRefresh }>
                     <input className="new-biz-input"
                     type="text"
                     value={title}

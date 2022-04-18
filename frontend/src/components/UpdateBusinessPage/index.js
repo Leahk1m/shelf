@@ -19,15 +19,16 @@ function UpdateBusinessPage() {
     const [state, setState] = useState(thisBusiness[0]?.state);
     const [zipCode, setZipCode] = useState(thisBusiness[0]?.zipCode);
     const [category, setCategory] = useState(thisBusiness[0]?.category);
-    const [imageUrl, setImageUrl] = useState(thisBusiness[0]?.imageUrl);
-    const [imageUrlTwo, setImageUrlTwo] = useState(thisBusiness[0]?.imageUrlTwo);
-    const [imageUrlThree, setImageUrlThree] = useState(thisBusiness[0]?.imageUrlThree);
+    const [imageUrls, setImageUrls] = useState([]);
+
+    const [errors, setErrors] = useState([]);
+    const [passedImgsLength, setPassedImgsLength] = useState(false);
+    const [imgInputError, setImgInputError] = useState(false);
 
     const ownerId = useSelector((state) => state.session.user.id)
 
     const history = useHistory();
 
-    const [errors, setErrors] = useState([]);
 
     // const deleteBusiness = async(e) => {
     //     e.preventDefault();
@@ -39,7 +40,7 @@ function UpdateBusinessPage() {
     const handleEditSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(businessActions.updateMyBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrl, imageUrlTwo, imageUrlThree}, +businessId))
+        await dispatch(businessActions.updateMyBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrls}, +businessId))
             .then(() => history.push(`/business/${businessId}`))
             .catch(async (res) => {
                 const data = await res.json();
@@ -47,12 +48,28 @@ function UpdateBusinessPage() {
                     setErrors(data.errors)
                 }
             })
-    }
+    };
+
+    const updateFiles = (e) => {
+        const files = e.target.files;
+        if(files.length !== 3) {
+            setImgInputError(true);
+        } else {
+            setPassedImgsLength(true);
+            setImageUrls(files);
+        }
+    };
+
+    const preventRefresh = (e) => {
+        e.preventDefault();
+        setImgInputError(true);
+    };
+
     return (
         <div className="update-business-form-container">
             <h1>Update Business</h1>
             <div className="update-biz-form-input-container">
-                <form className="update-biz-form" onSubmit={handleEditSubmit}>
+                <form className="update-biz-form" onSubmit={ passedImgsLength ? handleEditSubmit : preventRefresh }>
                     <div className="update-biz-inputs">
                         <input
                         type="text"
@@ -96,37 +113,31 @@ function UpdateBusinessPage() {
                         onChange={(e) => setCategory(e.target.value)}
                         placeholder="Category"
                         />
-                        {/* <select value={category} onChange={(e) => setCategory(e.target.value)}>
-                            <option value="Traditional"></option>
-                            <option value="Industrial"></option>
-                            <option value="Modern"></option>
-                            <option value="Rustic"></option>
-                            <option value="Other"></option>
-                        </select> */}
-                        <input
-                        type="text"
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
-                        placeholder="Image Url"
-                        />
-                        <input
-                        type="text"
-                        value={imageUrlTwo}
-                        onChange={(e) => setImageUrlTwo(e.target.value)}
-                        placeholder="Second Image Url"
-                        />
-                        <input
-                        type="text"
-                        value={imageUrlThree}
-                        onChange={(e) => setImageUrlThree(e.target.value)}
-                        placeholder="Third Image Url"
-                        />
+                        <select className="select-update-biz-category"defaultValue="Select category" onChange={(e) => setCategory(e.target.value)}>
+                            <option value="Traditional">Traditional</option>
+                            <option value="Health-conscious">Health-conscious</option>
+                            <option value="Modern">Modern</option>
+                            <option value="Rustic">Rustic</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <label>
+                            Image Upload (Max 3 Imgs)
+                            <input
+                            type="file"
+                            multiple
+                            onChange={updateFiles} />
+                        </label>
                         <button type="submit">Update spot</button>
                     </div>
                 </form>
             </div>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                {imgInputError ?
+                    <p>
+                        Please submit 3 photos of your business
+                    </p>
+                : ''}
             </ul>
         </div>
 
