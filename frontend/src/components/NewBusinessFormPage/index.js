@@ -19,12 +19,11 @@ function NewBusinessFormPage({ isLoaded }) {
     const [zipCode, setZipCode] = useState("");
     const [category, setCategory] = useState("");
     const [imageUrls, setImageUrls] = useState([]);
-    // const [imageUrl, setImageUrl] = useState("");
-    // const [imageUrlTwo, setImageUrlTwo] = useState("");
-    // const [imageUrlThree, setImageUrlThree] = useState("");
-    const ownerId = useSelector((state) => state.session.user.id)
+    const ownerId = useSelector((state) => state.session?.user?.id)
     const history = useHistory();
     const [errors, setErrors] = useState([]);
+    const [passedImgsLength, setPassedImgsLength] = useState(false);
+    const [imgInputError, setImgInputError] = useState(false);
 
     let sessionLinks;
     if (sessionUser) {
@@ -51,12 +50,22 @@ function NewBusinessFormPage({ isLoaded }) {
                     setErrors(data.errors)
                 }
             })
-    }
-    //this is for multiple file uploads
+    };
+
     const updateFiles = (e) => {
         const files = e.target.files;
-        setImageUrls(files);
-    }
+        if(files.length !== 3) {
+            setImgInputError(true);
+        } else {
+            setPassedImgsLength(true);
+            setImageUrls(files);
+        }
+    };
+
+    const preventRefresh = (e) => {
+        e.preventDefault();
+        setImgInputError(true);
+    };
 
     return(
         <div className="new-business-form-container">
@@ -80,9 +89,8 @@ function NewBusinessFormPage({ isLoaded }) {
             <h1 className="add-biz-title-h1">Let's add your business</h1>
             <p className="lets-add-biz-info-p">Add information about your business below. Once your business is set up, <br/>it will appear in the search results and your business page <br/>will be available for views and reviews!</p>
             <div className="new-biz-form-input-container">
-                {/* {sessionUser ? */}
                 <p className="new-biz-directions">Let's start with a title</p>
-                <form className="new-biz-form" onSubmit={handleSubmit}>
+                <form className="new-biz-form" onSubmit={ passedImgsLength ? handleSubmit : preventRefresh}>
                     <input className="new-biz-input"
                     type="text"
                     value={title}
@@ -117,12 +125,6 @@ function NewBusinessFormPage({ isLoaded }) {
                         />
                     </div>
                     <p className="new-biz-directions" id="vibes">What's the vibe like?</p>
-                    {/* <input className="new-biz-input"
-                    type="text"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    placeholder="Category"
-                    /> */}
                     <select className="new-biz-category-input"defaultValue="Select category" onChange={(e) => setCategory(e.target.value)}>
                         <option value="Traditional">Traditional</option>
                         <option value="Health-conscious">Health-conscious</option>
@@ -138,6 +140,7 @@ function NewBusinessFormPage({ isLoaded }) {
                     placeholder="Description"
                     />
                     <p className="new-biz-directions">Finally, show off your place with three photos!</p>
+
                     <label>
                         Image Upload (Max 3 Imgs)
                         <input
@@ -145,31 +148,17 @@ function NewBusinessFormPage({ isLoaded }) {
                         multiple
                         onChange={updateFiles} />
                     </label>
-                    {/* <input className="new-biz-input"
-                    type="text"
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    placeholder="Image Url"
-                    />
-                    <input className="new-biz-input"
-                    type="text"
-                    value={imageUrlTwo}
-                    onChange={(e) => setImageUrlTwo(e.target.value)}
-                    placeholder="Second Image Url"
-                    />
-                    <input className="new-biz-input"
-                    type="text"
-                    value={imageUrlThree}
-                    onChange={(e) => setImageUrlThree(e.target.value)}
-                    placeholder="Third Image Url"
-                    /> */}
-
                     <button className="add-business-btn"type="submit">I'm ready to add my business!</button>
                 </form>
                 {/* : <p>Please log in to add a new business</p>} */}
             </div>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                {imgInputError ?
+                    <p>
+                        Please submit 3 photos of your business
+                    </p>
+                : ''}
             </ul>
         </div>
     );

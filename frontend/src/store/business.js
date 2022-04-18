@@ -38,6 +38,9 @@ export const allUserBusinesses = () => async (dispatch) => {
 
 export const addNewBusiness = (business) => async(dispatch) => {
     const { ownerId, title, description, address, city, state, zipCode, category, imageUrls } = business
+    if(imageUrls.length !== 3) {
+        
+    }
 
     const formData = new FormData();
     formData.append('ownerId', ownerId)
@@ -63,7 +66,7 @@ export const addNewBusiness = (business) => async(dispatch) => {
         },
         body: formData,
     });
-    
+
     if (response.ok) {
         const data = await response.json();
         dispatch(createBusiness(data))
