@@ -134,7 +134,6 @@ function UpdateBusinessPage({ isLoaded }) {
                         <select className="select-update-biz-category"value={category} onChange={(e) => setCategory(e.target.value)}>
                             <option value="Traditional">Traditional</option>
                             <option value="Family-run">Family-run</option>
-                            <option value="Health-conscious">Health-conscious</option>
                             <option value="Modern">Modern</option>
                             <option value="Rustic">Rustic</option>
                             <option value="Other">Other</option>

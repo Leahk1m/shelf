@@ -83,8 +83,12 @@ function HomePage({isLoaded}) {
             </div>
 
             <div className="shelf-bay-area">
-                <h2 className="shelf-bay-area-p">shelf Bay Area</h2>
-                <p className="hot-and-new-businesses">Hot and New Businesses</p>
+                <h1 className="shelf-bay-area-p">shelf Bay Area</h1>
+                <h2 className="hot-and-new-businesses">Hot and New Businesses</h2>
+                <div className="hot-businesses-cont">
+                    
+
+                </div>
             </div>
         </div>
     );
