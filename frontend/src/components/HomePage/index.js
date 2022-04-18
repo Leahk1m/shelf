@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import './HomePage.css';
 import largeShelfLogo from '../IconPics/new-shelf.png';
 import { NavLink, useHistory } from 'react-router-dom';
 import ProfileButton from '../Navigation/ProfileButton';
-import LoginFormModal from '../LoginFormModal';
+// import LoginFormModal from '../LoginFormModal';
 import magnify from '../IconPics/mag.png';
 
 function HomePage({isLoaded}) {
@@ -43,7 +43,7 @@ function HomePage({isLoaded}) {
                     </div>
                 </div>
                 <div className="splash-nav-logo-container">
-                    <img className="home-pg-shelf-logo"src={largeShelfLogo}/>
+                    <img className="home-pg-shelf-logo"src={largeShelfLogo} alt="shelf-icon"/>
 
                     <div className="double-search">
                         <p className="find-near-p">Find</p>
@@ -58,7 +58,7 @@ function HomePage({isLoaded}) {
                         placeholder="Bay Area, CA ONLY for now"
                         readOnly = {true}
                         />
-                        <button className="magnifying"><img className="mag-glass-icon"src={magnify}/></button>
+                        <button className="magnifying"><img className="mag-glass-icon"src={magnify} alt="mag-glass"/></button>
                     </div>
                 </div>
             </div>

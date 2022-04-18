@@ -22,13 +22,13 @@ function LoginForm() {
     );
   };
 
-  const demoLogin = async(e) => {
-    e.preventDefault();
-    dispatch(sessionActions.login({
-      credential: 'demo@aa.io',
-      password: 'password'
-    }))
-  }
+  // const demoLogin = async(e) => {
+  //   e.preventDefault();
+  //   dispatch(sessionActions.login({
+  //     credential: 'demo@aa.io',
+  //     password: 'password'
+  //   }))
+  // }
 
   return (
     <div className="login-modal-container">

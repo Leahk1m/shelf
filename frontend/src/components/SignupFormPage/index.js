@@ -105,7 +105,7 @@ function SignupFormPage() {
               />
             </div>
           </div>
-          <label>
+          <label className="add-photo-new-biz-btn">
             Image Upload
             <input
             type="file"

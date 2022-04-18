@@ -116,7 +116,6 @@ input[type="file"] {
     border-radius: 4px;
     display: flex;
     justify-content: center;
-
 }
 .add-photo-new-biz-btn:hover {
     color: white;

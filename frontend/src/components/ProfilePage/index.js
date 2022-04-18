@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, NavLink } from "react-router-dom";
+import React from "react";
+import { useSelector } from "react-redux";
+import { useHistory, NavLink } from "react-router-dom";
 import ProfileButton from "../Navigation/ProfileButton";
-import LoginFormModal from "../LoginFormModal";
+// import LoginFormModal from "../LoginFormModal";
 import './ProfilePage.css';
-import * as sessionActions from '../../store/session';
+// import * as sessionActions from '../../store/session';
 import shelfIcon from '../IconPics/shelf.png';
 
 function ProfilePage({ isLoaded }) {
     const sessionUser = useSelector((state) => state.session.user);
     const businesses = useSelector(state => Object.values(state.business));
-    const myBusinesses = businesses.filter((business) => business.ownerId == sessionUser.id);
+    const myBusinesses = businesses.filter((business) => business.ownerId === +sessionUser.id);
     const history = useHistory();
-    
+
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
@@ -51,7 +51,7 @@ function ProfilePage({ isLoaded }) {
             <div className="user-profile-info">
                 <h1 className="prof-my-name">{sessionUser.firstName}</h1>
                 <p className="user-prof-city-p">From {sessionUser.city}</p>
-                <img className="my-prof-photo"src={sessionUser.profilePhoto}/>
+                <img className="my-prof-photo"src={sessionUser.profilePhoto} alt="prof-to-show"/>
             </div>
 
             <div className="user-prof-biz-list">
@@ -62,7 +62,7 @@ function ProfilePage({ isLoaded }) {
                                 <div className="my-prof-biz-info" key={business.id}>
                                     <h2>{business.title}</h2>
                                     <p>{business.address}</p>
-                                    <img className="prof-business-photo"src={business.imageUrl}/>
+                                    <img className="prof-business-photo"src={business.imageUrl} alt="prof-biz-to-show"/>
                                 </div>
                             ))}
                         </div>

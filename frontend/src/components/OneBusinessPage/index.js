@@ -4,14 +4,14 @@ import './OneBusinessPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import * as businessActions from '../../store/business';
 import * as reviewActions from '../../store/review';
-import iconPic from '../IconPics/user-icon.jpeg';
+// import iconPic from '../IconPics/user-icon.jpeg';
 import ProfileButton from '../Navigation/ProfileButton';
-import LoginFormModal from '../LoginFormModal';
+// import LoginFormModal from '../LoginFormModal';
 import shelfIcon from '../IconPics/shelf.png';
-import { AiFillStar } from 'react-icons/ai';
-import { Modal } from '../../context/Modal';
-import Demo from '../LoginFormModal/Demo';
-import LoginForm from '../LoginFormModal/LoginForm';
+// import { AiFillStar } from 'react-icons/ai';
+// import { Modal } from '../../context/Modal';
+// import Demo from '../LoginFormModal/Demo';
+// import LoginForm from '../LoginFormModal/LoginForm';
 import { AiOutlineEllipsis } from 'react-icons/ai';
 import { RiArrowDropDownLine} from 'react-icons/ri';
 import { AiOutlineStar } from 'react-icons/ai';
@@ -21,7 +21,7 @@ function OneBusinessPage({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
     const { businessId } = useParams();
     const businesses = useSelector(state => Object.values(state.business));
-    const specificBusiness = businesses.filter(business => business.id == businessId);
+    const specificBusiness = businesses.filter(business => business.id === +businessId);
     const reviews = useSelector(state => Object.values(state.review));
     const [showRevDropdown, setShowRevDropdown] = useState(prev => prev === false ? true : false);
     const [showBizDropdown, setShowBizDropdown] = useState(prev => prev === false ? true : false);
@@ -29,7 +29,7 @@ function OneBusinessPage({ isLoaded }) {
 
     let specificReviews;
     if(specificBusiness.length > 0 && reviews.length > 0) {
-        specificReviews = reviews.filter(review => review.businessId == specificBusiness[0].id);
+        specificReviews = reviews.filter(review => review.businessId === +specificBusiness[0].id);
 
     }
 
@@ -107,14 +107,14 @@ function OneBusinessPage({ isLoaded }) {
                     <div className="one-biz-pic-container">
                         {
                             business.imageUrls.map((img, i) => (
-                                <img src={img} key={(i + 1) * 3} className="banner-image-array"/>
+                                <img src={img} key={(i + 1) * 3} className="banner-image-array" alt="biz-pics"/>
                             ))
                         }
                         {/* <img className="one-biz-photo"src={business.imageUrl} alt="one-biz-pic"/>
                         <img className="one-biz-photo"src={business.imageUrlTwo} alt="one-biz-pic"/>
                         <img className="one-biz-photo"src={business.imageUrlThree} alt="one-biz-pic"/> */}
                     </div>
-                    {sessionUser && business.ownerId == sessionUser.id ?
+                    {sessionUser && business.ownerId === sessionUser.id ?
                         <div className="update-delete-btn-container">
                             <RiArrowDropDownLine onClick={() => setShowBizDropdown(prev => prev === false ? true : false)}/>
                             {showBizDropdown ?
@@ -146,8 +146,8 @@ function OneBusinessPage({ isLoaded }) {
                     {specificReviews.map(review => (
                         <div key={review.id}>
                             <p>{review.firstName} {review.lastName}</p>
-                            <img className="review-prof-icon"src={review.profilePhoto}/>
-                                {sessionUser && review.userId == sessionUser.id ?
+                            <img className="review-prof-icon"src={review.profilePhoto} alt="prof-icon"/>
+                                {sessionUser && review.userId === sessionUser.id ?
                                     <div>
                                         <p>{review.rating}</p>
                                         <p>{review.post}</p>

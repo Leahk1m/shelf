@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, NavLink } from "react-router-dom";
 import * as reviewActions from '../../store/review';
 import ProfileButton from "../Navigation/ProfileButton";
-import LoginFormModal from "../LoginFormModal";
+// import LoginFormModal from "../LoginFormModal";
 import './EditReviewFormPage.css';
 import { AiFillStar } from 'react-icons/ai';
 import shelfIcon from '../IconPics/shelf.png';
@@ -14,7 +14,7 @@ function EditReviewFormPage({ isLoaded }) {
     const profilePhoto = useSelector((state) => state.session.user.profilePhoto);
     const reviews = useSelector((state) => Object.values(state.review));
     const { reviewId } = useParams();
-    const myReview = reviews.filter((review) => review.id == +reviewId);
+    const myReview = reviews.filter((review) => review.id === +reviewId);
     const firstName = myReview[0].firstName;
     const lastName = myReview[0].lastName;
     const businessId = myReview[0].businessId;

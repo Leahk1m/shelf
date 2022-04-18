@@ -10,7 +10,7 @@ import ProfileButton from '../Navigation/ProfileButton';
 function UpdateBusinessPage({ isLoaded }) {
     const { businessId } = useParams();
     const businesses = useSelector(state => Object.values(state.business));
-    const thisBusiness = businesses.filter((business) => business?.id == businessId);
+    const thisBusiness = businesses.filter((business) => business?.id === +businessId);
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const [title, setTitle] = useState(thisBusiness[0]?.title);
