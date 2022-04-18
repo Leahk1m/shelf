@@ -68,14 +68,17 @@ function HomePage({isLoaded}) {
                 <div className="categories-div">
                     <div className="fam-owned-cont">
                         <h3 className="categories-title">Family-owned</h3>
+                        <img className="cat-type-img"src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/family.jpg?raw=true' alt="fam-owned"/>
                     </div>
 
                     <div className="healthy-cont">
                         <h3 className="categories-title">Health-conscious</h3>
+                        <img className="cat-type-img" src=''/>
                     </div>
 
                     <div className="rustic-cont">
                         <h3 className="categories-title">Rustic</h3>
+                        <img className="cat-type-img"src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/rustic.png?raw=true' alt="rustic"/>
                     </div>
                 </div>
             </div>
