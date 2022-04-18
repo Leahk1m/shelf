@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, NavLink } from "react-router-dom";
-import * as sessionActions from "../../store/session";
+import { useHistory, NavLink } from "react-router-dom";
 import ProfileButton from "../Navigation/ProfileButton";
-import LoginFormModal from "../LoginFormModal";
 import './NewBusinessFormPage.css';
 import * as businessActions from '../../store/business'
 import shelfIcon from '../IconPics/shelf.png';
@@ -141,13 +139,14 @@ function NewBusinessFormPage({ isLoaded }) {
                     />
                     <p className="new-biz-directions">Finally, show off your place with three photos!</p>
 
-                    <label>
-                        Image Upload (Max 3 Imgs)
+                    <label className="add-photo-new-biz-btn">
+                        Upload photos
                         <input
                         type="file"
                         multiple
                         onChange={updateFiles} />
                     </label>
+
                     <button className="add-business-btn"type="submit">I'm ready to add my business!</button>
                 </form>
                 {/* : <p>Please log in to add a new business</p>} */}

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
-import * as sessionActions from "../../store/session";
+import { NavLink, useHistory, useParams } from "react-router-dom";
 import * as businessActions from '../../store/business'
 import './UpdateBusinessPage.css';
+import shelfIcon from '../IconPics/shelf.png';
+import ProfileButton from '../Navigation/ProfileButton';
 
 
-function UpdateBusinessPage() {
+function UpdateBusinessPage({ isLoaded }) {
     const { businessId } = useParams();
     const businesses = useSelector(state => Object.values(state.business));
     const thisBusiness = businesses.filter((business) => business?.id == businessId);
@@ -57,8 +58,38 @@ function UpdateBusinessPage() {
         setImgInputError(true);
     };
 
+    let sessionLinks;
+    if (sessionUser) {
+      sessionLinks = (
+        <ProfileButton user={sessionUser} />
+      );
+    } else {
+      sessionLinks = (
+        <>
+            <button onClick={() => history.push('/login')}>Log in</button>
+            <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
+        </>
+      );
+    }
+
     return (
         <div className="update-business-form-container">
+            <div className="navbar-container">
+                <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
+                <div className="search-container">
+                    <input className="search-input"
+                    type="text"
+                    />
+                </div>
+
+                <div className="main-nav-links">
+                    {sessionUser ?
+                    <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
+                    : ''}
+                    <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                    {isLoaded && sessionLinks}
+            </div>
+            </div>
             <h1>Update Business</h1>
             <div className="update-biz-form-input-container">
                 <form className="update-biz-form" onSubmit={ passedImgsLength ? handleEditSubmit : preventRefresh }>
@@ -112,8 +143,8 @@ function UpdateBusinessPage() {
                             <option value="Rustic">Rustic</option>
                             <option value="Other">Other</option>
                         </select>
-                        <label>
-                            Image Upload (Max 3 Imgs)
+                        <label className="add-photo-new-biz-btn">
+                            Change my photos
                             <input
                             type="file"
                             multiple

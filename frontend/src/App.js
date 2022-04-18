@@ -64,7 +64,7 @@ function App() {
             <OneBusinessPage isLoaded={isLoaded}/>
           </Route>
           <Route exact path='/business/edit/:businessId'>
-            <UpdateBusinessPage />
+            <UpdateBusinessPage isLoaded={isLoaded}/>
           </Route>
           <Route exact path='/profile'>
             <ProfilePage isLoaded={isLoaded} />
