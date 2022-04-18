@@ -76,8 +76,13 @@ router.post('/', multipleMulterUpload("imageUrls"), validateBusiness, asyncHandl
 
 router.put('/edit/:businessId', multipleMulterUpload("imageUrls"), validateBusiness, asyncHandler(async(req, res) => {
     const id = +req.params.businessId;
-    const { ownerId, title, description, address, city, state, zipCode, category } = req.body;
-    const imageUrls = await multiplePublicFileUpload(req.files);
+    let { ownerId, title, description, address, city, state, zipCode, category, imageUrls } = req.body;
+    // console.log(imageUrls)
+    // console.log('title', title)
+    if(imageUrls === undefined) {
+        imageUrls = await multiplePublicFileUpload(req.files);
+    }
+
     const updatedBusiness = {
         ownerId,
         title,
