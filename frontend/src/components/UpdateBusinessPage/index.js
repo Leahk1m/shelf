@@ -20,10 +20,10 @@ function UpdateBusinessPage({ isLoaded }) {
     const [state, setState] = useState(thisBusiness[0]?.state);
     const [zipCode, setZipCode] = useState(thisBusiness[0]?.zipCode);
     const [category, setCategory] = useState(thisBusiness[0]?.category);
-    const [imageUrls, setImageUrls] = useState([]);
+    const [imageUrls, setImageUrls] = useState(thisBusiness[0]?.imageUrls);
 
     const [errors, setErrors] = useState([]);
-    const [passedImgsLength, setPassedImgsLength] = useState(false);
+    const [passedImgsLength, setPassedImgsLength] = useState(true);
     const [imgInputError, setImgInputError] = useState(false);
 
     const ownerId = useSelector((state) => state.session.user.id)
@@ -44,9 +44,10 @@ function UpdateBusinessPage({ isLoaded }) {
     };
 
     const updateFiles = (e) => {
-        const files = e.target.files;
+        let files = e.target.files;
         if(files.length !== 3) {
             setImgInputError(true);
+            setPassedImgsLength(false);
         } else {
             setPassedImgsLength(true);
             setImageUrls(files);

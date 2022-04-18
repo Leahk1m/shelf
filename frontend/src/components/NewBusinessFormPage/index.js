@@ -51,9 +51,10 @@ function NewBusinessFormPage({ isLoaded }) {
     };
 
     const updateFiles = (e) => {
-        const files = e.target.files;
+        let files = e.target.files;
         if(files.length !== 3) {
             setImgInputError(true);
+            setPassedImgsLength(false);
         } else {
             setPassedImgsLength(true);
             setImageUrls(files);

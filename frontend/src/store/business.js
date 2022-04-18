@@ -88,8 +88,13 @@ export const updateMyBusiness = (business, businessId) => async (dispatch) => {
     if (imageUrls && imageUrls.length !== 0) {
         for (var i = 0; i < imageUrls.length; i++) {
           formData.append("imageUrls", imageUrls[i]);
+
+        //   console.log('inside if ', imageUrls[i])
+        //   console.log('inside if form', formData)
         }
-      }
+    }
+    // console.log(imageUrls)
+    // console.log('thunjk', formData)
 
     const response = await csrfFetch(`/api/business/edit/${businessId}`, {
         method: 'PUT',

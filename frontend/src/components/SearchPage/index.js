@@ -36,10 +36,6 @@ function SearchPage({isLoaded}) {
 
     return(
         <div>
-            {console.log(reviews)}
-            {console.log(catBusinesses)}
-            {/* {console.log(specificBizReviews)} */}
-
             <div className="navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 

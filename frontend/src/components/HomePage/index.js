@@ -22,7 +22,6 @@ function HomePage({isLoaded}) {
         <>
             <button onClick={() => history.push('/login')}>Log in</button>
             <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
-            {/* <NavLink className="splash-navbar-links" to="/signup">Sign Up</NavLink> */}
         </>
         );
     }
@@ -85,7 +84,7 @@ function HomePage({isLoaded}) {
 
             <div className="shelf-bay-area">
                 <h2 className="shelf-bay-area-p">shelf Bay Area</h2>
-                <p>Hot and New Businesses</p>
+                <p className="hot-and-new-businesses">Hot and New Businesses</p>
             </div>
         </div>
     );
