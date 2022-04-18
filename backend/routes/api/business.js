@@ -48,24 +48,6 @@ const validateBusiness = [
     check('category')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a category'),
-    // check('imageUrl')
-    //     .exists({ checkFalsy: true })
-    //     .withMessage('Please provide an image')
-    //     .isURL({ require_protocol: false, require_host: false })
-    //     .matches(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)
-    //     .withMessage('Please input a proper url for your first image'),
-    // check('imageUrlTwo')
-    //     .exists({ checkFalsy: true })
-    //     .withMessage('Please provide a second image')
-    //     .isURL({ require_protocol: false, require_host: false })
-    //     .matches(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)
-    //     .withMessage('Please input a proper url for your second image'),
-    // check('imageUrlThree')
-    //     .exists({ checkFalsy: true })
-    //     .withMessage('Please provide a third image')
-    //     .isURL({ require_protocol: false, require_host: false })
-    //     .matches(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)
-    //     .withMessage('Please input a proper url for your third image'),
     handleValidationErrors,
 
 ];
@@ -77,9 +59,7 @@ router.get('/', asyncHandler(async(_req, res) => {
 
 router.post('/', multipleMulterUpload("imageUrls"), validateBusiness, asyncHandler(async(req, res) => {
     const { ownerId, title, description, address, city, state, zipCode, category } = req.body;
-    // const details = req.body;
     const imageUrls = await multiplePublicFileUpload(req.files);
-    console.log(imageUrls);
     const business = await Business.create({
         ownerId,
         title,
