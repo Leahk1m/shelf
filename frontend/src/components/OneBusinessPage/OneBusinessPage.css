@@ -160,3 +160,33 @@
     margin-top: -41px;
     margin-left: 60px;
 }
+
+.review-show-star {
+    width: 120px;
+}
+
+.review-person-info {
+    display: flex;
+    gap: 2%;
+}
+
+.review-person-post {
+    display: flex;
+}
+
+.peoples-reviews-cont {
+    display: flex;
+    grid-gap: 2%;
+    gap: 2%;
+    margin-left: 10%;
+    flex-direction: column;
+
+}
+
+.review-stars-and-post {
+    padding: 10px;
+}
+
+.review-person-name {
+    font-weight: bold;
+}
