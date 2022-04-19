@@ -157,7 +157,6 @@
 }
 
 .stars-img {
-    margin-top: -41px;
     margin-left: 60px;
 }
 
@@ -187,6 +186,33 @@
     padding: 10px;
 }
 
+
 .review-person-name {
     font-weight: bold;
+}
+
+.blue-check-div {
+    width: 100%;
+    justify-content: flex-start;
+    margin-left: 17%;
+    display: flex;
+    gap: 3%;
+    align-items: center;
+
+}
+
+.claimed-p {
+    color: #1eb6fd;
+    font-weight: bold;
+}
+
+.star-img-rating-div {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-top: -50px;
+}
+
+.num-reviews-p {
+    color: white;
 }

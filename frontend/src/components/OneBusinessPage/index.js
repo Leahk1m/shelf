@@ -9,7 +9,7 @@ import shelfIcon from '../IconPics/shelf.png';
 import { AiOutlineEllipsis } from 'react-icons/ai';
 import { RiArrowDropDownLine} from 'react-icons/ri';
 import { AiOutlineStar } from 'react-icons/ai';
-import { BiCheckCircle } from 'react-icons/bi';
+import blueCheck from '../IconPics/blue-check.png';
 
 function OneBusinessPage({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -37,25 +37,25 @@ function OneBusinessPage({ isLoaded }) {
 
         let avg = sum / specificReviews.length;
         if(avg === 0) {
-            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/zero-star.png?raw=true" alt="0-star"/>)
+            return(<div className="star-img-rating-div"><img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/zero-star.png?raw=true" alt="0-star"/><p className="num-reviews-p">{`${specificReviews?.length} Reviews`}</p></div>)
         } else if(avg < 1.5) {
-            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true" alt="1-star"/>)
+            return(<div className="star-img-rating-div"><img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true" alt="1-star"/><p className="num-reviews-p">{`${specificReviews?.length} Reviews`}</p></div>)
         } else if(avg >= 1.5 && avg < 2) {
-            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-half-star.png?raw=true" alt="1-half-star"/>)
+            return(<div className="star-img-rating-div"><img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-half-star.png?raw=true" alt="1-half-star"/><p className="num-reviews-p">{`${specificReviews?.length} Reviews`}</p></div>)
         } else if(avg >= 2 && avg < 2.5) {
-            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-star.png?raw=true" alt="2-star"/>)
+            return(<div className="star-img-rating-div"><img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-star.png?raw=true" alt="2-star"/><p className="num-reviews-p">{`${specificReviews?.length} Reviews`}</p></div>)
         } else if(avg >= 2.5 && avg < 3) {
-            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-half-star.png?raw=true" alt="2-half-star"/>)
+            return(<div className="star-img-rating-div"><img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-half-star.png?raw=true" alt="2-half-star"/><p className="num-reviews-p">{`${specificReviews?.length} Reviews`}</p></div>)
         } else if(avg >= 3 && avg < 3.5) {
-            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-star.png?raw=true" alt="3-star"/>)
+            return(<div className="star-img-rating-div"><img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-star.png?raw=true" alt="3-star"/><p className="num-reviews-p">{`${specificReviews?.length} Reviews`}</p></div>)
         } else if(avg >= 3.5 && avg < 4) {
-            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-half-star.png?raw=true" alt="3-half-star"/>)
+            return(<div className="star-img-rating-div"><img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-half-star.png?raw=true" alt="3-half-star"/><p className="num-reviews-p">{`${specificReviews?.length} Reviews`}</p></div>)
         } else if(avg >= 4 && avg < 4.5) {
-            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-star.png?raw=true" alt="4-star"/>)
+            return(<div className="star-img-rating-div"><img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-star.png?raw=true" alt="4-star"/><p className="num-reviews-p">{`${specificReviews?.length} Reviews`}</p></div>)
         } else if(avg >= 4.5 && avg < 5) {
-            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-half-star.png?raw=true" alt="4-half-star"/>)
+            return(<div className="star-img-rating-div"><img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-half-star.png?raw=true" alt="4-half-star"/><p className="num-reviews-p">{`${specificReviews?.length} Reviews`}</p></div>)
         } else if(avg === 5) {
-            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/five-star.png?raw=true" alt="5-star"/>)
+            return(<div className="star-img-rating-div"><img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/five-star.png?raw=true" alt="5-star"/><p className="num-reviews-p">{`${specificReviews?.length} Reviews`}</p></div>)
         }
     }
 
@@ -144,6 +144,12 @@ function OneBusinessPage({ isLoaded }) {
                         {specificReviews ?
                             avgCalculator()
                         : ''}
+
+                        <div className="blue-check-div">
+                            <img src={blueCheck} alt="blue-circle-check"/><p className="claimed-p">Claimed</p>
+
+                        </div>
+
 
                         <div className="business-show-rating-cont">
                             <p className="business-show-rating">{avg}</p>
