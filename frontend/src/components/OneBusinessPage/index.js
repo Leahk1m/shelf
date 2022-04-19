@@ -20,14 +20,12 @@ function OneBusinessPage({ isLoaded }) {
     const [showRevDropdown, setShowRevDropdown] = useState(prev => prev === false ? true : false);
     const [showBizDropdown, setShowBizDropdown] = useState(prev => prev === false ? true : false);
     const [youSureDeleteBiz, setYouSureDeleteBiz] = useState(false);
-    // const [starAvg, setStarAvg] = useState(0);
 
     let avg;
     // let sum = 0;
     let specificReviews;
     if(specificBusiness.length > 0 && reviews.length > 0) {
         specificReviews = reviews.filter(review => review.businessId === +specificBusiness[0].id);
-
 
     }
 
@@ -39,25 +37,25 @@ function OneBusinessPage({ isLoaded }) {
 
         let avg = sum / specificReviews.length;
         if(avg === 0) {
-            return(<p className="giant-0-star"></p>)
+            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/zero-star.png?raw=true" alt="0-star"/>)
         } else if(avg < 1.5) {
-            return(<p className="giant-1-star"></p>)
+            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true" alt="1-star"/>)
         } else if(avg >= 1.5 && avg < 2) {
-            return(<p className="giant-1-half-star"></p>)
+            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-half-star.png?raw=true" alt="1-half-star"/>)
         } else if(avg >= 2 && avg < 2.5) {
-            return(<p className="giant-2-star"></p>)
+            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-star.png?raw=true" alt="2-star"/>)
         } else if(avg >= 2.5 && avg < 3) {
-            return(<p className="giant-2-half-star"></p>)
+            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-half-star.png?raw=true" alt="2-half-star"/>)
         } else if(avg >= 3 && avg < 3.5) {
-            return(<p className="giant-3-star"></p>)
+            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-star.png?raw=true" alt="3-star"/>)
         } else if(avg >= 3.5 && avg < 4) {
-            return(<p className="giant-3-half-star"></p>)
+            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-half-star.png?raw=true" alt="3-half-star"/>)
         } else if(avg >= 4 && avg < 4.5) {
-            return(<p className="giant-4-star"></p>)
+            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-star.png?raw=true" alt="4-star"/>)
         } else if(avg >= 4.5 && avg < 5) {
-            return(<p className="giant-4-half-star"></p>)
+            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-half-star.png?raw=true" alt="4-half-star"/>)
         } else if(avg === 5) {
-            return(<p className="giant-5-star"></p>)
+            return(<img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/five-star.png?raw=true" alt="5-star"/>)
         }
     }
 
