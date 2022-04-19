@@ -140,10 +140,14 @@ input[type="radio"] {
 
 .biz-reviews-side-display {
     width: 100%;
-
     display: flex;
-    justify-content: center;
+    overflow: scroll;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    overflow-x: hidden;
 }
+
 
 .individual-reviews-container {
     width: 90%;
@@ -171,7 +175,7 @@ input[type="radio"] {
 }
 
 .review-photo-name {
-    position: absolute;
+
 }
 
 .biz-review-post-add-pg {

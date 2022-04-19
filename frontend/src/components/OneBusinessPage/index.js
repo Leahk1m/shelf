@@ -22,7 +22,7 @@ function OneBusinessPage({ isLoaded }) {
     const [youSureDeleteBiz, setYouSureDeleteBiz] = useState(false);
     // const [starAvg, setStarAvg] = useState(0);
 
-    // let avg;
+    let avg;
     // let sum = 0;
     let specificReviews;
     if(specificBusiness.length > 0 && reviews.length > 0) {
@@ -38,18 +38,27 @@ function OneBusinessPage({ isLoaded }) {
         })
 
         let avg = sum / specificReviews.length;
-
         if(avg === 0) {
-            [...Array(5)].map((star, i) => {
-                if(i < avg - 1) {
-                    
-                }
-                return(
-                    <AiOutlineStar/>
-                )
-
-        })
-
+            return(<p className="giant-0-star"></p>)
+        } else if(avg < 1.5) {
+            return(<p className="giant-1-star"></p>)
+        } else if(avg >= 1.5 && avg < 2) {
+            return(<p className="giant-1-half-star"></p>)
+        } else if(avg >= 2 && avg < 2.5) {
+            return(<p className="giant-2-star"></p>)
+        } else if(avg >= 2.5 && avg < 3) {
+            return(<p className="giant-2-half-star"></p>)
+        } else if(avg >= 3 && avg < 3.5) {
+            return(<p className="giant-3-star"></p>)
+        } else if(avg >= 3.5 && avg < 4) {
+            return(<p className="giant-3-half-star"></p>)
+        } else if(avg >= 4 && avg < 4.5) {
+            return(<p className="giant-4-star"></p>)
+        } else if(avg >= 4.5 && avg < 5) {
+            return(<p className="giant-4-half-star"></p>)
+        } else if(avg === 5) {
+            return(<p className="giant-5-star"></p>)
+        }
     }
 
     let sessionLinks;
@@ -133,6 +142,10 @@ function OneBusinessPage({ isLoaded }) {
                     <div className="business-show-info">
                         <p className="one-biz-title">{business.title}</p>
 
+                        {specificReviews ?
+                            avgCalculator()
+                        : ''}
+
                         <div className="business-show-rating-cont">
                             <p className="business-show-rating">{avg}</p>
 
@@ -166,17 +179,9 @@ function OneBusinessPage({ isLoaded }) {
 
             {reviews && specificReviews ?
                 <div>
-                    {console.log('spec-reviews', specificReviews)}
-            {console.log('spec-reviews-length', specificReviews.length)}
-            {console.log('avg',avg)}
-            {console.log('rating',specificReviews[0].rating)}
-
-
                     {specificReviews.map(review => (
                         <div key={review.id}>
-                            {/* {avgCalculator} */}
-                            {/* {sum + +review.rating}
-                            {console.log('sum', sum)} */}
+
                             <p>{review.firstName} {review.lastName}</p>
                             <img className="review-prof-icon"src={review.profilePhoto} alt="prof-icon"/>
                                 {sessionUser && review.userId === sessionUser.id ?
