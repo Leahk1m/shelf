@@ -171,10 +171,12 @@ function AddReview({ isLoaded }) {
 
                         </form>
                             <button className="submit-review-btn" onClick={handleReviewSubmit}>Post Review</button>
-
                     </div>
                 </div>
             </div>
+            <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
         </div>
     );
 }

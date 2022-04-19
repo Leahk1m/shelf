@@ -48,9 +48,9 @@ function ProfileButton({ user }) {
       : ''}
       {showMenu && (
         <div className="profile-dropdown">
-          <button onClick={goToProfile}>Profile</button>
+          <button className="prof-btn-nav"onClick={goToProfile}>Profile</button>
 
-          <button onClick={logout}>Log Out</button>
+          <button className="logout-btn-nav"onClick={logout}>Log Out</button>
         </div>
       )}
     </>
