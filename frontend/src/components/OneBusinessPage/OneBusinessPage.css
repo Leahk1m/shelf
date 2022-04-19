@@ -93,7 +93,7 @@
 }
 
 .write-review-btn {
-    width: 10%;
+    width: 11%;
     height: 35px;
     background-color: #d32324;
     margin-top: 30px;
@@ -177,7 +177,6 @@
     display: flex;
     grid-gap: 2%;
     gap: 2%;
-    margin-left: 10%;
     flex-direction: column;
 
 }
@@ -211,8 +210,37 @@
     align-items: center;
     align-content: center;
     margin-top: -50px;
+    gap: 5px;
 }
 
 .num-reviews-p {
     color: white;
+}
+
+.white-dot {
+    color: white;
+    font-size: 18px;
+}
+
+.display-category {
+    color: white;
+}
+
+.fat-review-div {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    margin-left: 7%;
+}
+
+.biz-description-p {
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    width: 50%;
+    height: 300px;
+}
+
+.hide-this {
+    display: none;
 }

@@ -10,6 +10,7 @@ import { AiOutlineEllipsis } from 'react-icons/ai';
 import { RiArrowDropDownLine} from 'react-icons/ri';
 import { AiOutlineStar } from 'react-icons/ai';
 import blueCheck from '../IconPics/blue-check.png';
+import { BsDot } from 'react-icons/bs';
 
 function OneBusinessPage({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -20,14 +21,21 @@ function OneBusinessPage({ isLoaded }) {
     const [showRevDropdown, setShowRevDropdown] = useState(prev => prev === false ? true : false);
     const [showBizDropdown, setShowBizDropdown] = useState(prev => prev === false ? true : false);
     const [youSureDeleteBiz, setYouSureDeleteBiz] = useState(false);
+    const [existingReview, setExistingReview] = useState(false);
+    let bizDescription;
+    let myReview;
 
     let avg;
     // let sum = 0;
     let specificReviews;
+    // let specificReviewsUserIds;
     if(specificBusiness.length > 0 && reviews.length > 0) {
         specificReviews = reviews.filter(review => review.businessId === +specificBusiness[0].id);
+        // specificReviewsUserIds = reviews.filter(review => review.userId);
+    };
 
-    }
+
+
 
     const avgCalculator = () => {
         let sum = 0;
@@ -78,13 +86,40 @@ function OneBusinessPage({ isLoaded }) {
 
     const history = useHistory();
 
+    const checkingReview = () => {
+        for(let i = 0; i < specificReviews?.length; i++) {
+            let review = specificReviews[i];
+            if(+review.userId === +sessionUser.id) {
+                // setExistingReview(true);
+                return true;
+            }
+        }
+        return false;
+
+    };
+
+
+
     const checkingUser = (e) => {
         e.preventDefault();
-        if(sessionUser) {
+        // specificReviews?.forEach((review) => {
+        //     if(+review.userId === +sessionUser.id) {
+        //         // console.log('review', review)
+        //         // console.log('+review.userId', +review.userId)
+        //         // console.log('+sessionUser.id', +sessionUser.id)
+        //         setExistingReview(true);
+        //     }
+        // });
+
+        if(sessionUser && checkingReview()) {
+            history.push(`/business/reviews/edit/${myReview}`)
+        } else if(sessionUser){
             history.push(`/business/reviews/${businessId}`)
         } else {
             history.push('/login')
+
         }
+
     };
 
     const deleteBusiness = async(e) => {
@@ -128,6 +163,7 @@ function OneBusinessPage({ isLoaded }) {
 
             {specificBusiness.map(business => (
                 <div key={business.id}>
+                    <p className="hide-this">{bizDescription = business.description}</p>
                     <div className="one-biz-pic-container">
                         {
                             business.imageUrls.map((img, i) => (
@@ -146,7 +182,7 @@ function OneBusinessPage({ isLoaded }) {
                         : ''}
 
                         <div className="blue-check-div">
-                            <img src={blueCheck} alt="blue-circle-check"/><p className="claimed-p">Claimed</p>
+                            <img src={blueCheck} alt="blue-circle-check"/><p className="claimed-p">Claimed</p><BsDot className="white-dot" /><p className="display-category">{business.category}</p>
 
                         </div>
 
@@ -156,12 +192,8 @@ function OneBusinessPage({ isLoaded }) {
 
                         </div>
 
-                   </div>
-                        <div className="review-btn-rec-review-title-div">
-                            <button className="write-review-btn" onClick={checkingUser}><AiOutlineStar className="outline-star"/>Write a Review</button>
-                            <h2>Recommended Reviews</h2>
 
-                        </div>
+                   </div>
                     {sessionUser && business.ownerId === sessionUser.id ?
                         <div className="update-delete-btn-container">
                             <RiArrowDropDownLine onClick={() => setShowBizDropdown(prev => prev === false ? true : false)}/>
@@ -184,51 +216,64 @@ function OneBusinessPage({ isLoaded }) {
             ))}
 
 
+            <div className="fat-review-div">
 
+                <div className="review-btn-rec-review-title-div">
+                    <button className="write-review-btn" onClick={checkingUser}><AiOutlineStar className="outline-star"/>Write a Review</button>
 
-            {reviews && specificReviews ?
-                <div className="peoples-reviews-cont">
-                    {specificReviews.map(review => (
-                        <div key={review.id}>
-                            <div className="review-person-info">
-                                <img className="review-prof-icon"src={review.profilePhoto} alt="prof-icon"/>
-                                <p className="review-person-name">{review.firstName} {review.lastName}</p>
-                                <AiOutlineEllipsis onClick={() => setShowRevDropdown(prev => prev === false ? true : false)} />
-
-                            </div>
-                                {sessionUser && review.userId === sessionUser.id ?
-                                    <div className="review-stars-and-post">
-                                        {review.rating === 1 &&
-                                            <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true" alt="1-star"/>
-                                        }
-                                        {review.rating === 2 &&
-                                            <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-star.png?raw=true" alt="2-star"/>
-                                        }
-                                        {review.rating === 3 &&
-                                            <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-star.png?raw=true" alt="3-star"/>
-                                        }
-                                        {review.rating === 4 &&
-                                            <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-star.png?raw=true" alt="4-star"/>
-                                        }
-                                        {review.rating === 5 &&
-                                            <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/five-star.png?raw=true" alt="5-star"/>
-                                        }
-                                        <div className="review-person-post">
-                                            <p>{review.post}</p>
-                                        </div>
-                                        {showRevDropdown ?
-                                            <div className="comment-edit-dropdown">
-                                                <button className="update-comment-btn"onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>Edit comment</button>
-                                                <button className="delete-comment-btn" onClick={deleteReview}>Delete comment</button>
-
-                                            </div>
-                                        : ''}
-                                    </div>
-                                : ''}
-                        </div>
-                    ))}
                 </div>
-            : <p>No Reviews Yet</p>}
+
+                    <p className="biz-description-p">{bizDescription}</p>
+                    <h2>Recommended Reviews</h2>
+
+                <div>
+
+                </div>
+                {reviews && specificReviews ?
+                    <div className="peoples-reviews-cont">
+                        {specificReviews.map(review => (
+                            <div key={review.id}>
+                                <div className="review-person-info">
+                                    <img className="review-prof-icon"src={review.profilePhoto} alt="prof-icon"/>
+                                    <p className="review-person-name">{review.firstName} {review.lastName}</p>
+                                    <AiOutlineEllipsis onClick={() => setShowRevDropdown(prev => prev === false ? true : false)} />
+
+                                </div>
+                                    {sessionUser && review.userId === sessionUser.id ?
+                                        <div className="review-stars-and-post">
+                                            <p className="hide-this">{myReview = review.id}</p>
+                                            {review.rating === 1 &&
+                                                <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true" alt="1-star"/>
+                                            }
+                                            {review.rating === 2 &&
+                                                <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-star.png?raw=true" alt="2-star"/>
+                                            }
+                                            {review.rating === 3 &&
+                                                <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-star.png?raw=true" alt="3-star"/>
+                                            }
+                                            {review.rating === 4 &&
+                                                <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-star.png?raw=true" alt="4-star"/>
+                                            }
+                                            {review.rating === 5 &&
+                                                <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/five-star.png?raw=true" alt="5-star"/>
+                                            }
+                                            <div className="review-person-post">
+                                                <p>{review.post}</p>
+                                            </div>
+                                            {showRevDropdown ?
+                                                <div className="comment-edit-dropdown">
+                                                    <button className="update-comment-btn"onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>Edit comment</button>
+                                                    <button className="delete-comment-btn" onClick={deleteReview}>Delete comment</button>
+
+                                                </div>
+                                            : ''}
+                                        </div>
+                                    : ''}
+                            </div>
+                        ))}
+                    </div>
+                : <p>No Reviews Yet</p>}
+            </div>
 
         </div>
     );
