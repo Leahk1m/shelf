@@ -5,10 +5,11 @@ import { useHistory } from "react-router-dom";
 import './Navigation.css';
 
 function ProfileButton({ user }) {
+  const pathName = window.location.pathname;
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const currentUsersFirstName = useSelector(state => Object.values(state.session.user.firstName))
-  const currentUsersProfilePhoto = useSelector(state => state.session.user.profilePhoto)
+  const currentUsersFirstName = useSelector(state => state.session.user?.firstName);
+  const currentUsersProfilePhoto = useSelector(state => state.session.user?.profilePhoto);
   const history = useHistory();
 
   const openMenu = () => {
@@ -41,10 +42,13 @@ function ProfileButton({ user }) {
   return (
     <>
       {currentUsersFirstName ?
-        // <button onClick={openMenu}> <img src={currentUsersProfilePhoto} alt="user-prof-icon-nav"/></button>
-        <img className="nav-prof-icon"onClick={openMenu} src={currentUsersProfilePhoto} alt="user-prof-icon-nav"/>
+        <div>
+          {pathName == '/' ?
+            <p onClick={openMenu}className="welcome-user-nav-title">{`Welcome, ${currentUsersFirstName}`}</p>
+        :   <img className="nav-prof-icon"onClick={openMenu} src={currentUsersProfilePhoto} alt="user-prof-icon-nav"/>}
 
-        // <p className="welcome-line">Welcome <button className="welcome-demo-btn"onClick={openMenu}>{currentUsersFirstName}</button></p>
+        </div>
+
       : ''}
       {showMenu && (
         <div className="profile-dropdown">

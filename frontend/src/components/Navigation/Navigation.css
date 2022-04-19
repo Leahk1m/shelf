@@ -44,51 +44,57 @@
   border-radius: 3px;
 }
 
-.welcome-line {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-}
 
 .nav-prof-icon {
   width: 15%;
   border-radius: 6px;
 }
 
-.prof-btn-nav {
-  border: none;
-  padding: 5px;
-  width: 80px;
-  color: white;
-  background-color: transparent;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
+.profile-dropdown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  border: 1px solid #cfcbcb;
+  box-shadow: 9px 5px 20px 1px #cfcbcb;
+  justify-content: center;
+}
 
+
+
+
+.prof-btn-nav {
+  height: 25px;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  border-bottom: 1px solid #e6e6e6;
 }
-.prof-btn-nav:hover {
-  color: grey;
-  box-shadow:
-   -7px -7px 20px 0px #fff9,
-   -4px -4px 5px 0px #fff9,
-   7px 7px 20px 0px #0002,
-   4px 4px 5px 0px #0001;
+
+
+
+
+.profile-dropdown button:hover,
+.profile-dropdown button:focus {
+  flex-grow: 2;
+  color: white;
+  outline: none;
+  text-shadow: none;
+  background-color: var(--color-secondary);
+  transition: 0.5s;
 }
+
 
 .logout-btn-nav {
+  height: 25px;
   border: none;
-  padding: 5px;
-  width: 80px;
-  color: white;
-  background-color: transparent;
   font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
+  font-size: 14px;
 
 }
-.logout-btn-nav:hover {
-  color: grey;
-  box-shadow:
-  -7px -7px 20px 0px #fff9,
-  -4px -4px 5px 0px #fff9,
-  7px 7px 20px 0px #0002,
-  4px 4px 5px 0px #0001;
 
+.welcome-user-nav-title {
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
 }
