@@ -48,7 +48,7 @@ function HomePage({isLoaded}) {
                         <p className="find-near-p">Find</p>
                         <input className="find-name"
                         type="text"
-                        placeholder="Family-owned, Health-conscious, Rustic stores..."
+                        placeholder="Family-owned, Traditional, Rustic stores..."
                         />
 
                         <p className="find-near-p">Near</p>
@@ -67,27 +67,40 @@ function HomePage({isLoaded}) {
                 <div className="categories-div">
                     <div className="fam-owned-cont">
                         <img onClick={() => history.push('/search/family-owned')} className="cat-type-img"src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/family.jpg?raw=true' alt="fam-owned"/>
-                        <h3 className="categories-title">Family-owned</h3>
+                        <h4 className="categories-title">Family-owned</h4>
                     </div>
 
                     <div className="modern-cont">
                         <img onClick={() => history.push('/search/modern')} className="cat-type-img" src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/new-modern.jpg?raw=true' alt="modern"/>
-                        <h3 className="categories-title">Modern</h3>
+                        <h4 className="categories-title">Modern</h4>
                     </div>
 
                     <div onClick={() => history.push('/search/rustic')} className="rustic-cont">
                         <img className="cat-type-img"src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/rustic.png?raw=true' alt="rustic"/>
-                        <h3 className="categories-title">Rustic</h3>
+                        <h4 className="categories-title">Rustic</h4>
                     </div>
                 </div>
             </div>
 
             <div className="shelf-bay-area">
-                <h1 className="shelf-bay-area-p">shelf Bay Area</h1>
-                <h2 className="hot-and-new-businesses">Hot and New Businesses</h2>
-                <div className="hot-businesses-cont">
-                    
+                <div className="shelf-hot-new-titles-div">
+                    <h2 className="shelf-bay-area-p">shelf Bay Area</h2>
+                    <h3 className="hot-and-new-businesses">Hot and New Businesses</h3>
 
+                </div>
+                <div className="hot-businesses-cont">
+                    <div className="hot-indiv-biz">
+                        <img className="hot-indiv-img" src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/hot1.png?raw=true' alt="hot1"/>
+                        <h4>DEVO</h4>
+                    </div>
+                    <div className="hot-indiv-biz">
+                        <img className="hot-indiv-img" src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/hot2.png?raw=true' alt="hot2"/>
+                        <h4>The Goods Mart</h4>
+                    </div>
+                    <div className="hot-indiv-biz">
+                        <img className="hot-indiv-img" src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/hot3.jpg?raw=true' alt="hot3"/>
+                        <h4>Midtown Market</h4>
+                    </div>
                 </div>
             </div>
         </div>
