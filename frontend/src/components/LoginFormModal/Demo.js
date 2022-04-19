@@ -1,6 +1,6 @@
 import React from 'react';
 import Typewriter from 'typewriter-effect';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 function Demo() {
     return(

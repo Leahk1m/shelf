@@ -102,3 +102,22 @@
 .add-biz-title-h1 {
     color: #5a5a5a;
 }
+
+input[type="file"] {
+    display: none;
+}
+
+.add-photo-new-biz-btn {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+}
+.add-photo-new-biz-btn:hover {
+    color: white;
+    background-color: rgb(188, 187, 187);
+}

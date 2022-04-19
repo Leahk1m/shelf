@@ -18,7 +18,7 @@ module.exports = {
       },
       profilePhoto : {
         allowNull: false,
-        type: Sequelize.TEXT
+        type: Sequelize.STRING(256)
       },
       // username: {
       //   type: Sequelize.STRING(30),

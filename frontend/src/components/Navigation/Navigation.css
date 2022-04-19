@@ -38,6 +38,10 @@
 .search-input {
   width: 90%;
   height: 35px;
+  box-shadow: 4px 5px 20px #e3e2e2;
+  outline: none;
+  border: none;
+  border-radius: 3px;
 }
 
 .welcome-line {
@@ -46,6 +50,45 @@
 }
 
 .nav-prof-icon {
-  width: 25%;
+  width: 15%;
   border-radius: 6px;
+}
+
+.prof-btn-nav {
+  border: none;
+  padding: 5px;
+  width: 80px;
+  color: white;
+  background-color: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+
+}
+.prof-btn-nav:hover {
+  color: grey;
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+}
+
+.logout-btn-nav {
+  border: none;
+  padding: 5px;
+  width: 80px;
+  color: white;
+  background-color: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+
+}
+.logout-btn-nav:hover {
+  color: grey;
+  box-shadow:
+  -7px -7px 20px 0px #fff9,
+  -4px -4px 5px 0px #fff9,
+  7px 7px 20px 0px #0002,
+  4px 4px 5px 0px #0001;
+
 }

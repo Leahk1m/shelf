@@ -32,6 +32,13 @@ function SignupFormPage() {
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if(file) {
+        setProfilePhoto(file);
+    }
+};
+
   return (
     <div className="signup-pg-container">
       <div className="signup-red-nav">
@@ -44,10 +51,6 @@ function SignupFormPage() {
       </div>
       <div className="signup-form-container">
         <form onSubmit={handleSubmit}>
-          <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
-
           <div className="signup-input-container">
             <div className="signup-names-container">
               <input className="signup-name-input"
@@ -96,25 +99,23 @@ function SignupFormPage() {
                 required
                 placeholder="Confirm password"
               />
-
-              <input className="signup-input"
-              type="text"
-              value={profilePhoto}
-              onChange={(e) => setProfilePhoto(e.target.value)}
-              required
-              placeholder="Profile photo(image url)"
-
-              />
             </div>
           </div>
+          <label className="add-photo-new-biz-btn">
+            Image Upload
+            <input
+            type="file"
+            onChange={updateFile} />
+          </label>
           <button className="signup-btn"type="submit">Sign Up</button>
           <div className="back-to-login">
             <p className="already-on-shelf-p">Already on shelf? <NavLink className="changed-mind" to="/login">Log in</NavLink></p>
-
           </div>
-
         </form>
       </div>
+      <ul>
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      </ul>
     </div>
   );
 }

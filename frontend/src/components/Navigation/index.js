@@ -2,10 +2,9 @@ import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import shelfIcon from '../IconPics/shelf.png';
-import magnify from '../IconPics/mag.png';
+// import magnify from '../IconPics/mag.png';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);

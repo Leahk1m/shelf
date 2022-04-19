@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { useHistory } from "react-router-dom";
+import './Navigation.css';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -47,9 +48,9 @@ function ProfileButton({ user }) {
       : ''}
       {showMenu && (
         <div className="profile-dropdown">
-          <button onClick={goToProfile}>Profile</button>
+          <button className="prof-btn-nav"onClick={goToProfile}>Profile</button>
 
-          <button onClick={logout}>Log Out</button>
+          <button className="logout-btn-nav"onClick={logout}>Log Out</button>
         </div>
       )}
     </>

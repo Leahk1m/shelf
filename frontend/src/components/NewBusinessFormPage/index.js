@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, NavLink } from "react-router-dom";
-import * as sessionActions from "../../store/session";
+import { useHistory, NavLink } from "react-router-dom";
 import ProfileButton from "../Navigation/ProfileButton";
-import LoginFormModal from "../LoginFormModal";
 import './NewBusinessFormPage.css';
 import * as businessActions from '../../store/business'
 import shelfIcon from '../IconPics/shelf.png';
@@ -18,12 +16,12 @@ function NewBusinessFormPage({ isLoaded }) {
     const [state, setState] = useState("");
     const [zipCode, setZipCode] = useState("");
     const [category, setCategory] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
-    const [imageUrlTwo, setImageUrlTwo] = useState("");
-    const [imageUrlThree, setImageUrlThree] = useState("");
-    const ownerId = useSelector((state) => state.session.user.id)
+    const [imageUrls, setImageUrls] = useState([]);
+    const ownerId = useSelector((state) => state.session?.user?.id)
     const history = useHistory();
     const [errors, setErrors] = useState([]);
+    const [passedImgsLength, setPassedImgsLength] = useState(false);
+    const [imgInputError, setImgInputError] = useState(false);
 
     let sessionLinks;
     if (sessionUser) {
@@ -42,7 +40,7 @@ function NewBusinessFormPage({ isLoaded }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(businessActions.addNewBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrl, imageUrlTwo, imageUrlThree}))
+        await dispatch(businessActions.addNewBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrls }))
             .then(() => history.push('/profile'))
             .catch(async (res) => {
                 const data = await res.json();
@@ -50,8 +48,23 @@ function NewBusinessFormPage({ isLoaded }) {
                     setErrors(data.errors)
                 }
             })
+    };
 
-    }
+    const updateFiles = (e) => {
+        let files = e.target.files;
+        if(files.length !== 3) {
+            setImgInputError(true);
+            setPassedImgsLength(false);
+        } else {
+            setPassedImgsLength(true);
+            setImageUrls(files);
+        }
+    };
+
+    const preventRefresh = (e) => {
+        e.preventDefault();
+        setImgInputError(true);
+    };
 
     return(
         <div className="new-business-form-container">
@@ -75,9 +88,8 @@ function NewBusinessFormPage({ isLoaded }) {
             <h1 className="add-biz-title-h1">Let's add your business</h1>
             <p className="lets-add-biz-info-p">Add information about your business below. Once your business is set up, <br/>it will appear in the search results and your business page <br/>will be available for views and reviews!</p>
             <div className="new-biz-form-input-container">
-                {/* {sessionUser ? */}
                 <p className="new-biz-directions">Let's start with a title</p>
-                <form className="new-biz-form" onSubmit={handleSubmit}>
+                <form className="new-biz-form" onSubmit={ passedImgsLength ? handleSubmit : preventRefresh }>
                     <input className="new-biz-input"
                     type="text"
                     value={title}
@@ -112,15 +124,9 @@ function NewBusinessFormPage({ isLoaded }) {
                         />
                     </div>
                     <p className="new-biz-directions" id="vibes">What's the vibe like?</p>
-                    {/* <input className="new-biz-input"
-                    type="text"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    placeholder="Category"
-                    /> */}
-                    <select className="new-biz-category-input"defaultValue="Select category" onChange={(e) => setCategory(e.target.value)}>
+                    <select className="new-biz-category-input" defaultValue="Select category"onChange={(e) => setCategory(e.target.value)}>
                         <option value="Traditional">Traditional</option>
-                        <option value="Health-conscious">Health-conscious</option>
+                        <option value="Family-run">Family-run</option>
                         <option value="Modern">Modern</option>
                         <option value="Rustic">Rustic</option>
                         <option value="Other">Other</option>
@@ -133,24 +139,14 @@ function NewBusinessFormPage({ isLoaded }) {
                     placeholder="Description"
                     />
                     <p className="new-biz-directions">Finally, show off your place with three photos!</p>
-                    <input className="new-biz-input"
-                    type="text"
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    placeholder="Image Url"
-                    />
-                    <input className="new-biz-input"
-                    type="text"
-                    value={imageUrlTwo}
-                    onChange={(e) => setImageUrlTwo(e.target.value)}
-                    placeholder="Second Image Url"
-                    />
-                    <input className="new-biz-input"
-                    type="text"
-                    value={imageUrlThree}
-                    onChange={(e) => setImageUrlThree(e.target.value)}
-                    placeholder="Third Image Url"
-                    />
+
+                    <label className="add-photo-new-biz-btn">
+                        Upload photos
+                        <input
+                        type="file"
+                        multiple
+                        onChange={updateFiles} />
+                    </label>
 
                     <button className="add-business-btn"type="submit">I'm ready to add my business!</button>
                 </form>
@@ -158,6 +154,11 @@ function NewBusinessFormPage({ isLoaded }) {
             </div>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                {imgInputError ?
+                    <p>
+                        Please submit 3 photos of your business
+                    </p>
+                : ''}
             </ul>
         </div>
     );

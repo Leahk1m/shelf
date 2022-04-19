@@ -3,7 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import './LoginForm.css';
-import Typewriter from 'typewriter-effect';
+// import Typewriter from 'typewriter-effect';
 import shelfIcon from '../IconPics/new-shelf.png';
 
 function LoginFormPage() {

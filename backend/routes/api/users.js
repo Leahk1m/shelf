@@ -8,6 +8,8 @@ const { User } = require("../../db/models");
 
 const router = express.Router();
 
+const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3");
+
 const validateSignup = [
   check('firstName')
         .exists({ checkFalsy: true })
@@ -23,12 +25,12 @@ const validateSignup = [
         .withMessage('Last name must be at least 3 characters long')
         .matches(/^[A-Za-z\s]+$/)
         .withMessage('Please provide a valid last name'),
-    check('profilePhoto')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a profile photo')
-        .isURL({ require_protocol: false, require_host: false })
-        .matches(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)
-        .withMessage('Please input a proper url for your profile photo'),
+    // check('profilePhoto')
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Please provide a profile photo')
+    //     .isURL({ require_protocol: false, require_host: false })
+    //     .matches(/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i)
+    //     .withMessage('Please input a proper url for your profile photo'),
     check('city')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a city')
@@ -58,9 +60,11 @@ const validateSignup = [
 // Sign up
 router.post(
   '',
+  singleMulterUpload('profilePhoto'),
   validateSignup,
   asyncHandler(async (req, res) => {
-    const { firstName, lastName, profilePhoto, city, email, password} = req.body;
+    const { firstName, lastName, city, email, password} = req.body;
+    const profilePhoto = await singlePublicFileUpload(req.file);
     const user = await User.signup({ firstName, lastName, profilePhoto, city, email, password });
 
     await setTokenCookie(res, user);

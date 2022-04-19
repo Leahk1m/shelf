@@ -46,17 +46,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(30)
       },
-      imageUrl: {
+      imageUrls: {
         allowNull: false,
-        type: Sequelize.TEXT
-      },
-      imageUrlTwo: {
-        allowNull: false,
-        type: Sequelize.TEXT
-      },
-      imageUrlThree: {
-        allowNull: false,
-        type: Sequelize.TEXT
+        type: Sequelize.ARRAY(Sequelize.STRING)
+
       },
       createdAt: {
         allowNull: false,

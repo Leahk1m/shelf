@@ -72,7 +72,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       profilePhoto: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       city: {

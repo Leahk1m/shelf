@@ -4,8 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
-import Navigation from './components/Navigation';
-import { Modal } from './context/Modal';
+// import Navigation from './components/Navigation';
+// import { Modal } from './context/Modal';
 import ShowBusinesses from './components/ShowBusinesses';
 import HomePage from './components/HomePage';
 import NewBusinessFormPage from './components/NewBusinessFormPage';
@@ -14,6 +14,7 @@ import UpdateBusinessPage from './components/UpdateBusinessPage';
 import ProfilePage from './components/ProfilePage';
 import AddReviewFormPage from './components/AddReviewFormPage';
 import EditReviewFormPage from './components/EditReviewFormPage';
+import SearchPage from './components/SearchPage';
 
 
 import * as businessActions from './store/business';
@@ -22,7 +23,7 @@ import * as reviewActions from './store/review';
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(businessActions.allUserBusinesses());
@@ -45,6 +46,9 @@ function App() {
           <Route exact path='/'>
             <HomePage isLoaded={isLoaded}/>
           </Route>
+          <Route exact path='/search/:searchTerm'>
+            <SearchPage isLoaded={isLoaded}/>
+          </Route>
           {/* <Route path="/login" >
             <LoginFormPage />
           </Route> */}
@@ -64,13 +68,13 @@ function App() {
             <OneBusinessPage isLoaded={isLoaded}/>
           </Route>
           <Route exact path='/business/edit/:businessId'>
-            <UpdateBusinessPage />
+            <UpdateBusinessPage isLoaded={isLoaded}/>
           </Route>
           <Route exact path='/profile'>
             <ProfilePage isLoaded={isLoaded} />
           </Route>
           <Route exact path='/business/reviews/:businessId'>
-            <AddReviewFormPage />
+            <AddReviewFormPage isLoaded={isLoaded}/>
           </Route>
           <Route exact path='/business/reviews/edit/:reviewId'>
             <EditReviewFormPage isLoaded={isLoaded}/>

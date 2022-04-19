@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import LoginForm from './LoginForm';
 import Demo from './Demo';
-import { useDispatch, useSelector } from 'react-redux';
-import * as sessionActions from '../../store/session';
+// import { useDispatch } from 'react-redux';
+// import * as sessionActions from '../../store/session';
 
 function LoginFormModal() {
   const [showModal, setShowModal] = useState(false);
   const [showTypewriter, setShowTypewriter] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // useEffect(() => {
   //   const timer = setTimeout(() => {
