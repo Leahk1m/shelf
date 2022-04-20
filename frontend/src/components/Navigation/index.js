@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import shelfIcon from '../IconPics/shelf.png';
 // import magnify from '../IconPics/mag.png';
+import * as sessionActions from '../../store/session';
 
 function Navigation({ isLoaded }){
   const pathName = window.location.pathname;
@@ -25,6 +26,12 @@ function Navigation({ isLoaded }){
     );
   }
 
+   const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logout());
+    history.push('/')
+  };
+
   return (
     <div className="navbar-container">
       <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
@@ -37,15 +44,23 @@ function Navigation({ isLoaded }){
       </div>
     : ''}
 
+    {pathName == '/' && sessionUser?
+      <div>
+        <NavLink className="prof-btn-nav" exact to="/host">Add Business</NavLink>
+        <NavLink className="prof-btn-nav" exact to="/profile">Profile</NavLink>
+        <button className="logout-btn-nav"onClick={logout}>Log Out</button>
+
+      </div>
+
+    : ''}
+
+
+
       <div className="main-nav-links">
-        {sessionUser ?
-          <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-        : ''}
         <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
         {isLoaded && sessionLinks}
 
       </div>
-
     </div>
 
 
