@@ -1,0 +1,18 @@
+
+.star-img-rating-div-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+.stars-img-search {
+    width: 50%;
+}
+
+
+.num-reviews-p-search {
+    color: black;
+    font-size: 15px;
+}

@@ -5,12 +5,14 @@ import { useSelector } from 'react-redux';
 import './ShowBusinesses.css';
 import ProfileButton from '../Navigation/ProfileButton';
 import shelfIcon from '../IconPics/shelf.png';
+import GrabRatings from '../GrabRatings';
 
 function ShowBusinesses({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
-    // const userProfilePhoto = sessionUser.profilePhoto;
     const businesses = useSelector(state => Object.values(state.business));
+    const reviews = useSelector((state) => Object.values(state.review));
     const history = useHistory();
+
 
     let sessionLinks;
     if (sessionUser) {
@@ -25,6 +27,8 @@ function ShowBusinesses({ isLoaded }) {
         </>
         );
     }
+
+
     return(
         <div className="all-biz-cont">
             <div className="navbar-container">
@@ -42,21 +46,30 @@ function ShowBusinesses({ isLoaded }) {
                         : ''}
                         <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
                         {isLoaded && sessionLinks}
-
                 </div>
             </div>
 
-           {businesses.map(business => (
-               <div className="indiv-biz-container"key={business.id}>
-                   <NavLink to={`/business/${business.id}`}><img className="explore-biz-pic" src={business.imageUrls[0]} alt="explore-pics"/></NavLink>
-                   <div className="indiv-biz-description">
-                       <h1>{business.title}</h1>
-                        <p>
-                            {business.address}
-                        </p>
-                   </div>
-               </div>
-           ))}
+            <div className="search-pg-contents-div">
+                {/* {console.log(thisBizRatings)}
+                {console.log(thisBusinessId)} */}
+                <h3 className="all-results-title">All Businesses on shelf</h3>
+                {businesses.map((business) => (
+                    <div className="search-business-info-cont">
+                        <div className="search-biz-info">
+                            <img onClick={() => history.push(`/business/${business.id}`)}className="search-business-pic"src={business.imageUrls[0]} alt="search-business"/>
+                            <div className="search-biz-title-rating-review">
+                                <p>{business.title}</p>
+                                <GrabRatings businessId={business.id}/>
+                                <p>{business.address}</p>
+                                <p>{business.city} {business.state}</p>
+                                <p>{business.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+
+            </div>
+
         </div>
     );
 }

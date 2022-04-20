@@ -21,21 +21,14 @@ function OneBusinessPage({ isLoaded }) {
     const [showRevDropdown, setShowRevDropdown] = useState(prev => prev === false ? true : false);
     const [showBizDropdown, setShowBizDropdown] = useState(prev => prev === false ? true : false);
     const [youSureDeleteBiz, setYouSureDeleteBiz] = useState(false);
-    const [existingReview, setExistingReview] = useState(false);
     let bizDescription;
     let myReview;
 
     let avg;
-    // let sum = 0;
     let specificReviews;
-    // let specificReviewsUserIds;
     if(specificBusiness.length > 0 && reviews.length > 0) {
         specificReviews = reviews.filter(review => review.businessId === +specificBusiness[0].id);
-        // specificReviewsUserIds = reviews.filter(review => review.userId);
     };
-
-
-
 
     const avgCalculator = () => {
         let sum = 0;
@@ -102,14 +95,6 @@ function OneBusinessPage({ isLoaded }) {
 
     const checkingUser = (e) => {
         e.preventDefault();
-        // specificReviews?.forEach((review) => {
-        //     if(+review.userId === +sessionUser.id) {
-        //         // console.log('review', review)
-        //         // console.log('+review.userId', +review.userId)
-        //         // console.log('+sessionUser.id', +sessionUser.id)
-        //         setExistingReview(true);
-        //     }
-        // });
 
         if(sessionUser && checkingReview()) {
             history.push(`/business/reviews/edit/${myReview}`)
@@ -117,9 +102,7 @@ function OneBusinessPage({ isLoaded }) {
             history.push(`/business/reviews/${businessId}`)
         } else {
             history.push('/login')
-
         }
-
     };
 
     const deleteBusiness = async(e) => {
@@ -262,8 +245,8 @@ function OneBusinessPage({ isLoaded }) {
                                             </div>
                                             {showRevDropdown ?
                                                 <div className="comment-edit-dropdown">
-                                                    <button className="update-comment-btn"onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>Edit comment</button>
-                                                    <button className="delete-comment-btn" onClick={deleteReview}>Delete comment</button>
+                                                    <button className="update-comment-btn"onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>Edit review</button>
+                                                    <button className="delete-comment-btn" onClick={deleteReview}>Delete review</button>
 
                                                 </div>
                                             : ''}
