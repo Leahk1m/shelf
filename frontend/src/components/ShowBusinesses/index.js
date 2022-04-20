@@ -50,19 +50,20 @@ function ShowBusinesses({ isLoaded }) {
             </div>
 
             <div className="search-pg-contents-div">
-                {/* {console.log(thisBizRatings)}
-                {console.log(thisBusinessId)} */}
                 <h3 className="all-results-title">All Businesses on shelf</h3>
                 {businesses.map((business) => (
                     <div className="search-business-info-cont">
                         <div className="search-biz-info">
                             <img onClick={() => history.push(`/business/${business.id}`)}className="search-business-pic"src={business.imageUrls[0]} alt="search-business"/>
                             <div className="search-biz-title-rating-review">
-                                <p>{business.title}</p>
+                                <h2 className="all-these-biz-titles">{business.title}</h2>
                                 <GrabRatings businessId={business.id}/>
-                                <p>{business.address}</p>
-                                <p>{business.city} {business.state}</p>
-                                <p>{business.description}</p>
+                                <button className="all-biz-cat-btn">{business.category}</button>
+                                <div>
+                                    <p>{business.address}</p>
+                                    <p>{business.city} {business.state}</p>
+                                    <p className="all-biz-desc-search">{business.description}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

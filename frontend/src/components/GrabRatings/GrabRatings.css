@@ -2,7 +2,9 @@
 .star-img-rating-div-search {
     display: flex;
     align-items: center;
+    grid-gap: 10px;
     gap: 10px;
+    margin-top: -23px;
 }
 
 
