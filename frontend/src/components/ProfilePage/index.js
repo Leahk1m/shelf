@@ -78,7 +78,7 @@ function ProfilePage({ isLoaded }) {
                                             <GrabRatings businessId={business.id}/>
                                         </div>
                                     </div>
-                                    <img className="prof-business-photo"src={business.imageUrls[0]} alt="prof-biz-to-show"/>
+                                    <img onClick={() => history.push(`/business/${business.id}`)}className="prof-business-photo"src={business.imageUrls[0]} alt="prof-biz-to-show"/>
                                 </div>
                             ))}
                         </div>

@@ -23,6 +23,9 @@ function OneBusinessPage({ isLoaded }) {
     const [youSureDeleteBiz, setYouSureDeleteBiz] = useState(false);
     let bizDescription;
     let myReview;
+    let bizAddress;
+    let bizCity;
+    let bizState;
 
     let avg;
     let specificReviews;
@@ -147,6 +150,9 @@ function OneBusinessPage({ isLoaded }) {
             {specificBusiness.map(business => (
                 <div key={business.id}>
                     <p className="hide-this">{bizDescription = business.description}</p>
+                    <p className="hide-this">{bizAddress= business.address}</p>
+                    <p className="hide-this">{bizCity = business.city}</p>
+                    <p className="hide-this">{bizState = business.state}</p>
                     <div className="one-biz-pic-container">
                         {
                             business.imageUrls.map((img, i) => (
@@ -206,10 +212,16 @@ function OneBusinessPage({ isLoaded }) {
 
                 </div>
 
+                <div className="biz-description-cont-div">
                     <p className="biz-description-p">{bizDescription}</p>
-                    <h2>Recommended Reviews</h2>
+                    <p>{bizAddress}</p>
+                    <p>{bizCity}</p>
+                    <p>{bizState}</p>
+
+                </div>
 
                 <div>
+                    <h2>Recommended Reviews</h2>
 
                 </div>
                 {reviews && specificReviews ?

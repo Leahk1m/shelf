@@ -6,6 +6,7 @@ import './ShowBusinesses.css';
 import ProfileButton from '../Navigation/ProfileButton';
 import shelfIcon from '../IconPics/shelf.png';
 import GrabRatings from '../GrabRatings';
+import magnify from '../IconPics/mag.png';
 
 function ShowBusinesses({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -34,16 +35,27 @@ function ShowBusinesses({ isLoaded }) {
             <div className="navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
-                <div className="search-container">
-                    <input className="search-input"
-                    type="text"
-                    />
-                    </div>
+                <div className="double-search-not-home">
+                        <p className="find-near-p-nh">Find</p>
+                        <input className="find-name-nh"
+                        type="text"
+                        placeholder="Family-owned, Traditional, Rustic stores..."
+                        />
+
+                        <p className="find-near-p-nh">Near</p>
+                        <input className="find-location-nh"
+                        type="text"
+                        placeholder="Bay Area, CA ONLY for now"
+                        readOnly = {true}
+                        />
+                        <button className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+
+                </div>
 
                     <div className="main-nav-links">
-                        {sessionUser ?
+                        {/* {sessionUser ?
                         <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                        : ''}
+                        : ''} */}
                         <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
                         {isLoaded && sessionLinks}
                 </div>

@@ -236,12 +236,19 @@
 }
 
 .biz-description-p {
-    border-top: 1px solid #e0e0e0;
-    border-bottom: 1px solid #e0e0e0;
-    width: 50%;
-    height: 300px;
+
 }
 
 .hide-this {
     display: none;
+}
+
+.biz-description-cont-div {
+    border-top: 1px solid #e4e1e1;
+    border-bottom: 1px solid #e4e1e1;
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
 }
