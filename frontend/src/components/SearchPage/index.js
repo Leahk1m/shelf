@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
 import './SearchPage.css';
@@ -41,6 +41,10 @@ function SearchPage({isLoaded}) {
         return (<p>{thisReview[0]?.post}</p>);
 
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
 
     return(

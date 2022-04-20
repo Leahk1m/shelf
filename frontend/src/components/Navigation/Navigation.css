@@ -31,6 +31,16 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid #8080803b;
+  position: sticky;
+  top: 0;
+  background-color: whitesmoke;
+}
+.review-navbar-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #8080803b;
+
 }
 
 

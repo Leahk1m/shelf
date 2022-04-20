@@ -93,7 +93,7 @@ function NewBusinessFormPage({ isLoaded }) {
 
     return(
         <div className="new-business-form-container">
-             <div className="navbar-container">
+             <div className="review-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
                 <div className="search-container">
                     <input className="search-input"
