@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import './HomePage.css';
 import largeShelfLogo from '../IconPics/new-shelf.png';
@@ -33,6 +33,10 @@ function HomePage({isLoaded}) {
             history.push(`/search/${search}`)
         }
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
 
     return(

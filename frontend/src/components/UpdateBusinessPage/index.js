@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import * as businessActions from '../../store/business'
@@ -6,6 +6,7 @@ import './UpdateBusinessPage.css';
 import shelfIcon from '../IconPics/shelf.png';
 import ProfileButton from '../Navigation/ProfileButton';
 import { FcCheckmark } from 'react-icons/fc';
+import magnify from '../IconPics/mag.png';
 
 function UpdateBusinessPage({ isLoaded }) {
     const { businessId } = useParams();
@@ -30,6 +31,10 @@ function UpdateBusinessPage({ isLoaded }) {
     const ownerId = useSelector((state) => state.session.user.id)
 
     const history = useHistory();
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const handleEditSubmit = async (e) => {
         e.preventDefault();
@@ -80,10 +85,21 @@ function UpdateBusinessPage({ isLoaded }) {
         <div className="update-business-form-container">
             <div className="review-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
-                <div className="search-container">
-                    <input className="search-input"
-                    type="text"
-                    />
+                <div className="double-search-not-home">
+                        <p className="find-near-p-nh">Find</p>
+                        <input className="find-name-nh"
+                        type="text"
+                        placeholder="Family-owned, Traditional, Rustic stores..."
+                        />
+
+                        <p className="find-near-p-nh">Near</p>
+                        <input className="find-location-nh"
+                        type="text"
+                        placeholder="Bay Area, CA ONLY for now"
+                        readOnly = {true}
+                        />
+                        <button className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+
                 </div>
 
                 <div className="main-nav-links">

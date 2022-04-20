@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
 import ProfileButton from "../Navigation/ProfileButton";
@@ -6,6 +6,7 @@ import './NewBusinessFormPage.css';
 import * as businessActions from '../../store/business'
 import shelfIcon from '../IconPics/shelf.png';
 import { FcCheckmark } from 'react-icons/fc';
+import magnify from '../IconPics/mag.png';
 
 function NewBusinessFormPage({ isLoaded }) {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function NewBusinessFormPage({ isLoaded }) {
     const [passedImgsLength, setPassedImgsLength] = useState(false);
     const [imgInputError, setImgInputError] = useState(false);
     const [imgLoaded, setImgLoaded] = useState(false);
+    const [search, setSearch] = useState('');
 
 
     let sessionLinks;
@@ -39,6 +41,10 @@ function NewBusinessFormPage({ isLoaded }) {
         </>
       );
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const errorChecks = () => {
         const frontErrors = [];
@@ -91,14 +97,36 @@ function NewBusinessFormPage({ isLoaded }) {
         errorChecks();
     };
 
+    const searching = (e) => {
+        if(search.length === 0) {
+            history.push(`/search/all`)
+
+        } else {
+            history.push(`/search/${search}`)
+        }
+    };
+
     return(
         <div className="new-business-form-container">
              <div className="review-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
-                <div className="search-container">
-                    <input className="search-input"
+                <div className="double-search-not-home">
+                    <p className="find-near-p-nh">Find</p>
+                    <input className="find-name-nh"
                     type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Family-owned, Traditional, Rustic stores..."
                     />
+
+                    <p className="find-near-p-nh">Near</p>
+                    <input className="find-location-nh"
+                    type="text"
+                    placeholder="Bay Area, CA ONLY for now"
+                    readOnly = {true}
+                    />
+                    <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+
                 </div>
 
                 <div className="main-nav-links">

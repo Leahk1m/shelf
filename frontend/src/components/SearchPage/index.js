@@ -6,6 +6,7 @@ import ProfileButton from '../Navigation/ProfileButton';
 import shelfIcon from '../IconPics/shelf.png';
 import GrabRatings from '../GrabRatings';
 import { FaRegCommentDots } from 'react-icons/fa';
+import magnify from '../IconPics/mag.png';
 
 function SearchPage({isLoaded}) {
     const history = useHistory();
@@ -13,6 +14,7 @@ function SearchPage({isLoaded}) {
     const businesses = useSelector(state => Object.values(state.business));
     const searchTerm = useParams();
     const reviews = useSelector((state) => Object.values(state.review));
+    const [search, setSearch] = useState('');
 
     let catBusinesses;
     if(searchTerm.searchTerm === 'all') {
@@ -20,6 +22,15 @@ function SearchPage({isLoaded}) {
     } else {
         catBusinesses = businesses.filter((business) => business.category.toLowerCase() == searchTerm.searchTerm || business.title.toLowerCase().indexOf(searchTerm.searchTerm) > -1);
 
+    };
+
+    const searching = (e) => {
+        if(search.length === 0) {
+            history.push(`/search/all`)
+
+        } else {
+            history.push(`/search/${search}`)
+        }
     };
 
     let sessionLinks;
@@ -52,10 +63,23 @@ function SearchPage({isLoaded}) {
             <div className="navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
-                <div className="search-container">
-                    <input className="search-input"
+                <div className="double-search-not-home">
+                    <p className="find-near-p-nh">Find</p>
+                    <input className="find-name-nh"
                     type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Family-owned, Traditional, Rustic stores..."
                     />
+
+                    <p className="find-near-p-nh">Near</p>
+                    <input className="find-location-nh"
+                    type="text"
+                    placeholder="Bay Area, CA ONLY for now"
+                    readOnly = {true}
+                    />
+                    <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+
                 </div>
 
                 <div className="main-nav-links">

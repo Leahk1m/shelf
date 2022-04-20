@@ -11,6 +11,7 @@ import { RiArrowDropDownLine} from 'react-icons/ri';
 import { AiOutlineStar } from 'react-icons/ai';
 import blueCheck from '../IconPics/blue-check.png';
 import { BsDot } from 'react-icons/bs';
+import magnify from '../IconPics/mag.png';
 
 function OneBusinessPage({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -21,6 +22,7 @@ function OneBusinessPage({ isLoaded }) {
     const [showRevDropdown, setShowRevDropdown] = useState(prev => prev === false ? true : false);
     const [showBizDropdown, setShowBizDropdown] = useState(prev => prev === false ? true : false);
     const [youSureDeleteBiz, setYouSureDeleteBiz] = useState(false);
+    const [search, setSearch] = useState('');
     let bizDescription;
     let myReview;
     let bizAddress;
@@ -78,6 +80,16 @@ function OneBusinessPage({ isLoaded }) {
         );
     }
 
+    const searching = (e) => {
+        if(search.length === 0) {
+            history.push(`/search/all`)
+
+        } else {
+            history.push(`/search/${search}`)
+        }
+    };
+
+
     const dispatch = useDispatch();
 
     const history = useHistory();
@@ -126,15 +138,32 @@ function OneBusinessPage({ isLoaded }) {
 
     };
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return(
         <div>
-            <div className="navbar-container">
+            <div className="one-biz-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
-                <div className="search-container">
-                    <input className="search-input"
+                <div className="double-search-not-home">
+                    <p className="find-near-p-nh">Find</p>
+                    <input className="find-name-nh"
                     type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Family-owned, Traditional, Rustic stores..."
                     />
+
+                    <p className="find-near-p-nh">Near</p>
+                    <input className="find-location-nh"
+                    type="text"
+                    placeholder="Bay Area, CA ONLY for now"
+                    readOnly = {true}
+                    />
+                    <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+
                 </div>
 
                 <div className="main-nav-links">
