@@ -126,6 +126,7 @@ function AddReview({ isLoaded }) {
 
                 {/* <p>{specificBusiness[0]?.title}</p> */}
                 <div className="review-form-pannel">
+                    <h3></h3>
                     <div className="review-rating-cont">
                         <form className="new-review-form" >
                             <div className="rating-stars">

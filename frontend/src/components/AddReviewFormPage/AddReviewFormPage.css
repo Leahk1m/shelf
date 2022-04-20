@@ -58,7 +58,7 @@ input[type="radio"] {
     flex-direction: column;
     height: 260px;
     border: 1px solid #b3b3b38a;
-    border-radius: 10px;
+    border-radius: 6px;
     padding: 10px;
     background: white;
     gap: 15px;
@@ -92,7 +92,8 @@ input[type="radio"] {
 .review-preview-biz-img {
     height: 225px;
     width: 480px;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 5px 5px;
+    object-fit: cover;
 }
 
 .business-reminder-review-cont {
@@ -128,7 +129,7 @@ input[type="radio"] {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: 5px;
     background: white;
     box-shadow: 7px 8px 10px 0 #d7d6d6bd;
 }
@@ -153,8 +154,9 @@ input[type="radio"] {
     width: 90%;
     padding: 10px;
     background: white;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid rgb(214, 214, 214);
+    box-shadow: 0px 20px 20px 0px #f0f0f0;
 }
 
 .biz-review-prof-icon-add-pg {

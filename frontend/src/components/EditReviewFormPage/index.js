@@ -25,9 +25,9 @@ function EditReviewFormPage({ isLoaded }) {
     const allReviews = useSelector((state) => Object.values(state.review));
     const specificBizReviews = allReviews?.filter((review) => review.businessId === +businessId)
 
-    const [rating, setRating] = useState(myReview[0].rating);
+    const [rating, setRating] = useState(myReview[0]?.rating);
     const [hover, setHover] = useState(null);
-    const [post, setPost] = useState(myReview[0].post);
+    const [post, setPost] = useState(myReview[0]?.post);
     const [errors, setErrors] = useState([]);
 
 
