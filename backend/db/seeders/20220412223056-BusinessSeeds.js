@@ -14,7 +14,7 @@ module.exports = {
         lat: 0,
         lng: 0,
         category: 'Family-owned',
-        imageUrls: ['https://shelf-img-bucket.s3.us-west-1.amazonaws.com/family1a.jpg', 'https://shelf-img-bucket.s3.us-west-1.amazonaws.com/family1b.jpg', 'https://shelf-img-bucket.s3.us-west-1.amazonaws.com/family1c.jpg',],
+        imageUrls: ['https://shelf-img-bucket.s3.us-west-1.amazonaws.com/family1a.jpg', 'https://shelf-img-bucket.s3.us-west-1.amazonaws.com/new-honeycomb.png', 'https://shelf-img-bucket.s3.us-west-1.amazonaws.com/family1c.jpg',],
         createdAt: new Date(),
         updatedAt: new Date(),
       },
