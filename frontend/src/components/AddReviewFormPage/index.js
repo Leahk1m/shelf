@@ -111,7 +111,7 @@ function AddReview({ isLoaded }) {
                                     <div key={i} className="individual-reviews-container">
                                         <div className="review-photo-name">
                                             <img className="biz-review-prof-icon-add-pg"src={bizReview.profilePhoto} alt="rev-prof" />
-                                            <p>{`${bizReview.firstName} ${bizReview.lastName}`}</p>
+                                            <p className="reviewer-full-name-p">{`${bizReview.firstName} ${bizReview.lastName}`}</p>
                                         </div>
 
                                         <div className="review-content-add-pg">

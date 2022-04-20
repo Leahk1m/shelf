@@ -171,6 +171,7 @@
 
 .review-person-post {
     display: flex;
+    width: 50%;
 }
 
 .peoples-reviews-cont {

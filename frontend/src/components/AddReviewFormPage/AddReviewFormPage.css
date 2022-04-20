@@ -165,19 +165,27 @@ input[type="radio"] {
 
 .review-content-add-pg {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     align-content: center;
     flex-direction: column;
     z-index: 1;
     position: relative;
+    gap: 10px;
+    margin-top: 10px;
 
 }
 
 .review-photo-name {
+    display: flex;
+    gap: 20px;
+    align-items: center;
 
 }
 
 .biz-review-post-add-pg {
     margin-top: -5px;
+}
+
+.reviewer-full-name-p {
+    font-weight: bold;
 }

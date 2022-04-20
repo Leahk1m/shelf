@@ -15,9 +15,9 @@ function EditReviewFormPage({ isLoaded }) {
     const reviews = useSelector((state) => Object.values(state.review));
     const { reviewId } = useParams();
     const myReview = reviews.filter((review) => review.id === +reviewId);
-    const firstName = myReview[0].firstName;
-    const lastName = myReview[0].lastName;
-    const businessId = myReview[0].businessId;
+    const firstName = myReview[0]?.firstName;
+    const lastName = myReview[0]?.lastName;
+    const businessId = myReview[0]?.businessId;
     const history = useHistory();
 
     const businesses = useSelector(state => Object.values(state?.business));
@@ -111,12 +111,30 @@ function EditReviewFormPage({ isLoaded }) {
                                <div key={i} className="individual-reviews-container">
                                    <div className="review-photo-name">
                                        <img className="biz-review-prof-icon-add-pg"src={bizReview.profilePhoto} alt="rev-prof" />
-                                       <p>{`${bizReview.firstName} ${bizReview.lastName}`}</p>
+                                       <p className="reviewer-full-name-p">{`${bizReview.firstName} ${bizReview.lastName}`}</p>
                                    </div>
 
                                    <div className="review-content-add-pg">
+                                        {bizReview.rating === 1 &&
+                                                        <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true" alt="1-star"/>
+                                                    }
+                                                    {bizReview.rating === 2 &&
+                                                        <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-star.png?raw=true" alt="2-star"/>
+                                                    }
+                                                    {bizReview.rating === 3 &&
+                                                        <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-star.png?raw=true" alt="3-star"/>
+                                                    }
+                                                    {bizReview.rating === 4 &&
+                                                        <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-star.png?raw=true" alt="4-star"/>
+                                                    }
+                                                    {bizReview.rating === 5 &&
+                                                        <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/five-star.png?raw=true" alt="5-star"/>
+                                                    }
+                                        <div className="review-person-post">
+                                            <p>{bizReview.post}</p>
+                                        </div>
 
-                                       <p className="biz-review-post-add-pg">{bizReview.post}</p>
+                                       {/* <p className="biz-review-post-add-pg">{bizReview.post}</p> */}
                                    </div>
                                </div>
                            ))
