@@ -181,7 +181,7 @@ function OneBusinessPage({ isLoaded }) {
 
                         </div>
 
-
+    
                    </div>
                     {sessionUser && business.ownerId === sessionUser.id ?
                         <div className="update-delete-btn-container">
