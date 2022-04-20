@@ -40,6 +40,23 @@ function NewBusinessFormPage({ isLoaded }) {
       );
     }
 
+    const errorChecks = () => {
+        const frontErrors = [];
+        if(title.length === 0) frontErrors.push('Please provide a title')
+        if(title.length < 4 || title.length > 20) frontErrors.push('Title must be between 4-20 characters')
+        if(description.length === 0) frontErrors.push('Please provide a description')
+        if(description.length < 10) frontErrors.push('Description must be at least 10 characters long')
+        if(city.length === 0) frontErrors.push('Please provide a city')
+        if(city.length < 4) frontErrors.push('City must have at least 4 characters')
+        if(state.length === 0) frontErrors.push('Please provide a state')
+        if(state.length < 4) frontErrors.push('State must have at least 4 characters')
+        if(zipCode.length < 5) frontErrors.push('Please provide a zip code')
+        if(category.length === 0) frontErrors.push('Please provide a category')
+
+        setErrors(frontErrors);
+
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
@@ -59,6 +76,7 @@ function NewBusinessFormPage({ isLoaded }) {
             setImgInputError(true);
             setPassedImgsLength(false);
             setImgLoaded(false);
+            errorChecks();
         } else {
             setImgInputError(false);
             setPassedImgsLength(true);
@@ -70,6 +88,7 @@ function NewBusinessFormPage({ isLoaded }) {
     const preventRefresh = (e) => {
         e.preventDefault();
         setImgInputError(true);
+        errorChecks();
     };
 
     return(
@@ -133,7 +152,7 @@ function NewBusinessFormPage({ isLoaded }) {
                     <select className="new-biz-category-input" value={category} onChange={(e) => setCategory(e.target.value)}>
                         <option disabled="disabled">Select category...</option>
                         <option value="Traditional">Traditional</option>
-                        <option value="Family-owned">Family-run</option>
+                        <option value="Family-owned">Family-owned</option>
                         <option value="Modern">Modern</option>
                         <option value="Rustic">Rustic</option>
                         <option value="Other">Other</option>
@@ -167,7 +186,7 @@ function NewBusinessFormPage({ isLoaded }) {
             </div>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                {imgInputError ?
+                {imgInputError || errors.length > 0 ?
                     <p>
                         Please submit 3 photos of your business
                     </p>

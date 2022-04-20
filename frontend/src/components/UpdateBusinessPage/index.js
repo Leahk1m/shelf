@@ -5,7 +5,7 @@ import * as businessActions from '../../store/business'
 import './UpdateBusinessPage.css';
 import shelfIcon from '../IconPics/shelf.png';
 import ProfileButton from '../Navigation/ProfileButton';
-
+import { FcCheckmark } from 'react-icons/fc';
 
 function UpdateBusinessPage({ isLoaded }) {
     const { businessId } = useParams();
@@ -21,6 +21,7 @@ function UpdateBusinessPage({ isLoaded }) {
     const [zipCode, setZipCode] = useState(thisBusiness[0]?.zipCode);
     const [category, setCategory] = useState(thisBusiness[0]?.category);
     const [imageUrls, setImageUrls] = useState(thisBusiness[0]?.imageUrls);
+    const [imgLoaded, setImgLoaded] = useState(true);
 
     const [errors, setErrors] = useState([]);
     const [passedImgsLength, setPassedImgsLength] = useState(true);
@@ -48,9 +49,11 @@ function UpdateBusinessPage({ isLoaded }) {
         if(files.length !== 3) {
             setImgInputError(true);
             setPassedImgsLength(false);
+            setImgLoaded(false);
         } else {
             setPassedImgsLength(true);
             setImageUrls(files);
+            setImgLoaded(true);
         }
     };
 
@@ -133,18 +136,24 @@ function UpdateBusinessPage({ isLoaded }) {
                         />
                         <select className="select-update-biz-category"value={category} onChange={(e) => setCategory(e.target.value)}>
                             <option value="Traditional">Traditional</option>
-                            <option value="Family-owned">Family-run</option>
+                            <option value="Family-owned">Family-owned</option>
                             <option value="Modern">Modern</option>
                             <option value="Rustic">Rustic</option>
                             <option value="Other">Other</option>
                         </select>
-                        <label className="add-photo-new-biz-btn">
-                            Change my photos
-                            <input
-                            type="file"
-                            multiple
-                            onChange={updateFiles} />
-                        </label>
+                        <div>
+                            <label className="add-photo-new-biz-btn">
+                                Change my photos
+                                <input
+                                type="file"
+                                multiple
+                                onChange={updateFiles} />
+                            </label>
+                            {imgLoaded ?
+                                <FcCheckmark />
+                            : ''}
+
+                        </div>
                         <button type="submit">Update spot</button>
                     </div>
                 </form>
