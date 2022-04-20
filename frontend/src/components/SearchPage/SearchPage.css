@@ -48,3 +48,10 @@
     display: flex;
     flex-direction: column;
 }
+
+.rev-preview-search-pg {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: -21px;
+}
