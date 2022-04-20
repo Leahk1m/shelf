@@ -278,8 +278,6 @@ module.exports = {
         updatedAt: new Date(),
       },
 
-
-
     ], {});
     /**
      * Add seed commands here.

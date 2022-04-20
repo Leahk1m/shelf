@@ -29,6 +29,40 @@ module.exports = {
         email: 'john@aa.io',
         hashedPassword: bcrypt.hashSync('password'),
       },
+      {
+        firstName: 'Michelle',
+        lastName: 'Meng',
+        profilePhoto: 'https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/michelle.png?raw=true',
+        city: 'New York',
+        email: 'michelle@aa.io',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        firstName: 'Jordan',
+        lastName: 'Anderson',
+        profilePhoto: 'https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/jordy.jpg?raw=true',
+        city: 'Antioch',
+        email: 'jordan@aa.io',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        firstName: 'Roxanna',
+        lastName: 'Zuniga',
+        profilePhoto: 'https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/roxxie.jpg?raw=true',
+        city: 'Cary',
+        email: 'roxy@aa.io',
+        hashedPassword: bcrypt.hashSync('password'),
+
+      },
+      {
+        firstName: 'Kevin',
+        lastName: 'Chao',
+        profilePhoto: 'https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/kevin.jpg?raw=true',
+        city: 'Temple City',
+        email: 'kevin@aa.io',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+
     ], {});
   },
 
