@@ -5,6 +5,7 @@ import ProfileButton from "../Navigation/ProfileButton";
 import './NewBusinessFormPage.css';
 import * as businessActions from '../../store/business'
 import shelfIcon from '../IconPics/shelf.png';
+import { FcCheckmark } from 'react-icons/fc';
 
 function NewBusinessFormPage({ isLoaded }) {
     const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function NewBusinessFormPage({ isLoaded }) {
     const [errors, setErrors] = useState([]);
     const [passedImgsLength, setPassedImgsLength] = useState(false);
     const [imgInputError, setImgInputError] = useState(false);
+    const [imgLoaded, setImgLoaded] = useState(false);
 
     let sessionLinks;
     if (sessionUser) {
@@ -55,9 +57,11 @@ function NewBusinessFormPage({ isLoaded }) {
         if(files.length !== 3) {
             setImgInputError(true);
             setPassedImgsLength(false);
+            setImgLoaded(false);
         } else {
             setPassedImgsLength(true);
             setImageUrls(files);
+            setImgLoaded(true);
         }
     };
 
@@ -124,7 +128,8 @@ function NewBusinessFormPage({ isLoaded }) {
                         />
                     </div>
                     <p className="new-biz-directions" id="vibes">What's the vibe like?</p>
-                    <select className="new-biz-category-input" defaultValue="Select category"onChange={(e) => setCategory(e.target.value)}>
+                    <select className="new-biz-category-input" onChange={(e) => setCategory(e.target.value)}>
+                        <option selected="true" disabled="disabled">Select category...</option>
                         <option value="Traditional">Traditional</option>
                         <option value="Family-run">Family-run</option>
                         <option value="Modern">Modern</option>
@@ -147,6 +152,9 @@ function NewBusinessFormPage({ isLoaded }) {
                         multiple
                         onChange={updateFiles} />
                     </label>
+                    {imgLoaded ?
+                        <FcCheckmark />
+                    : ''}
 
                     <button className="add-business-btn"type="submit">I'm ready to add my business!</button>
                 </form>

@@ -30,7 +30,7 @@
     border: 1px solid grey;
     background-color: #dbdbdb;
     border: none;
-    width: 30%;
+    width: fit-content;
     color: grey;
     padding: 1px;
     border-radius: 3px;

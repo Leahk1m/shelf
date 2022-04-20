@@ -7,6 +7,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    z-index: 0;
 }
 
 
@@ -119,15 +121,16 @@
 .banner-image-array {
     width: 33.3%;
     height: 400px;
+    object-fit: cover;
 }
 
 
 .business-show-info {
-    position: absolute;
+    position: relative;
     top: 20px;
-    margin-top: 52px;
     display: flex;
     flex-direction: column;
+    padding-top: 150px;
     justify-content: center;
     align-content: center;
     align-items: flex-start;
@@ -141,7 +144,6 @@
     letter-spacing: -0.4px;
     white-space: nowrap;
     margin-left: 55px;
-    margin-top: 210px;
 }
 
 .business-show-rating-cont {
@@ -194,10 +196,10 @@
 .blue-check-div {
     width: 100%;
     justify-content: flex-start;
-    margin-left: 17%;
     display: flex;
-    gap: 3%;
     align-items: center;
+    margin-left: 4%;
+    gap: 10px;
 
 }
 
@@ -244,11 +246,28 @@
 }
 
 .biz-description-cont-div {
-    border-top: 1px solid #e4e1e1;
-    border-bottom: 1px solid #e4e1e1;
+    border-top: 1px solid #c7c7c7;
+    border-bottom: 1px solid #c7c7c7;
     display: flex;
-    width: 60%;
+    width: 50%;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+}
+
+.update-delete-btn-container {
+
+}
+
+.are-u-sure-p {
+    font-size: 15px;
+    font-family: 'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+.the-city {
+    margin-top: 1px;
+}
+
+.the-state {
+    margin-top: 1px;
 }

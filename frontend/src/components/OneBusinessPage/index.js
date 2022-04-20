@@ -181,26 +181,26 @@ function OneBusinessPage({ isLoaded }) {
 
                         </div>
 
-    
+
                    </div>
                     {sessionUser && business.ownerId === sessionUser.id ?
                         <div className="update-delete-btn-container">
-                            <RiArrowDropDownLine onClick={() => setShowBizDropdown(prev => prev === false ? true : false)}/>
-                            {showBizDropdown ?
+                            {/* <RiArrowDropDownLine onClick={() => setShowBizDropdown(prev => prev === false ? true : false)}/> */}
+                            {/* {showBizDropdown ? */}
                                 <div>
                                     <button className="update-biz-dropdown-btn"onClick={goToBusinessEditPage}>Update Business</button>
                                     <button className="delete-biz-dropdown-btn"onClick={() => setYouSureDeleteBiz(true)}>Delete Business</button>
                                     {youSureDeleteBiz ?
                                         <div>
-                                            <p>Are you sure?</p>
+                                            <p className="are-u-sure-p">Deleting a business is permanent. Are you sure?</p>
                                             <button className="yes-delete-btn" onClick={deleteBusiness}>Yes</button>
                                             <button className="no-delete-btn" onClick={() => setYouSureDeleteBiz(false)}>No</button>
                                         </div>
                                     : ''}
                                 </div>
-                            : ''}
+                            {/* : ''} */}
                         </div>
-                    : ''}
+                    : <button className="write-review-btn" onClick={checkingUser}><AiOutlineStar className="outline-star"/>Write a Review</button>}
                 </div>
             ))}
 
@@ -208,15 +208,15 @@ function OneBusinessPage({ isLoaded }) {
             <div className="fat-review-div">
 
                 <div className="review-btn-rec-review-title-div">
-                    <button className="write-review-btn" onClick={checkingUser}><AiOutlineStar className="outline-star"/>Write a Review</button>
+
 
                 </div>
 
                 <div className="biz-description-cont-div">
                     <p className="biz-description-p">{bizDescription}</p>
                     <p>{bizAddress}</p>
-                    <p>{bizCity}</p>
-                    <p>{bizState}</p>
+                    <p className="the-city">{bizCity}</p>
+                    <p className="the-state">{bizState}</p>
 
                 </div>
 
