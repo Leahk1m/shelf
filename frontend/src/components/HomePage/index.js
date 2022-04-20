@@ -4,7 +4,6 @@ import './HomePage.css';
 import largeShelfLogo from '../IconPics/new-shelf.png';
 import { NavLink, useHistory } from 'react-router-dom';
 import ProfileButton from '../Navigation/ProfileButton';
-// import LoginFormModal from '../LoginFormModal';
 import magnify from '../IconPics/mag.png';
 
 function HomePage({isLoaded}) {
@@ -25,6 +24,16 @@ function HomePage({isLoaded}) {
         </>
         );
     }
+
+    const searching = (e) => {
+        if(search.length === 0) {
+            history.push(`/search/all`)
+
+        } else {
+            history.push(`/search/${search}`)
+        }
+    };
+
 
     return(
         <div>
@@ -48,6 +57,8 @@ function HomePage({isLoaded}) {
                         <p className="find-near-p">Find</p>
                         <input className="find-name"
                         type="text"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
                         placeholder="Family-owned, Traditional, Rustic stores..."
                         />
 
@@ -57,7 +68,7 @@ function HomePage({isLoaded}) {
                         placeholder="Bay Area, CA ONLY for now"
                         readOnly = {true}
                         />
-                        <button className="magnifying"><img className="mag-glass-icon"src={magnify} alt="mag-glass"/></button>
+                        <button onClick={searching}className="magnifying"><img className="mag-glass-icon"src={magnify} alt="mag-glass"/></button>
                     </div>
                 </div>
             </div>

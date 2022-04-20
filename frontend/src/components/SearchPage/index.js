@@ -4,15 +4,23 @@ import { NavLink, useHistory, useParams } from 'react-router-dom';
 import './SearchPage.css';
 import ProfileButton from '../Navigation/ProfileButton';
 import shelfIcon from '../IconPics/shelf.png';
+import GrabRatings from '../GrabRatings';
+import { FaRegCommentDots } from 'react-icons/fa';
 
 function SearchPage({isLoaded}) {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const businesses = useSelector(state => Object.values(state.business));
     const searchTerm = useParams();
-    const catBusinesses = businesses.filter((business) => business.category.toLowerCase() == searchTerm.searchTerm);
     const reviews = useSelector((state) => Object.values(state.review));
-    // const specificBizReviews = reviews.filter((review) => review?.businessId == catBusinesses[0]?.id);
+
+    let catBusinesses;
+    if(searchTerm.searchTerm === 'all') {
+        catBusinesses = businesses;
+    } else {
+        catBusinesses = businesses.filter((business) => business.category.toLowerCase() == searchTerm.searchTerm || business.title.toLowerCase().indexOf(searchTerm.searchTerm) > -1);
+
+    };
 
     let sessionLinks;
     if (sessionUser) {
@@ -32,7 +40,8 @@ function SearchPage({isLoaded}) {
         const thisReview = reviews.filter((review) => review.businessId === num);
         return (<p>{thisReview[0]?.post}</p>);
 
-    }
+    };
+
 
     return(
         <div>
@@ -56,20 +65,25 @@ function SearchPage({isLoaded}) {
             </div>
 
             <div className="search-pg-contents-div">
-                <h3 className="all-results-title">All results</h3>
+                <h3 className="all-results-title">All Businesses on shelf</h3>
                 {catBusinesses.map((business) => (
-                    <div className="search-business-info-cont">
+                    <div key={business.id} className="search-business-info-cont">
                         <div className="search-biz-info">
-                            <img  onClick={() => history.push(`/business/${business.id}`)}className="search-business-pic"src={business.imageUrls[0]} alt="search-business"/>
-
+                            <img onClick={() => history.push(`/business/${business.id}`)}className="search-business-pic"src={business.imageUrls[0]} alt="search-business"/>
                             <div className="search-biz-title-rating-review">
-                                <p>{business.title}</p>
-                                <p>{business.rating}</p>
-                                {specificBizReview(business.id)}
+                                <h2 className="all-these-biz-titles">{business.title}</h2>
+                                <GrabRatings businessId={business.id}/>
+                                <button className="all-biz-cat-btn">{business.category}</button>
+                                <div>
+                                    <p>{business.address}</p>
+                                    <p>{business.city} {business.state}</p>
+                                    <div className="rev-preview-search-pg">
+                                        <FaRegCommentDots/><div>{specificBizReview(business.id)}</div>
 
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 ))}
 

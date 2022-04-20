@@ -4,9 +4,12 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Reviews', [
       {
+        firstName: 'Leah',
+        lastName: 'Kim',
         userId: 2,
+        profilePhoto: 'https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/white-bear.jpg?raw=true',
         businessId: 1,
-        rating: 3,
+        rating: 4,
         post: 'I like it',
         createdAt: new Date(),
         updatedAt: new Date(),

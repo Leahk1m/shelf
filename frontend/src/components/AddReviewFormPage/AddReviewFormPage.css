@@ -58,7 +58,7 @@ input[type="radio"] {
     flex-direction: column;
     height: 260px;
     border: 1px solid #b3b3b38a;
-    border-radius: 10px;
+    border-radius: 6px;
     padding: 10px;
     background: white;
     gap: 15px;
@@ -92,7 +92,8 @@ input[type="radio"] {
 .review-preview-biz-img {
     height: 225px;
     width: 480px;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 5px 5px;
+    object-fit: cover;
 }
 
 .business-reminder-review-cont {
@@ -128,7 +129,7 @@ input[type="radio"] {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: 5px;
     background: white;
     box-shadow: 7px 8px 10px 0 #d7d6d6bd;
 }
@@ -140,17 +141,22 @@ input[type="radio"] {
 
 .biz-reviews-side-display {
     width: 100%;
-
     display: flex;
-    justify-content: center;
+    overflow: scroll;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    overflow-x: hidden;
 }
+
 
 .individual-reviews-container {
     width: 90%;
     padding: 10px;
     background: white;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid rgb(214, 214, 214);
+    box-shadow: 0px 20px 20px 0px #f0f0f0;
 }
 
 .biz-review-prof-icon-add-pg {
@@ -161,19 +167,27 @@ input[type="radio"] {
 
 .review-content-add-pg {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     align-content: center;
     flex-direction: column;
     z-index: 1;
     position: relative;
+    gap: 10px;
+    margin-top: 10px;
 
 }
 
 .review-photo-name {
-    position: absolute;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
 }
 
 .biz-review-post-add-pg {
     margin-top: -5px;
+}
+
+.reviewer-full-name-p {
+    font-weight: bold;
 }

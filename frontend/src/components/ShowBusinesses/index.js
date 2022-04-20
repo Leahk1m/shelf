@@ -5,12 +5,15 @@ import { useSelector } from 'react-redux';
 import './ShowBusinesses.css';
 import ProfileButton from '../Navigation/ProfileButton';
 import shelfIcon from '../IconPics/shelf.png';
+import GrabRatings from '../GrabRatings';
+import magnify from '../IconPics/mag.png';
 
 function ShowBusinesses({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
-    // const userProfilePhoto = sessionUser.profilePhoto;
     const businesses = useSelector(state => Object.values(state.business));
+    const reviews = useSelector((state) => Object.values(state.review));
     const history = useHistory();
+
 
     let sessionLinks;
     if (sessionUser) {
@@ -25,38 +28,61 @@ function ShowBusinesses({ isLoaded }) {
         </>
         );
     }
+
+
     return(
         <div className="all-biz-cont">
             <div className="navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
-                <div className="search-container">
-                    <input className="search-input"
-                    type="text"
-                    />
-                    </div>
+                <div className="double-search-not-home">
+                        <p className="find-near-p-nh">Find</p>
+                        <input className="find-name-nh"
+                        type="text"
+                        placeholder="Family-owned, Traditional, Rustic stores..."
+                        />
+
+                        <p className="find-near-p-nh">Near</p>
+                        <input className="find-location-nh"
+                        type="text"
+                        placeholder="Bay Area, CA ONLY for now"
+                        readOnly = {true}
+                        />
+                        <button className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+
+                </div>
 
                     <div className="main-nav-links">
-                        {sessionUser ?
+                        {/* {sessionUser ?
                         <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                        : ''}
+                        : ''} */}
                         <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
                         {isLoaded && sessionLinks}
-
                 </div>
             </div>
 
-           {businesses.map(business => (
-               <div className="indiv-biz-container"key={business.id}>
-                   <NavLink to={`/business/${business.id}`}><img className="explore-biz-pic" src={business.imageUrls[0]} alt="explore-pics"/></NavLink>
-                   <div className="indiv-biz-description">
-                       <h1>{business.title}</h1>
-                        <p>
-                            {business.address}
-                        </p>
-                   </div>
-               </div>
-           ))}
+            <div className="search-pg-contents-div">
+                <h3 className="all-results-title">All Businesses on shelf</h3>
+                {businesses.map((business) => (
+                    <div key={business.id} className="search-business-info-cont">
+                        <div className="search-biz-info">
+                            <img onClick={() => history.push(`/business/${business.id}`)}className="search-business-pic"src={business.imageUrls[0]} alt="search-business"/>
+                            <div className="search-biz-title-rating-review">
+                                <h2 className="all-these-biz-titles">{business.title}</h2>
+                                <GrabRatings businessId={business.id}/>
+                                <button className="all-biz-cat-btn">{business.category}</button>
+                                <div>
+                                    <p>{business.address}</p>
+                                    <p>{business.city} {business.state}</p>
+                                    <p className="all-biz-desc-search">{business.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+
+            </div>
+
         </div>
     );
 }

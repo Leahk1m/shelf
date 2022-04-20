@@ -61,7 +61,7 @@ function AddReview({ isLoaded }) {
 
     const ratingMessage = (num) => {
         if(num === 1) {
-            return ( <p className="rate-message">It could have been worse...</p> )
+            return ( <p className="rate-message">It couldn't have been worse...</p> )
         }
         if(num === 2) {
             return ( <p className="rate-message">It was okay...</p> )
@@ -111,7 +111,7 @@ function AddReview({ isLoaded }) {
                                     <div key={i} className="individual-reviews-container">
                                         <div className="review-photo-name">
                                             <img className="biz-review-prof-icon-add-pg"src={bizReview.profilePhoto} alt="rev-prof" />
-                                            <p>{`${bizReview.firstName} ${bizReview.lastName}`}</p>
+                                            <p className="reviewer-full-name-p">{`${bizReview.firstName} ${bizReview.lastName}`}</p>
                                         </div>
 
                                         <div className="review-content-add-pg">
@@ -126,6 +126,7 @@ function AddReview({ isLoaded }) {
 
                 {/* <p>{specificBusiness[0]?.title}</p> */}
                 <div className="review-form-pannel">
+                    <h3></h3>
                     <div className="review-rating-cont">
                         <form className="new-review-form" >
                             <div className="rating-stars">

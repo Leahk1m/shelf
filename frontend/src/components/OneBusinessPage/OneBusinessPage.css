@@ -7,13 +7,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    z-index: 0;
 }
 
 
 .review-prof-icon {
-    width: 3%;
+    width: 50px;
+    height: 50px;
     border-radius: 100%;
 }
+
 
 .comment-edit-dropdown {
     width: 100%;
@@ -91,7 +95,7 @@
 }
 
 .write-review-btn {
-    width: 10%;
+    width: 11%;
     height: 35px;
     background-color: #d32324;
     margin-top: 30px;
@@ -117,4 +121,155 @@
 .banner-image-array {
     width: 33.3%;
     height: 400px;
+    object-fit: cover;
+}
+
+
+.business-show-info {
+    position: relative;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 150px;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+    background: linear-gradient(to bottom, rgb(199,194,194, 0) , rgb(0,0,1));
+}
+
+.one-biz-title {
+    color: white;
+    font-family: 'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    white-space: nowrap;
+    margin-left: 55px;
+}
+
+.business-show-rating-cont {
+    display: flex;
+}
+
+.business-show-rating {
+    margin-top: 10px;
+    margin-left: 55px;
+    -webkit-appearance: none;
+    width: 176px;
+    height: 32px;
+}
+
+.stars-img {
+    margin-left: 60px;
+}
+
+.review-show-star {
+    width: 120px;
+}
+
+.review-person-info {
+    display: flex;
+    gap: 2%;
+}
+
+.review-person-post {
+    display: flex;
+    width: 100%;
+}
+
+.peoples-reviews-cont {
+    display: flex;
+    grid-gap: 2%;
+    gap: 2%;
+    flex-direction: column;
+
+}
+
+.review-stars-and-post {
+    padding: 10px;
+}
+
+
+.review-person-name {
+    font-weight: bold;
+}
+
+.blue-check-div {
+    width: 100%;
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    margin-left: 4%;
+    gap: 10px;
+
+}
+
+.claimed-p {
+    color: #1eb6fd;
+    font-weight: bold;
+}
+
+.star-img-rating-div {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-top: -50px;
+    gap: 5px;
+}
+
+.num-reviews-p {
+    color: white;
+}
+
+.white-dot {
+    color: white;
+    font-size: 18px;
+}
+
+.display-category {
+    color: white;
+}
+
+.fat-review-div {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    margin-left: 7%;
+}
+
+.biz-description-p {
+
+}
+
+.hide-this {
+    display: none;
+}
+
+.biz-description-cont-div {
+    border-top: 1px solid #c7c7c7;
+    border-bottom: 1px solid #c7c7c7;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.update-delete-btn-container {
+    margin-top: 2.5%;
+
+}
+
+.are-u-sure-p {
+    font-size: 15px;
+    font-family: 'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+.the-city {
+    margin-top: 1px;
+}
+
+.the-state {
+    margin-top: 1px;
 }

@@ -9,4 +9,6 @@ html, body{
     outline: none;
     font: caption;
     background-color: whitesmoke;
+    object-fit: cover;
 }
+

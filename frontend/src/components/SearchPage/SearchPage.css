@@ -1,11 +1,12 @@
 
 .search-business-pic {
     height: 200px;
-    width: 200px;
+    width: 300px;
     border-radius: 4px;
     object-fit: cover;
     margin-top: 3px;
     cursor: pointer;
+    object-fit: cover;
 }
 
 .search-business-info-cont {
@@ -20,7 +21,7 @@
     min-width: 680px;
     max-width: 800px;
     height: 205px;
-    border: 1px solid #ebebeb;
+    border: 1px solid #e4dfdf;
     border-radius: 4px;
     padding: 24px;
     margin: -16px 35px;
@@ -47,4 +48,11 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.rev-preview-search-pg {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: -21px;
 }

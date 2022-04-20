@@ -4,8 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
-// import Navigation from './components/Navigation';
-// import { Modal } from './context/Modal';
 import ShowBusinesses from './components/ShowBusinesses';
 import HomePage from './components/HomePage';
 import NewBusinessFormPage from './components/NewBusinessFormPage';

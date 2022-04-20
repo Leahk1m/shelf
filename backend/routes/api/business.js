@@ -14,7 +14,7 @@ const validateBusiness = [
         .exists({ checkFalsy: true })
         .withMessage('Please provide a title')
         .isLength({ min: 4, max: 20 })
-        .withMessage('Title must have at least 4 characters'),
+        .withMessage('Title must be between 4-20 characters'),
     check('description')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a description')
