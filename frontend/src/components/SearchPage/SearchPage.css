@@ -6,6 +6,7 @@
     object-fit: cover;
     margin-top: 3px;
     cursor: pointer;
+    object-fit: cover;
 }
 
 .search-business-info-cont {

@@ -44,7 +44,12 @@ function ProfileButton({ user }) {
       {currentUsersFirstName ?
         <div>
           {pathName == '/' ?
-            <p onClick={openMenu}className="welcome-user-nav-title">{`Welcome, ${currentUsersFirstName}`}</p>
+            <div>
+              <button className="prof-btn-nav"onClick={goToProfile}>Profile</button>
+
+              <button className="logout-btn-nav"onClick={logout}>Log Out</button>
+            </div>
+            // <p onClick={openMenu}className="welcome-user-nav-title">{`Welcome, ${currentUsersFirstName}`}</p>
         :   <img className="nav-prof-icon"onClick={openMenu} src={currentUsersProfilePhoto} alt="user-prof-icon-nav"/>}
 
         </div>
@@ -53,7 +58,7 @@ function ProfileButton({ user }) {
       {showMenu && (
         <div className="profile-dropdown">
           <button className="prof-btn-nav"onClick={goToProfile}>Profile</button>
-
+          <button className="prof-btn-nav" exact to="/host">Add Business</button>
           <button className="logout-btn-nav"onClick={logout}>Log Out</button>
         </div>
       )}
