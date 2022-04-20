@@ -134,6 +134,7 @@
     justify-content: center;
     align-content: center;
     align-items: flex-start;
+    background: linear-gradient(to bottom, rgb(199,194,194, 0) , rgb(0,0,1));
 }
 
 .one-biz-title {

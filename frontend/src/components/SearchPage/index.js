@@ -12,9 +12,15 @@ function SearchPage({isLoaded}) {
     const sessionUser = useSelector(state => state.session.user);
     const businesses = useSelector(state => Object.values(state.business));
     const searchTerm = useParams();
-    const catBusinesses = businesses.filter((business) => business.category.toLowerCase() == searchTerm.searchTerm);
     const reviews = useSelector((state) => Object.values(state.review));
-    // const specificBizReviews = reviews.filter((review) => review?.businessId == catBusinesses[0]?.id);
+
+    let catBusinesses;
+    if(searchTerm.searchTerm === 'all') {
+        catBusinesses = businesses;
+    } else {
+        catBusinesses = businesses.filter((business) => business.category.toLowerCase() == searchTerm.searchTerm || business.title.toLowerCase().indexOf(searchTerm.searchTerm) > -1);
+
+    };
 
     let sessionLinks;
     if (sessionUser) {
@@ -34,7 +40,8 @@ function SearchPage({isLoaded}) {
         const thisReview = reviews.filter((review) => review.businessId === num);
         return (<p>{thisReview[0]?.post}</p>);
 
-    }
+    };
+
 
     return(
         <div>
@@ -60,7 +67,7 @@ function SearchPage({isLoaded}) {
             <div className="search-pg-contents-div">
                 <h3 className="all-results-title">All Businesses on shelf</h3>
                 {catBusinesses.map((business) => (
-                    <div className="search-business-info-cont">
+                    <div key={business.id} className="search-business-info-cont">
                         <div className="search-biz-info">
                             <img onClick={() => history.push(`/business/${business.id}`)}className="search-business-pic"src={business.imageUrls[0]} alt="search-business"/>
                             <div className="search-biz-title-rating-review">
@@ -71,7 +78,7 @@ function SearchPage({isLoaded}) {
                                     <p>{business.address}</p>
                                     <p>{business.city} {business.state}</p>
                                     <div className="rev-preview-search-pg">
-                                        <FaRegCommentDots/><p>{specificBizReview(business.id)}</p>
+                                        <FaRegCommentDots/><div>{specificBizReview(business.id)}</div>
 
                                     </div>
                                 </div>

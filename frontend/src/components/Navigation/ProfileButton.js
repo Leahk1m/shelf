@@ -58,7 +58,7 @@ function ProfileButton({ user }) {
       {showMenu && (
         <div className="profile-dropdown">
           <button className="prof-btn-nav"onClick={goToProfile}>Profile</button>
-          <button className="prof-btn-nav" exact to="/host">Add Business</button>
+          <button className="prof-btn-nav" onClick={() => history.push('/host')}>Add Business</button>
           <button className="logout-btn-nav"onClick={logout}>Log Out</button>
         </div>
       )}

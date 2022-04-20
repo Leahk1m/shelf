@@ -25,6 +25,7 @@ function NewBusinessFormPage({ isLoaded }) {
     const [imgInputError, setImgInputError] = useState(false);
     const [imgLoaded, setImgLoaded] = useState(false);
 
+
     let sessionLinks;
     if (sessionUser) {
       sessionLinks = (
@@ -59,6 +60,7 @@ function NewBusinessFormPage({ isLoaded }) {
             setPassedImgsLength(false);
             setImgLoaded(false);
         } else {
+            setImgInputError(false);
             setPassedImgsLength(true);
             setImageUrls(files);
             setImgLoaded(true);
@@ -128,10 +130,10 @@ function NewBusinessFormPage({ isLoaded }) {
                         />
                     </div>
                     <p className="new-biz-directions" id="vibes">What's the vibe like?</p>
-                    <select className="new-biz-category-input" onChange={(e) => setCategory(e.target.value)}>
-                        <option selected="true" disabled="disabled">Select category...</option>
+                    <select className="new-biz-category-input" value={category} onChange={(e) => setCategory(e.target.value)}>
+                        <option disabled="disabled">Select category...</option>
                         <option value="Traditional">Traditional</option>
-                        <option value="Family-run">Family-run</option>
+                        <option value="Family-owned">Family-run</option>
                         <option value="Modern">Modern</option>
                         <option value="Rustic">Rustic</option>
                         <option value="Other">Other</option>
@@ -145,16 +147,19 @@ function NewBusinessFormPage({ isLoaded }) {
                     />
                     <p className="new-biz-directions">Finally, show off your place with three photos!</p>
 
-                    <label className="add-photo-new-biz-btn">
-                        Upload photos
-                        <input
-                        type="file"
-                        multiple
-                        onChange={updateFiles} />
-                    </label>
-                    {imgLoaded ?
-                        <FcCheckmark />
-                    : ''}
+                    <div>
+                        <label className="add-photo-new-biz-btn">
+                            Upload photos
+                            <input
+                            type="file"
+                            multiple
+                            onChange={updateFiles} />
+                        </label>
+                        {imgLoaded ?
+                            <FcCheckmark />
+                        : ''}
+
+                    </div>
 
                     <button className="add-business-btn"type="submit">I'm ready to add my business!</button>
                 </form>

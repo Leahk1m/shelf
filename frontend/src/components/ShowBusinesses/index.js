@@ -64,7 +64,7 @@ function ShowBusinesses({ isLoaded }) {
             <div className="search-pg-contents-div">
                 <h3 className="all-results-title">All Businesses on shelf</h3>
                 {businesses.map((business) => (
-                    <div className="search-business-info-cont">
+                    <div key={business.id} className="search-business-info-cont">
                         <div className="search-biz-info">
                             <img onClick={() => history.push(`/business/${business.id}`)}className="search-business-pic"src={business.imageUrls[0]} alt="search-business"/>
                             <div className="search-biz-title-rating-review">

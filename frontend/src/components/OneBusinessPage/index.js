@@ -40,7 +40,7 @@ function OneBusinessPage({ isLoaded }) {
         })
 
         let avg = sum / specificReviews.length;
-        if(avg === 0) {
+        if(specificReviews.length === 0) {
             return(<div className="star-img-rating-div"><img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/zero-star.png?raw=true" alt="0-star"/><p className="num-reviews-p">{`${specificReviews?.length} Reviews`}</p></div>)
         } else if(avg < 1.5) {
             return(<div className="star-img-rating-div"><img className="stars-img"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true" alt="1-star"/><p className="num-reviews-p">{`${specificReviews?.length} Reviews`}</p></div>)
