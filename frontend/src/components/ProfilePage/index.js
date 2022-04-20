@@ -73,7 +73,7 @@ function ProfilePage({ isLoaded }) {
                             {myBusinesses.reverse().map(business => (
                                 <div className="my-prof-biz-info" key={business.id}>
                                     <div>
-                                        <h2>{business.title}</h2>
+                                        <h2 className="prof-biz-title"onClick={() => history.push(`/business/${business.id}`)}>{business.title}</h2>
                                         <div className="for-prof">
                                             <GrabRatings businessId={business.id}/>
                                         </div>
