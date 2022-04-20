@@ -61,7 +61,7 @@ function AddReview({ isLoaded }) {
 
     const ratingMessage = (num) => {
         if(num === 1) {
-            return ( <p className="rate-message">It could have been worse...</p> )
+            return ( <p className="rate-message">It couldn't have been worse...</p> )
         }
         if(num === 2) {
             return ( <p className="rate-message">It was okay...</p> )

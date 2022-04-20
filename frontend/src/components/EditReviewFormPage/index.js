@@ -54,6 +54,24 @@ function EditReviewFormPage({ isLoaded }) {
             })
     }
 
+    const ratingMessage = (num) => {
+        if(num === 1) {
+            return ( <p className="rate-message">It couldn't have been worse...</p> )
+        }
+        if(num === 2) {
+            return ( <p className="rate-message">It was okay...</p> )
+        }
+        if(num === 3) {
+            return ( <p className="rate-message">The place was pretty good...</p> )
+        }
+        if(num === 4) {
+            return ( <p className="rate-message">I liked the ambiance.</p> )
+        }
+        if(num === 5) {
+            return ( <p className="rate-message">Who knew getting groceries was fun!</p> )
+        }
+    }
+
     return (
         <div>
             <div className="navbar-container">
@@ -73,46 +91,49 @@ function EditReviewFormPage({ isLoaded }) {
                 </div>
             </div>
 
-            <div className="rating-stars">
-                {[...Array(5)].map((star, i) => {
-                    const ratingVal = i + 1;
-                    return(
-                        <label>
-                            <input
-                            type="radio"
-                            name="rating"
-                            value={ratingVal}
-                            onClick={() => setRating(ratingVal)}
+            <div className="update-review-div">
 
-                            />
-                            <div style={ratingVal <= (hover || rating) ? {backgroundColor:'#e00707'} : {backgroundColor:'#e4e5e9'}}>
+                <div className="rating-stars">
+                    {[...Array(5)].map((star, i) => {
+                        const ratingVal = i + 1;
+                        return(
+                            <label>
+                                <input
+                                type="radio"
+                                name="rating"
+                                value={ratingVal}
+                                onClick={() => setRating(ratingVal)}
 
-                                <AiFillStar
-                                className="star"
-                                color={'white'}
-
-                                // backGround={ratingVal <= (hover || rating) ? style={{background-color="#e00707"}} : "#e4e5e9"}
-                                // backgroundColor={'#e00707'}
-                                size={30}
-                                onMouseEnter={() => setHover(ratingVal)}
-                                onMouseLeave={() => setHover(null)}
                                 />
-                            </div>
-                        </label>
-                    )
-                    })}
+                                <div style={ratingVal <= (hover || rating) ? {backgroundColor:'#e00707'} : {backgroundColor:'#e4e5e9'}}>
 
-            </div>
-            <div>
-                <form className="new-review-form" onSubmit={handleUpdateReviewSubmit}>
-                    <textarea
-                    type="textarea"
-                    value={post}
-                    required
-                    onChange={(e) => setPost(e.target.value)}
-                    />
-                    <button type="submit">Add your review</button>
-                </form>
+                                    <AiFillStar
+                                    className="star"
+                                    color={'white'}
+
+                                    // backGround={ratingVal <= (hover || rating) ? style={{background-color="#e00707"}} : "#e4e5e9"}
+                                    // backgroundColor={'#e00707'}
+                                    size={30}
+                                    onMouseEnter={() => setHover(ratingVal)}
+                                    onMouseLeave={() => setHover(null)}
+                                    />
+                                </div>
+                            </label>
+                        )
+                        })}
+
+                </div>
+                <div>
+                    <form className="new-review-form" onSubmit={handleUpdateReviewSubmit}>
+                        <textarea
+                        type="textarea"
+                        value={post}
+                        required
+                        onChange={(e) => setPost(e.target.value)}
+                        />
+                        <button type="submit">Add your review</button>
+                    </form>
+                </div>
             </div>
         </div>
     );
