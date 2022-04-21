@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, NavLink } from "react-router-dom";
 import * as reviewActions from '../../store/review';
@@ -59,6 +59,24 @@ function AddReview({ isLoaded }) {
             })
     }
 
+    const raterStars = (rating) => {
+        if(rating === 1) {
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true'/></>)
+        }
+        if(rating === 2) {
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-star.png?raw=true'/></>)
+        }
+        if(rating === 3) {
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-star.png?raw=true'/></>)
+        }
+        if(rating === 4) {
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-star.png?raw=true'/></>)
+        }
+        if(rating === 5) {
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/five-star.png?raw=true'/></>)
+        }
+    };
+
     const ratingMessage = (num) => {
         if(num === 1) {
             return ( <p className="rate-message">It couldn't have been worse...</p> )
@@ -77,6 +95,11 @@ function AddReview({ isLoaded }) {
         }
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+
     return (
         <div className="review-rating-pg">
              <div className="navbar-container">
@@ -89,9 +112,9 @@ function AddReview({ isLoaded }) {
                     </div>
 
                     <div className="main-nav-links">
-                        {sessionUser ?
-                        <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                        : ''}
+                        {/* {sessionUser ? */}
+                        {/* // <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
+                        // : ''} */}
                         <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
                         {isLoaded && sessionLinks}
 
@@ -115,7 +138,12 @@ function AddReview({ isLoaded }) {
                                         </div>
 
                                         <div className="review-content-add-pg">
-                                            <p>{bizReview.rating}</p>
+                                            <div>
+                                                {bizReview.rating ?
+                                                    raterStars(bizReview.rating)
+                                                : ''}
+                                            </div>
+                                            {/* <p>{bizReview.rating}</p> */}
                                             <p className="biz-review-post-add-pg">{bizReview.post}</p>
                                         </div>
                                     </div>
@@ -171,13 +199,13 @@ function AddReview({ isLoaded }) {
                             />
 
                         </form>
-                            <button className="submit-review-btn" onClick={handleReviewSubmit}>Post Review</button>
+                        <button className="submit-review-btn" onClick={handleReviewSubmit}>Post Review</button>
+                        <div>
+                            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                        </div>
                     </div>
                 </div>
             </div>
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
         </div>
     );
 }

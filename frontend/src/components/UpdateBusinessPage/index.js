@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import * as businessActions from '../../store/business'
@@ -6,6 +6,7 @@ import './UpdateBusinessPage.css';
 import shelfIcon from '../IconPics/shelf.png';
 import ProfileButton from '../Navigation/ProfileButton';
 import { FcCheckmark } from 'react-icons/fc';
+import magnify from '../IconPics/mag.png';
 
 function UpdateBusinessPage({ isLoaded }) {
     const { businessId } = useParams();
@@ -30,6 +31,10 @@ function UpdateBusinessPage({ isLoaded }) {
     const ownerId = useSelector((state) => state.session.user.id)
 
     const history = useHistory();
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const handleEditSubmit = async (e) => {
         e.preventDefault();
@@ -78,70 +83,92 @@ function UpdateBusinessPage({ isLoaded }) {
 
     return (
         <div className="update-business-form-container">
-            <div className="navbar-container">
+            <div className="review-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
-                <div className="search-container">
-                    <input className="search-input"
-                    type="text"
-                    />
+                <div className="double-search-not-home">
+                        <p className="find-near-p-nh">Find</p>
+                        <input className="find-name-nh"
+                        type="text"
+                        placeholder="Family-owned, Traditional, Rustic stores..."
+                        />
+
+                        <p className="find-near-p-nh">Near</p>
+                        <input className="find-location-nh"
+                        type="text"
+                        placeholder="Bay Area, CA ONLY for now"
+                        readOnly = {true}
+                        />
+                        <button className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+
                 </div>
 
                 <div className="main-nav-links">
-                    {sessionUser ?
+                    {/* {sessionUser ?
                     <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                    : ''}
+                    : ''} */}
                     <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
                     {isLoaded && sessionLinks}
+                </div>
             </div>
-            </div>
-            <h1>Update Business</h1>
-            <div className="update-biz-form-input-container">
-                <form className="update-biz-form" onSubmit={ passedImgsLength ? handleEditSubmit : preventRefresh }>
-                    <div className="update-biz-inputs">
-                        <input
+
+
+            <h1 className="add-biz-title-h1">Let's update your business</h1>
+            <div className="new-biz-form-input-container">
+                <p className="new-biz-directions">Business title</p>
+                <form className="new-biz-form" onSubmit={ passedImgsLength ? handleEditSubmit : preventRefresh }>
+                    {/* <div className="update-biz-inputs"> */}
+                        <input className="update-biz-input"
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Title"
                         />
-                        <input
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        placeholder="Description"
-                        />
-                        <input
-                        type="text"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        placeholder="Address"
-                        />
-                        <input
-                        type="text"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                        placeholder="City"
-                        />
-                        <input
-                        type="text"
-                        value={state}
-                        onChange={(e) => setState(e.target.value)}
-                        placeholder="State"
-                        />
-                        <input
-                        type="text"
-                        value={zipCode}
-                        onChange={(e) => setZipCode(e.target.value)}
-                        placeholder="Zip code"
-                        />
-                        <select className="select-update-biz-category"value={category} onChange={(e) => setCategory(e.target.value)}>
+
+                        <p className="new-biz-directions">Business address</p>
+                        <div className="new-biz-addy-info">
+                            <input className="update-biz-addy-input"
+                            type="text"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            placeholder="Address"
+                            />
+                            <input className="update-biz-addy-input"
+                            type="text"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                            placeholder="City"
+                            />
+                            <input className="update-biz-addy-input"
+                            type="text"
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                            placeholder="State"
+                            />
+                            <input className="update-biz-addy-input"
+                            type="text"
+                            value={zipCode}
+                            onChange={(e) => setZipCode(e.target.value)}
+                            placeholder="Zip code"
+                            />
+                        </div>
+                        <p className="new-biz-directions" id="vibes">Business category</p>
+                        <select className="update-biz-category-input" value={category} onChange={(e) => setCategory(e.target.value)}>
                             <option value="Traditional">Traditional</option>
                             <option value="Family-owned">Family-owned</option>
                             <option value="Modern">Modern</option>
                             <option value="Rustic">Rustic</option>
                             <option value="Other">Other</option>
                         </select>
-                        <div>
+                        <p className="new-biz-directions">Description</p>
+                        <textarea className="update-biz-text-area"
+                        type="text"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        placeholder="If words can't do your store justice, feel free to just include your hours of operation here! "
+                        />
+                        <p className="new-biz-directions">New photos?</p>
+
+                        <div className="aws-upload-input-div">
                             <label className="add-photo-new-biz-btn">
                                 Change my photos
                                 <input
@@ -154,8 +181,11 @@ function UpdateBusinessPage({ isLoaded }) {
                             : ''}
 
                         </div>
-                        <button type="submit">Update spot</button>
-                    </div>
+
+                        <div className="submit-biz-button-div">
+                            <button className="add-business-btn" type="submit">Update spot</button>
+                        </div>
+                    {/* </div> */}
                 </form>
             </div>
             <ul>

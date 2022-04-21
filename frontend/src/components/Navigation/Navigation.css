@@ -20,10 +20,20 @@
 }
 
 .navbar-links {
-  text-decoration: none;
+  /* text-decoration: none;
   color: black;
   font-family: 'Montserrat', sans-serif;
-  width: 25%;
+  width: 25%; */
+    text-decoration: none;
+    color: #b0b0b0;
+    font-family: 'Montserrat', sans-serif;
+    width: 25%;
+    cursor: pointer;
+}
+.navbar-links:hover {
+  border-bottom: 1px solid white;
+  transition: 0.5s ease;
+
 }
 
 .navbar-container {
@@ -31,6 +41,23 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid #8080803b;
+  position: sticky;
+  top: 0;
+  background-color: whitesmoke;
+}
+.review-navbar-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #8080803b;
+
+}
+.one-biz-navbar-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #8080803b;
+
 }
 
 

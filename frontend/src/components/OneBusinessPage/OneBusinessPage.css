@@ -50,31 +50,42 @@
 .update-biz-dropdown-btn {
     border: none;
     cursor: pointer;
-    width: 10%;
-    height: 25px;
+    padding: 5px;
+    width: 158px;
+    height: 35px;
+
 
 }
 .update-biz-dropdown-btn:hover {
     background-color: rgb(216, 214, 214);
+    border: 1px solid grey;
+    color: white;
+    transition: 0.2s ease;
+
 
 }
 
 .delete-biz-dropdown-btn {
     border: none;
     cursor: pointer;
-    width: 10%;
-    height: 25px;
+    padding: 5px;
+    width: 158px;
+    height: 35px;
 }
 .delete-biz-dropdown-btn:hover {
     background-color: rgb(216, 214, 214);
+    border: 1px solid grey;
+    color: white;
+    transition: 0.2s ease;
 
 }
 
 .yes-delete-btn {
     border: none;
     cursor: pointer;
-    width: 10%;
+    width: 30%;
     height: 25px;
+    border-radius: 3px;
 
 }
 .yes-delete-btn:hover {
@@ -85,8 +96,9 @@
 .no-delete-btn {
     border: none;
     cursor: pointer;
-    width: 10%;
+    width: 30%;
     height: 25px;
+    border-radius: 3px;
 
 }
 .no-delete-btn:hover {
@@ -113,6 +125,13 @@
 
 
 }
+
+.write-review-btn-div {
+    margin-left: 7%;
+    margin-bottom: 2%;
+    margin-top: 3%;
+}
+
 
 .outline-star {
     font-size: 23px;
@@ -172,6 +191,10 @@
     gap: 2%;
 }
 
+.review-person-info-cont {
+    margin-bottom: 2%;
+}
+
 .review-person-post {
     display: flex;
     width: 100%;
@@ -187,6 +210,7 @@
 
 .review-stars-and-post {
     padding: 10px;
+    width: 40%;
 }
 
 
@@ -238,22 +262,27 @@
     margin-left: 7%;
 }
 
-.biz-description-p {
-
+.biz-edit-btn-div {
+    display: flex;
+    margin-left: 7%;
+    margin-bottom: 2%;
+    margin-top: 4%;
 }
+
 
 .hide-this {
     display: none;
 }
 
 .biz-description-cont-div {
-    border-top: 1px solid #c7c7c7;
-    border-bottom: 1px solid #c7c7c7;
+    border-top: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
     display: flex;
     width: 50%;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    align-items: center;
 }
 
 .update-delete-btn-container {
@@ -272,4 +301,21 @@
 
 .the-state {
     margin-top: 1px;
+}
+
+.are-u-sure-div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3%;
+    margin-top: -11px;
+
+}
+
+.yes-no-btns-div {
+    display: flex;
+    gap: 3%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
 }

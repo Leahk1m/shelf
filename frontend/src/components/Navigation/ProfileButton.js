@@ -43,11 +43,11 @@ function ProfileButton({ user }) {
     <>
       {currentUsersFirstName ?
         <div>
-          {pathName == '/' ?
+          {pathName === '/' ?
             <div>
-              <button className="prof-btn-nav"onClick={goToProfile}>Profile</button>
+              <button className="home-nav-all-biz-btn"onClick={goToProfile}>Profile</button>
 
-              <button className="logout-btn-nav"onClick={logout}>Log Out</button>
+              <button className="home-nav-all-biz-btn"onClick={logout}>Log Out</button>
             </div>
             // <p onClick={openMenu}className="welcome-user-nav-title">{`Welcome, ${currentUsersFirstName}`}</p>
         :   <img className="nav-prof-icon"onClick={openMenu} src={currentUsersProfilePhoto} alt="user-prof-icon-nav"/>}

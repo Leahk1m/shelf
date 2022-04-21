@@ -43,9 +43,9 @@
     width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-height: 16px;
     line-height: 16px;
-    /* width: fit-content; */
+    width: fit-content;
+    font-size: 13px;
 
 }
 
@@ -110,4 +110,8 @@
 
 .mag-glass-icon-nh {
     width: 38%;
+}
+
+.star-rating-all-div {
+    width: 80%;
 }

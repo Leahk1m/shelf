@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // import * as businessActions from '../../store/business';
@@ -13,6 +13,7 @@ function ShowBusinesses({ isLoaded }) {
     const businesses = useSelector(state => Object.values(state.business));
     const reviews = useSelector((state) => Object.values(state.review));
     const history = useHistory();
+    const [search, setSearch] = useState('');
 
 
     let sessionLinks;
@@ -29,6 +30,20 @@ function ShowBusinesses({ isLoaded }) {
         );
     }
 
+     const searching = (e) => {
+        if(search.length === 0) {
+            history.push(`/search/all`)
+
+        } else {
+            history.push(`/search/${search}`)
+        }
+    };
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+
 
     return(
         <div className="all-biz-cont">
@@ -39,6 +54,8 @@ function ShowBusinesses({ isLoaded }) {
                         <p className="find-near-p-nh">Find</p>
                         <input className="find-name-nh"
                         type="text"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
                         placeholder="Family-owned, Traditional, Rustic stores..."
                         />
 
@@ -48,15 +65,15 @@ function ShowBusinesses({ isLoaded }) {
                         placeholder="Bay Area, CA ONLY for now"
                         readOnly = {true}
                         />
-                        <button className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+                        <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
 
                 </div>
 
                     <div className="main-nav-links">
                         {/* {sessionUser ?
                         <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                        : ''} */}
-                        <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                        // : ''} */}
+                        <NavLink className="navbar-links" to="/businesses">Explore all</NavLink>
                         {isLoaded && sessionLinks}
                 </div>
             </div>
@@ -69,7 +86,10 @@ function ShowBusinesses({ isLoaded }) {
                             <img onClick={() => history.push(`/business/${business.id}`)}className="search-business-pic"src={business.imageUrls[0]} alt="search-business"/>
                             <div className="search-biz-title-rating-review">
                                 <h2 className="all-these-biz-titles">{business.title}</h2>
-                                <GrabRatings businessId={business.id}/>
+                                <div className="star-rating-all-div">
+                                    <GrabRatings businessId={business.id}/>
+
+                                </div>
                                 <button className="all-biz-cat-btn">{business.category}</button>
                                 <div>
                                     <p>{business.address}</p>

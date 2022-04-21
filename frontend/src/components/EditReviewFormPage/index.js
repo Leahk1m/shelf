@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, NavLink } from "react-router-dom";
 import * as reviewActions from '../../store/review';
@@ -59,6 +59,7 @@ function EditReviewFormPage({ isLoaded }) {
             })
     }
 
+
     const ratingMessage = (num) => {
         if(num === 1) {
             return ( <p className="rate-message">It couldn't have been worse...</p> )
@@ -77,6 +78,11 @@ function EditReviewFormPage({ isLoaded }) {
         }
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+
     return (
         <div className="review-rating-pg">
         <div className="navbar-container">
@@ -89,9 +95,9 @@ function EditReviewFormPage({ isLoaded }) {
                </div>
 
                <div className="main-nav-links">
-                   {sessionUser ?
+                   {/* {sessionUser ?
                    <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                   : ''}
+                   : ''} */}
                    <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
                    {isLoaded && sessionLinks}
 
@@ -188,13 +194,13 @@ function EditReviewFormPage({ isLoaded }) {
                        />
 
                    </form>
-                       <button className="submit-review-btn" onClick={handleUpdateReviewSubmit}>Edit Review</button>
+                    <button className="submit-review-btn" onClick={handleUpdateReviewSubmit}>Edit Review</button>
+                    <div>
+                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    </div>
                </div>
            </div>
        </div>
-       <ul>
-           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-       </ul>
    </div>
 );
 }

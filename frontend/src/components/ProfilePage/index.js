@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
 import ProfileButton from "../Navigation/ProfileButton";
-// import LoginFormModal from "../LoginFormModal";
 import './ProfilePage.css';
-// import * as sessionActions from '../../store/session';
 import shelfIcon from '../IconPics/shelf.png';
 import GrabRatings from '../GrabRatings';
 import { IoMdBusiness } from 'react-icons/io';
 import { MdOutlineRateReview } from 'react-icons/md';
+import magnify from '../IconPics/mag.png';
 
 function ProfilePage({ isLoaded }) {
     const sessionUser = useSelector((state) => state.session.user);
@@ -16,6 +15,7 @@ function ProfilePage({ isLoaded }) {
     const myBusinesses = businesses.filter((business) => business.ownerId === +sessionUser.id);
     const reviews = useSelector(state => Object.values(state.review));
     const history = useHistory();
+    const [search, setSearch] = useState('');
 
     const myReviews = reviews.filter((review) => review.id === +sessionUser.id);
 
@@ -33,21 +33,47 @@ function ProfilePage({ isLoaded }) {
         );
     }
 
+     const searching = (e) => {
+        if(search.length === 0) {
+            history.push(`/search/all`)
+
+        } else {
+            history.push(`/search/${search}`)
+        }
+    };
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return(
         <div className="user-prof-cont">
             <div className="navbar-container">
             <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
-            <div className="search-container">
-                <input className="search-input"
+            <div className="double-search-not-home">
+                <p className="find-near-p-nh">Find</p>
+                <input className="find-name-nh"
                 type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Family-owned, Traditional, Rustic stores..."
                 />
+
+                <p className="find-near-p-nh">Near</p>
+                <input className="find-location-nh"
+                type="text"
+                placeholder="Bay Area, CA ONLY for now"
+                readOnly = {true}
+                />
+                <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+
             </div>
 
             <div className="main-nav-links">
-                {sessionUser ?
+                {/* {sessionUser ?
                 <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                : ''}
+                : ''} */}
                 <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
                 {isLoaded && sessionLinks}
 
@@ -85,7 +111,7 @@ function ProfilePage({ isLoaded }) {
                     : <p>You have no businesses</p>}
 
 
-                    {myReviews ?
+                    {/* {myReviews ?
                         <div>
                             {myReviews.map(review => (
                                 <div>
@@ -94,7 +120,7 @@ function ProfilePage({ isLoaded }) {
                                 </div>
                             ))}
                         </div>
-                    : <p>You have no reviews</p>}
+                    : <p>You have no reviews</p>} */}
             </div>
         </div>
     );

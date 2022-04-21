@@ -11,6 +11,7 @@ import { RiArrowDropDownLine} from 'react-icons/ri';
 import { AiOutlineStar } from 'react-icons/ai';
 import blueCheck from '../IconPics/blue-check.png';
 import { BsDot } from 'react-icons/bs';
+import magnify from '../IconPics/mag.png';
 
 function OneBusinessPage({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -21,6 +22,7 @@ function OneBusinessPage({ isLoaded }) {
     const [showRevDropdown, setShowRevDropdown] = useState(prev => prev === false ? true : false);
     const [showBizDropdown, setShowBizDropdown] = useState(prev => prev === false ? true : false);
     const [youSureDeleteBiz, setYouSureDeleteBiz] = useState(false);
+    const [search, setSearch] = useState('');
     let bizDescription;
     let myReview;
     let bizAddress;
@@ -78,6 +80,16 @@ function OneBusinessPage({ isLoaded }) {
         );
     }
 
+    const searching = (e) => {
+        if(search.length === 0) {
+            history.push(`/search/all`)
+
+        } else {
+            history.push(`/search/${search}`)
+        }
+    };
+
+
     const dispatch = useDispatch();
 
     const history = useHistory();
@@ -126,21 +138,38 @@ function OneBusinessPage({ isLoaded }) {
 
     };
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return(
         <div>
-            <div className="navbar-container">
+            <div className="one-biz-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
-                <div className="search-container">
-                    <input className="search-input"
+                <div className="double-search-not-home">
+                    <p className="find-near-p-nh">Find</p>
+                    <input className="find-name-nh"
                     type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Family-owned, Traditional, Rustic stores..."
                     />
+
+                    <p className="find-near-p-nh">Near</p>
+                    <input className="find-location-nh"
+                    type="text"
+                    placeholder="Bay Area, CA ONLY for now"
+                    readOnly = {true}
+                    />
+                    <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+
                 </div>
 
                 <div className="main-nav-links">
-                    {sessionUser ?
-                    <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                    : ''}
+                    {/* {sessionUser ? */}
+                    {/* // <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
+                    // : ''} */}
                     <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
                     {isLoaded && sessionLinks}
 
@@ -159,9 +188,6 @@ function OneBusinessPage({ isLoaded }) {
                                 <img src={img} key={(i + 1) * 3} className="banner-image-array" alt="biz-pics"/>
                             ))
                         }
-                        {/* <img className="one-biz-photo"src={business.imageUrl} alt="one-biz-pic"/>
-                        <img className="one-biz-photo"src={business.imageUrlTwo} alt="one-biz-pic"/>
-                    <img className="one-biz-photo"src={business.imageUrlThree} alt="one-biz-pic"/> */}
                     </div>
                     <div className="business-show-info">
                         <p className="one-biz-title">{business.title}</p>
@@ -187,20 +213,22 @@ function OneBusinessPage({ isLoaded }) {
                         <div className="update-delete-btn-container">
                             {/* <RiArrowDropDownLine onClick={() => setShowBizDropdown(prev => prev === false ? true : false)}/> */}
                             {/* {showBizDropdown ? */}
-                                <div>
+                                <div className="biz-edit-btn-div">
                                     <button className="update-biz-dropdown-btn"onClick={goToBusinessEditPage}>Update Business</button>
                                     <button className="delete-biz-dropdown-btn"onClick={() => setYouSureDeleteBiz(true)}>Delete Business</button>
                                     {youSureDeleteBiz ?
-                                        <div>
-                                            <p className="are-u-sure-p">Deleting a business is permanent. Are you sure?</p>
-                                            <button className="yes-delete-btn" onClick={deleteBusiness}>Yes</button>
-                                            <button className="no-delete-btn" onClick={() => setYouSureDeleteBiz(false)}>No</button>
+                                        <div className="are-u-sure-div">
+                                            <p className="are-u-sure-p">{`Are you sure you want to delete ${business.title}`}</p>
+                                            <div className="yes-no-btns-div">
+                                                <button className="yes-delete-btn" onClick={deleteBusiness}>Yes</button>
+                                                <button className="no-delete-btn" onClick={() => setYouSureDeleteBiz(false)}>No</button>
+                                            </div>
                                         </div>
                                     : ''}
                                 </div>
                             {/* : ''} */}
                         </div>
-                    : <button className="write-review-btn" onClick={checkingUser}><AiOutlineStar className="outline-star"/>Write a Review</button>}
+                    : <div className="write-review-btn-div"><button className="write-review-btn" onClick={checkingUser}><AiOutlineStar className="outline-star"/>Write a Review</button></div>}
                 </div>
             ))}
 
@@ -226,15 +254,15 @@ function OneBusinessPage({ isLoaded }) {
                 </div>
                 {reviews && specificReviews ?
                     <div className="peoples-reviews-cont">
+                        {console.log(specificReviews)}
                         {specificReviews.map(review => (
-                            <div key={review.id}>
+                            <div className="review-person-info-cont" key={review.id}>
                                 <div className="review-person-info">
                                     <img className="review-prof-icon"src={review.profilePhoto} alt="prof-icon"/>
                                     <p className="review-person-name">{review.firstName} {review.lastName}</p>
                                     <AiOutlineEllipsis onClick={() => setShowRevDropdown(prev => prev === false ? true : false)} />
 
                                 </div>
-                                    {sessionUser && review.userId === sessionUser.id ?
                                         <div className="review-stars-and-post">
                                             <p className="hide-this">{myReview = review.id}</p>
                                             {review.rating === 1 &&
@@ -255,14 +283,15 @@ function OneBusinessPage({ isLoaded }) {
                                             <div className="review-person-post">
                                                 <p>{review.post}</p>
                                             </div>
-                                            {showRevDropdown ?
+                                        </div>
+                                    {sessionUser && review.userId === sessionUser.id ?
+                                            <div>{showRevDropdown ?
                                                 <div className="comment-edit-dropdown">
                                                     <button className="update-comment-btn"onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>Edit review</button>
                                                     <button className="delete-comment-btn" onClick={deleteReview}>Delete review</button>
 
                                                 </div>
-                                            : ''}
-                                        </div>
+                                            : ''}</div>
                                     : ''}
                             </div>
                         ))}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import './HomePage.css';
 import largeShelfLogo from '../IconPics/new-shelf.png';
@@ -34,6 +34,10 @@ function HomePage({isLoaded}) {
         }
     };
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
 
     return(
         <div>
@@ -42,13 +46,13 @@ function HomePage({isLoaded}) {
                    <button className="home-nav-all-biz-btn"onClick={() => history.push('/businesses')}>Businesses</button>
 
                     {/* <NavLink className="splash-navbar-links" to="/businesses">Businesses</NavLink> */}
-                    <div className="splash-main-nav-links">
-                        {sessionUser ?
-                        <NavLink className="splash-navbar-links" exact to="/host">Add Business</NavLink>
-                        : ''}
+
+                        {/* {sessionUser ?
+                            <NavLink className="splash-navbar-links" exact to="/host">Add Business</NavLink>
+                        : ''} */}
                         {isLoaded && sessionLinks}
 
-                    </div>
+
                 </div>
                 <div className="splash-nav-logo-container">
                     <img className="home-pg-shelf-logo"src={largeShelfLogo} alt="shelf-icon"/>
@@ -101,16 +105,16 @@ function HomePage({isLoaded}) {
                 </div>
                 <div className="hot-businesses-cont">
                     <div className="hot-indiv-biz">
-                        <img className="hot-indiv-img" src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/hot1.png?raw=true' alt="hot1"/>
+                        <img onClick={() => history.push(`/business/13`)}className="hot-indiv-img" src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/hot1.png?raw=true' alt="hot1"/>
                         <h4>DEVO</h4>
                     </div>
                     <div className="hot-indiv-biz">
-                        <img className="hot-indiv-img" src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/hot2.png?raw=true' alt="hot2"/>
+                        <img onClick={() => history.push(`/business/14`)}className="hot-indiv-img" src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/hot2.png?raw=true' alt="hot2"/>
                         <h4>The Goods Mart</h4>
                     </div>
                     <div className="hot-indiv-biz">
-                        <img className="hot-indiv-img" src='https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/hot3.jpg?raw=true' alt="hot3"/>
-                        <h4>Midtown Market</h4>
+                        <img onClick={() => history.push(`/business/17`)}className="hot-indiv-img" src='https://shelf-img-bucket.s3.us-west-1.amazonaws.com/choice1.jpg' alt="hot3"/>
+                        <h4>Choice Market</h4>
                     </div>
                 </div>
             </div>
