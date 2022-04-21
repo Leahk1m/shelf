@@ -46,13 +46,13 @@ function HomePage({isLoaded}) {
                    <button className="home-nav-all-biz-btn"onClick={() => history.push('/businesses')}>Businesses</button>
 
                     {/* <NavLink className="splash-navbar-links" to="/businesses">Businesses</NavLink> */}
-                    <div className="splash-main-nav-links">
-                        {sessionUser ?
-                        <NavLink className="splash-navbar-links" exact to="/host">Add Business</NavLink>
-                        : ''}
+
+                        {/* {sessionUser ?
+                            <NavLink className="splash-navbar-links" exact to="/host">Add Business</NavLink>
+                        : ''} */}
                         {isLoaded && sessionLinks}
 
-                    </div>
+
                 </div>
                 <div className="splash-nav-logo-container">
                     <img className="home-pg-shelf-logo"src={largeShelfLogo} alt="shelf-icon"/>

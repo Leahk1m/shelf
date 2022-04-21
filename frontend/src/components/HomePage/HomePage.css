@@ -78,11 +78,11 @@
     display: flex;
     align-items: center;
     align-content: center;
-    grid-gap: 80%;
-    gap: 80%;
-    justify-content: center;
     height: 50px;
+    grid-gap: 31%;
     font-size: 22px;
+    justify-content: space-around;
+    background: linear-gradient(to top, rgb(199,194,194, 0) , rgb(51 51 52 / 75%));
 }
 
 .splash-navbar-links {
@@ -126,7 +126,7 @@
 .home-nav-all-biz-btn {
     border: none;
     background: transparent;
-    font-size: 16px;
+    font-size: 18px;
     color: white;
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;

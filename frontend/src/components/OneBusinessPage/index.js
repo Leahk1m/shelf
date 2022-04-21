@@ -228,7 +228,7 @@ function OneBusinessPage({ isLoaded }) {
                                 </div>
                             {/* : ''} */}
                         </div>
-                    : <div><button className="write-review-btn" onClick={checkingUser}><AiOutlineStar className="outline-star"/>Write a Review</button></div>}
+                    : <div className="write-review-btn-div"><button className="write-review-btn" onClick={checkingUser}><AiOutlineStar className="outline-star"/>Write a Review</button></div>}
                 </div>
             ))}
 
@@ -254,15 +254,15 @@ function OneBusinessPage({ isLoaded }) {
                 </div>
                 {reviews && specificReviews ?
                     <div className="peoples-reviews-cont">
+                        {console.log(specificReviews)}
                         {specificReviews.map(review => (
-                            <div key={review.id}>
+                            <div className="review-person-info-cont" key={review.id}>
                                 <div className="review-person-info">
                                     <img className="review-prof-icon"src={review.profilePhoto} alt="prof-icon"/>
                                     <p className="review-person-name">{review.firstName} {review.lastName}</p>
                                     <AiOutlineEllipsis onClick={() => setShowRevDropdown(prev => prev === false ? true : false)} />
 
                                 </div>
-                                    {sessionUser && review.userId === sessionUser.id ?
                                         <div className="review-stars-and-post">
                                             <p className="hide-this">{myReview = review.id}</p>
                                             {review.rating === 1 &&
@@ -283,14 +283,15 @@ function OneBusinessPage({ isLoaded }) {
                                             <div className="review-person-post">
                                                 <p>{review.post}</p>
                                             </div>
-                                            {showRevDropdown ?
+                                        </div>
+                                    {sessionUser && review.userId === sessionUser.id ?
+                                            <div>{showRevDropdown ?
                                                 <div className="comment-edit-dropdown">
                                                     <button className="update-comment-btn"onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>Edit review</button>
                                                     <button className="delete-comment-btn" onClick={deleteReview}>Delete review</button>
 
                                                 </div>
-                                            : ''}
-                                        </div>
+                                            : ''}</div>
                                     : ''}
                             </div>
                         ))}

@@ -46,9 +46,9 @@ function Navigation({ isLoaded }){
 
     {pathName == '/' && sessionUser?
       <div>
-        <NavLink className="prof-btn-nav" exact to="/host">Add Business</NavLink>
-        <NavLink className="prof-btn-nav" exact to="/profile">Profile</NavLink>
-        <button className="logout-btn-nav"onClick={logout}>Log Out</button>
+        <NavLink className="home-nav-all-biz-btn" exact to="/host">Add Business</NavLink>
+        <NavLink className="home-nav-all-biz-btn" exact to="/profile">Profile</NavLink>
+        <button className="home-nav-all-biz-btn"onClick={logout}>Log Out</button>
 
       </div>
 

@@ -14,11 +14,11 @@ function Footer() {
 
             <div className="discover-div">
                 <div className="github-div">
-                    <FaGithub className="github-logo"/><a className="github-link"href='https://github.com/Leahk1m'>Github</a>
+                    <FaGithub className="github-logo"/><a target="_blank"className="github-link"href='https://github.com/Leahk1m'>Github</a>
                 </div>
 
                 <div className="linked-in-div">
-                    <FaLinkedin className="linked-in-logo" /><a className="linkedin-link"href='www.linkedin.com/in/leahk1m'>Linkedin</a>
+                    <FaLinkedin className="linked-in-logo" /><a target="_blank"className="linkedin-link"href='https://www.linkedin.com/in/leahk1m'>Linkedin</a>
                 </div>
             </div>
 
