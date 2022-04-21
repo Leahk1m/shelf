@@ -195,9 +195,9 @@ function EditReviewFormPage({ isLoaded }) {
 
                    </form>
                     <button className="submit-review-btn" onClick={handleUpdateReviewSubmit}>Edit Review</button>
-                    <div>
+                    <ul style={{listStyle: "none"}}>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </div>
+                    </ul>
                </div>
            </div>
        </div>

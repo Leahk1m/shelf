@@ -215,7 +215,7 @@ function NewBusinessFormPage({ isLoaded }) {
                 </form>
 
             </div>
-            <ul>
+            <ul style={{listStyle: "none"}}>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 {imgInputError || errors.length > 0 ?
                     <p>

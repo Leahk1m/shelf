@@ -114,7 +114,7 @@ function SignupFormPage() {
           </div>
         </form>
       </div>
-      <ul>
+      <ul style={{listStyle: "none"}}>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
     </div>

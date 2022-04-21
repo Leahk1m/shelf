@@ -200,9 +200,9 @@ function AddReview({ isLoaded }) {
 
                         </form>
                         <button className="submit-review-btn" onClick={handleReviewSubmit}>Post Review</button>
-                        <div>
+                        <ul style={{listStyle: "none"}}>
                             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                        </div>
+                        </ul>
                     </div>
                 </div>
             </div>

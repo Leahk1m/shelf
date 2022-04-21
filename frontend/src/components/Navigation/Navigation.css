@@ -40,7 +40,7 @@
   position: sticky;
   top: 0;
   background-color: whitesmoke;
-  background: linear-gradient(to top, rgb(199,194,194, 0) , rgb(131 131 131 / 44%));
+  /* background: linear-gradient(to top, rgb(199,194,194, 0) , rgb(131 131 131 / 44%)); */
 }
 .review-navbar-container {
   width: 100%;
@@ -54,7 +54,8 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid #8080803b;
-  background: linear-gradient(to top, rgb(199,194,194, 0) , rgb(51 51 52 / 75%));
+  background-color: whitesmoke;
+  /* background: linear-gradient(to top, rgb(199,194,194, 0) , rgb(51 51 52 / 75%)); */
 
 }
 

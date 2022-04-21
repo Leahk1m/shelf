@@ -119,7 +119,6 @@ function SearchPage({isLoaded}) {
                 ))}
 
             </div>
-
         </div>
     );
 }

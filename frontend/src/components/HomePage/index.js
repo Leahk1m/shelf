@@ -19,7 +19,9 @@ function HomePage({isLoaded}) {
     } else {
         sessionLinks = (
         <>
-            <button className="home-nav-all-biz-btn"onClick={() => history.push('/login')}>Log in</button>
+            <div>
+                <button className="home-nav-all-biz-btn"onClick={() => history.push('/login')}>Log in</button>
+            </div>
             <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
         </>
         );
