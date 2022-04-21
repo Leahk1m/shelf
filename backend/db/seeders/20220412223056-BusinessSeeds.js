@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Businesses', [
       {
-        ownerId: 2,
+        ownerId: 1,
         title: 'Honeycomb Grocer',
         description: 'Hours: Monday - Friday: 9:00 am - 8:00 pm  Saturday - Sunday: Closed',
         address:'706 39th St',
@@ -83,7 +83,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        ownerId: 3,
+        ownerId: 1,
         title: "From Farm to Jane's",
         description: 'Hours: Monday - Friday: 6:00 am - 5:00 pm  Saturday - Sunday: 5:00 am - 4:00 pm',
         address: '290 Boynton Ave',
@@ -113,7 +113,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        ownerId: 2,
+        ownerId: 1,
         title: 'Tienda Natural',
         description: 'Hours: Monday - Friday: 10:00 am - 9:00 pm  Saturday - Sunday: 9:00 am - 10:00 pm',
         address: '813 Channing Way',
@@ -143,7 +143,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        ownerId: 3,
+        ownerId: 1,
         title: 'Yuji',
         description: 'Hours: Monday - Friday: 11:00 am - 11:00 pm  Saturday - Sunday: 11:00 am - 11:00 pm',
         address: '4065 Arbolado Dr',
