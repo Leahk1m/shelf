@@ -111,7 +111,7 @@ function ProfilePage({ isLoaded }) {
                     : <p>You have no businesses</p>}
 
 
-                    {myReviews ?
+                    {/* {myReviews ?
                         <div>
                             {myReviews.map(review => (
                                 <div>
@@ -120,7 +120,7 @@ function ProfilePage({ isLoaded }) {
                                 </div>
                             ))}
                         </div>
-                    : <p>You have no reviews</p>}
+                    : <p>You have no reviews</p>} */}
             </div>
         </div>
     );

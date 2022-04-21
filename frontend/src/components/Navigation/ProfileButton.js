@@ -43,7 +43,7 @@ function ProfileButton({ user }) {
     <>
       {currentUsersFirstName ?
         <div>
-          {pathName == '/' ?
+          {pathName === '/' ?
             <div>
               <button className="home-nav-all-biz-btn"onClick={goToProfile}>Profile</button>
 

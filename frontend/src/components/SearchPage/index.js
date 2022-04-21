@@ -20,7 +20,7 @@ function SearchPage({isLoaded}) {
     if(searchTerm.searchTerm === 'all') {
         catBusinesses = businesses;
     } else {
-        catBusinesses = businesses.filter((business) => business.category.toLowerCase() == searchTerm.searchTerm || business.title.toLowerCase().indexOf(searchTerm.searchTerm) > -1);
+        catBusinesses = businesses.filter((business) => business.category.toLowerCase() === searchTerm.searchTerm || business.title.toLowerCase().indexOf(searchTerm.searchTerm) > -1);
 
     };
 

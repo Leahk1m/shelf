@@ -58,7 +58,7 @@ function EditReviewFormPage({ isLoaded }) {
                 }
             })
     }
-    
+
 
     const ratingMessage = (num) => {
         if(num === 1) {
@@ -194,13 +194,13 @@ function EditReviewFormPage({ isLoaded }) {
                        />
 
                    </form>
-                       <button className="submit-review-btn" onClick={handleUpdateReviewSubmit}>Edit Review</button>
+                    <button className="submit-review-btn" onClick={handleUpdateReviewSubmit}>Edit Review</button>
+                    <div>
+                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    </div>
                </div>
            </div>
        </div>
-       <ul>
-           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-       </ul>
    </div>
 );
 }
