@@ -1,0 +1,13 @@
+
+.raccoon-404-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.raccoon-gif {
+    cursor: pointer;
+    width: 50%;
+}

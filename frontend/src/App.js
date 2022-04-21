@@ -13,6 +13,7 @@ import ProfilePage from './components/ProfilePage';
 import AddReviewFormPage from './components/AddReviewFormPage';
 import EditReviewFormPage from './components/EditReviewFormPage';
 import SearchPage from './components/SearchPage';
+import PageNotFound from './components/PageNotFound';
 
 
 import * as businessActions from './store/business';
@@ -76,6 +77,9 @@ function App() {
           </Route>
           <Route exact path='/business/reviews/edit/:reviewId'>
             <EditReviewFormPage isLoaded={isLoaded}/>
+          </Route>
+          <Route to='/'>
+            <PageNotFound />
           </Route>
         </Switch>
 
