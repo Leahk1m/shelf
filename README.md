@@ -3,11 +3,7 @@
 This is a clone of yelp, that is centered around helping people discover and explore local and/or artisanal grocery stores.
 
 # Technology Used
-<p float="left">
-<img src="react-app/public/img/javascript.png" width="100">
-<img src="react-app/public/img/react.png" width="100">
-<img src="react-app/public/img/redux.png" width="100">
-</p>
+Javascript, React, Redux, Postgres
 
 ## Getting started finding the memes
 
