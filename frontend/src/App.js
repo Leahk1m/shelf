@@ -14,6 +14,7 @@ import AddReviewFormPage from './components/AddReviewFormPage';
 import EditReviewFormPage from './components/EditReviewFormPage';
 import SearchPage from './components/SearchPage';
 import PageNotFound from './components/PageNotFound';
+import Footer from './components/Footer';
 
 
 import * as businessActions from './store/business';
@@ -84,7 +85,7 @@ function App() {
         </Switch>
 
         <footer>
-          This is the footer
+          <Footer />
         </footer>
         </>
       )}
