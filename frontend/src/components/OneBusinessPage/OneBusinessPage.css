@@ -188,7 +188,12 @@
 
 .review-person-info {
     display: flex;
+    width: 40%;
+    grid-gap: 2%;
     gap: 2%;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
 }
 
 .review-person-info-cont {
@@ -318,4 +323,11 @@
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
+}
+
+.review-person-img-and-name {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    align-content: center;
 }

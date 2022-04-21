@@ -258,8 +258,11 @@ function OneBusinessPage({ isLoaded }) {
                         {specificReviews.map(review => (
                             <div className="review-person-info-cont" key={review.id}>
                                 <div className="review-person-info">
-                                    <img className="review-prof-icon"src={review.profilePhoto} alt="prof-icon"/>
-                                    <p className="review-person-name">{review.firstName} {review.lastName}</p>
+                                    <div className="review-person-img-and-name">
+                                        <img className="review-prof-icon"src={review.profilePhoto} alt="prof-icon"/>
+                                        <p className="review-person-name">{review.firstName} {review.lastName}</p>
+
+                                    </div>
                                     <AiOutlineEllipsis onClick={() => setShowRevDropdown(prev => prev === false ? true : false)} />
 
                                 </div>
