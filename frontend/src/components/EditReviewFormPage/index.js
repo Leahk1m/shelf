@@ -58,6 +58,7 @@ function EditReviewFormPage({ isLoaded }) {
                 }
             })
     }
+    
 
     const ratingMessage = (num) => {
         if(num === 1) {

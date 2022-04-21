@@ -59,6 +59,24 @@ function AddReview({ isLoaded }) {
             })
     }
 
+    const raterStars = (rating) => {
+        if(rating === 1) {
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true'/></>)
+        }
+        if(rating === 2) {
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-star.png?raw=true'/></>)
+        }
+        if(rating === 3) {
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-star.png?raw=true'/></>)
+        }
+        if(rating === 4) {
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-star.png?raw=true'/></>)
+        }
+        if(rating === 5) {
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/five-star.png?raw=true'/></>)
+        }
+    };
+
     const ratingMessage = (num) => {
         if(num === 1) {
             return ( <p className="rate-message">It couldn't have been worse...</p> )
@@ -120,7 +138,12 @@ function AddReview({ isLoaded }) {
                                         </div>
 
                                         <div className="review-content-add-pg">
-                                            <p>{bizReview.rating}</p>
+                                            <div>
+                                                {bizReview.rating ?
+                                                    raterStars(bizReview.rating)
+                                                : ''}
+                                            </div>
+                                            {/* <p>{bizReview.rating}</p> */}
                                             <p className="biz-review-post-add-pg">{bizReview.post}</p>
                                         </div>
                                     </div>
