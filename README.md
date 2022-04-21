@@ -15,8 +15,8 @@ This is a clone of yelp, that is centered around helping people discover and exp
   * git clone https://github.com/Leahk1m/shelf_app
 
 2. Install dependencies
-   ```npm install in both backend and frontend folders
-      ```
+   npm install in both backend and frontend folders
+      
 
 3. Create a POSTGRESQL user with CREATEDB and PASSWORD in PSQL.
   * CREATE USER <'shelf_dev'> WITH CREATEDB PASSWORD <'password'>
@@ -31,14 +31,13 @@ This is a clone of yelp, that is centered around helping people discover and exp
   * "proxy": "http://localhost:5000"
 
 7. Create database, migrate, and seed models:
-  ```npx dotenv sequelize db:create
-   ```
 
-   ```npx dotenv sequelize db:migrate
-   ```
-
-   ```npx dotenv sequelize db:seed:all
-   ```
+  npx dotenv sequelize db:create
+   
+  npx dotenv sequelize db:migrate
+   
+  npx dotenv sequelize db:seed:all
+   
 
 8. Start backend server and then frontend server
   * npm start
