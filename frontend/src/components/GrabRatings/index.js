@@ -7,7 +7,6 @@ function GrabRatings({ businessId }) {
     const reviews = useSelector(state => Object.values(state.review));
     const specificBusiness = businesses.filter(business => business.id === +businessId);
 
-    let avg;
     let specificReviews;
     if(specificBusiness.length > 0 && reviews.length > 0) {
         specificReviews = reviews.filter(review => review.businessId === +specificBusiness[0].id);

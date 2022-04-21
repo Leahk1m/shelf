@@ -7,7 +7,6 @@ import * as reviewActions from '../../store/review';
 import ProfileButton from '../Navigation/ProfileButton';
 import shelfIcon from '../IconPics/shelf.png';
 import { AiOutlineEllipsis } from 'react-icons/ai';
-import { RiArrowDropDownLine} from 'react-icons/ri';
 import { AiOutlineStar } from 'react-icons/ai';
 import blueCheck from '../IconPics/blue-check.png';
 import { BsDot } from 'react-icons/bs';
@@ -20,7 +19,7 @@ function OneBusinessPage({ isLoaded }) {
     const specificBusiness = businesses.filter(business => business.id === +businessId);
     const reviews = useSelector(state => Object.values(state.review));
     const [showRevDropdown, setShowRevDropdown] = useState(prev => prev === false ? true : false);
-    const [showBizDropdown, setShowBizDropdown] = useState(prev => prev === false ? true : false);
+    // const [showBizDropdown, setShowBizDropdown] = useState(prev => prev === false ? true : false);
     const [youSureDeleteBiz, setYouSureDeleteBiz] = useState(false);
     const [search, setSearch] = useState('');
     let bizDescription;
@@ -167,10 +166,11 @@ function OneBusinessPage({ isLoaded }) {
                 </div>
 
                 <div className="main-nav-links">
-                    {/* {sessionUser ? */}
-                    {/* // <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                    // : ''} */}
-                    <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                    {sessionUser ?
+                        <p style={{color: 'grey'}}>{`Hello, ${sessionUser?.firstName}`}!</p>
+
+                    : ''}
+                    {/* <NavLink className="navbar-links" to="/businesses">Businesses</NavLink> */}
                     {isLoaded && sessionLinks}
 
                 </div>

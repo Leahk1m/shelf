@@ -11,7 +11,7 @@ import magnify from '../IconPics/mag.png';
 function ShowBusinesses({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
     const businesses = useSelector(state => Object.values(state.business));
-    const reviews = useSelector((state) => Object.values(state.review));
+    // const reviews = useSelector((state) => Object.values(state.review));
     const history = useHistory();
     const [search, setSearch] = useState('');
 
@@ -70,10 +70,11 @@ function ShowBusinesses({ isLoaded }) {
                 </div>
 
                     <div className="main-nav-links">
-                        {/* {sessionUser ?
-                        <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                        // : ''} */}
-                        <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                        {sessionUser ?
+                            <p style={{color: 'grey'}}>{`Hello, ${sessionUser?.firstName}`}!</p>
+
+                        : ''}
+                        {/* <NavLink className="navbar-links" to="/businesses">Businesses</NavLink> */}
                         {isLoaded && sessionLinks}
                 </div>
             </div>

@@ -95,10 +95,11 @@ function EditReviewFormPage({ isLoaded }) {
                </div>
 
                <div className="main-nav-links">
-                   {/* {sessionUser ?
-                   <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                   : ''} */}
-                   <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                   {sessionUser ?
+                        <p style={{color: 'grey'}}>{`Hello, ${sessionUser?.firstName}`}!</p>
+
+                   : ''}
+                   {/* <NavLink className="navbar-links" to="/businesses">Businesses</NavLink> */}
                    {isLoaded && sessionLinks}
 
            </div>
@@ -195,9 +196,9 @@ function EditReviewFormPage({ isLoaded }) {
 
                    </form>
                     <button className="submit-review-btn" onClick={handleUpdateReviewSubmit}>Edit Review</button>
-                    <div>
+                    <ul style={{listStyle: "none"}}>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </div>
+                    </ul>
                </div>
            </div>
        </div>

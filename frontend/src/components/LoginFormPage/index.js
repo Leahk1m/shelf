@@ -45,7 +45,7 @@ function LoginFormPage() {
         <p className="by-logging-in-p">By logging in, you agree to shelf's Terms of Service and Privacy Policy</p>
 
         <form className="login-form"onSubmit={handleSubmit}>
-          <ul>
+          <ul style={{listStyle: "none"}}>
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}

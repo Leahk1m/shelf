@@ -61,19 +61,19 @@ function AddReview({ isLoaded }) {
 
     const raterStars = (rating) => {
         if(rating === 1) {
-            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true'/></>)
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true' alt="rater-star"/></>)
         }
         if(rating === 2) {
-            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-star.png?raw=true'/></>)
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/two-star.png?raw=true' alt="rater-star"/></>)
         }
         if(rating === 3) {
-            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-star.png?raw=true'/></>)
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/three-star.png?raw=true' alt="rater-star"/></>)
         }
         if(rating === 4) {
-            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-star.png?raw=true'/></>)
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/four-star.png?raw=true' alt="rater-star"/></>)
         }
         if(rating === 5) {
-            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/five-star.png?raw=true'/></>)
+            return(<><img className="add-rev-star-preview"src='https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/five-star.png?raw=true' alt="rater-star"/></>)
         }
     };
 
@@ -112,10 +112,11 @@ function AddReview({ isLoaded }) {
                     </div>
 
                     <div className="main-nav-links">
-                        {/* {sessionUser ? */}
-                        {/* // <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                        // : ''} */}
-                        <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                        {sessionUser ?
+                            <p style={{color: 'grey'}}>{`Hello, ${sessionUser?.firstName}`}!</p>
+
+                        : ''}
+                        {/* <NavLink className="navbar-links" to="/businesses">Businesses</NavLink> */}
                         {isLoaded && sessionLinks}
 
                 </div>
@@ -154,7 +155,6 @@ function AddReview({ isLoaded }) {
 
                 {/* <p>{specificBusiness[0]?.title}</p> */}
                 <div className="review-form-pannel">
-                    <h3></h3>
                     <div className="review-rating-cont">
                         <form className="new-review-form" >
                             <div className="rating-stars">
@@ -200,9 +200,9 @@ function AddReview({ isLoaded }) {
 
                         </form>
                         <button className="submit-review-btn" onClick={handleReviewSubmit}>Post Review</button>
-                        <div>
+                        <ul style={{listStyle: "none"}}>
                             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                        </div>
+                        </ul>
                     </div>
                 </div>
             </div>

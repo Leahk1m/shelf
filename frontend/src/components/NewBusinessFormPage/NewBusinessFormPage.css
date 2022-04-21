@@ -111,9 +111,12 @@
     color: #5a5a5a;
 }
 
-input[type="file"] {
+.img-upload-none{
     display: none;
 }
+/* input[type="file"] {
+    display: none;
+} */
 
 .add-photo-new-biz-btn {
     border: 1px solid #ccc;

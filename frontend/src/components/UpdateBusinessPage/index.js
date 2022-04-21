@@ -103,10 +103,10 @@ function UpdateBusinessPage({ isLoaded }) {
                 </div>
 
                 <div className="main-nav-links">
-                    {/* {sessionUser ?
-                    <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                    : ''} */}
-                    <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                    {sessionUser ?
+                        <p style={{color: 'grey'}}>{`Hello, ${sessionUser?.firstName}`}!</p>
+                    : ''}
+                    {/* <NavLink className="navbar-links" to="/businesses">Businesses</NavLink> */}
                     {isLoaded && sessionLinks}
                 </div>
             </div>
@@ -171,7 +171,7 @@ function UpdateBusinessPage({ isLoaded }) {
                         <div className="aws-upload-input-div">
                             <label className="add-photo-new-biz-btn">
                                 Change my photos
-                                <input
+                                <input className="img-upload-none"
                                 type="file"
                                 multiple
                                 onChange={updateFiles} />

@@ -20,8 +20,10 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
+      <div>
         <button className="home-nav-all-biz-btn"onClick={() => history.push('/login')}>Log in</button>
         <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
+      </div>
       </>
     );
   }
@@ -47,8 +49,8 @@ function Navigation({ isLoaded }){
     {pathName == '/' && sessionUser?
       <div>
         {/* <NavLink className="home-nav-all-biz-btn" exact to="/host">Add Business</NavLink> */}
-        <NavLink className="home-nav-all-biz-btn" exact to="/profile">Profile</NavLink>
-        <button className="home-nav-all-biz-btn"onClick={logout}>Log Out</button>
+        <NavLink className="signed-in-home-nav-all-biz-btn" exact to="/profile">Profile</NavLink>
+        <button className="signed-in-home-nav-all-biz-btn"onClick={logout}>Log Out</button>
 
       </div>
 
@@ -57,7 +59,7 @@ function Navigation({ isLoaded }){
 
 
       <div className="main-nav-links">
-        <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+        {/* <NavLink className="navbar-links" to="/businesses">Businesses</NavLink> */}
         {isLoaded && sessionLinks}
 
       </div>

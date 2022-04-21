@@ -74,7 +74,8 @@ function ProfilePage({ isLoaded }) {
                 {/* {sessionUser ?
                 <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
                 : ''} */}
-                <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                <p style={{color: 'grey'}}>{`Hello, ${sessionUser.firstName}`}!</p>
+                {/* <NavLink className="navbar-links" to="/businesses">Businesses</NavLink> */}
                 {isLoaded && sessionLinks}
 
             </div>
@@ -98,13 +99,13 @@ function ProfilePage({ isLoaded }) {
                         <div className="fat-prof-div">
                             {myBusinesses.reverse().map(business => (
                                 <div className="my-prof-biz-info" key={business.id}>
-                                    <div>
+                                    <img onClick={() => history.push(`/business/${business.id}`)}className="prof-business-photo"src={business.imageUrls[0]} alt="prof-biz-to-show"/>
+                                    <div className="prof-biz-info-div">
                                         <h2 className="prof-biz-title"onClick={() => history.push(`/business/${business.id}`)}>{business.title}</h2>
                                         <div className="for-prof">
                                             <GrabRatings businessId={business.id}/>
                                         </div>
                                     </div>
-                                    <img onClick={() => history.push(`/business/${business.id}`)}className="prof-business-photo"src={business.imageUrls[0]} alt="prof-biz-to-show"/>
                                 </div>
                             ))}
                         </div>
