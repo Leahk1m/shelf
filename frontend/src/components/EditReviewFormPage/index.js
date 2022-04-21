@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, NavLink } from "react-router-dom";
 import * as reviewActions from '../../store/review';
@@ -77,6 +77,11 @@ function EditReviewFormPage({ isLoaded }) {
         }
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+
     return (
         <div className="review-rating-pg">
         <div className="navbar-container">
@@ -89,9 +94,9 @@ function EditReviewFormPage({ isLoaded }) {
                </div>
 
                <div className="main-nav-links">
-                   {sessionUser ?
+                   {/* {sessionUser ?
                    <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                   : ''}
+                   : ''} */}
                    <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
                    {isLoaded && sessionLinks}
 

@@ -71,9 +71,9 @@ function ProfilePage({ isLoaded }) {
             </div>
 
             <div className="main-nav-links">
-                {sessionUser ?
+                {/* {sessionUser ?
                 <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                : ''}
+                : ''} */}
                 <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
                 {isLoaded && sessionLinks}
 

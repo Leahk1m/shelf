@@ -83,9 +83,9 @@ function SearchPage({isLoaded}) {
                 </div>
 
                 <div className="main-nav-links">
-                    {sessionUser ?
+                    {/* {sessionUser ?
                     <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                    : ''}
+                    : ''} */}
                     <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
                     {isLoaded && sessionLinks}
 
@@ -93,14 +93,17 @@ function SearchPage({isLoaded}) {
             </div>
 
             <div className="search-pg-contents-div">
-                <h3 className="all-results-title">All Businesses on shelf</h3>
+                <h3 className="all-results-title">{`Search results for ${search}`}</h3>
                 {catBusinesses.map((business) => (
                     <div key={business.id} className="search-business-info-cont">
                         <div className="search-biz-info">
                             <img onClick={() => history.push(`/business/${business.id}`)}className="search-business-pic"src={business.imageUrls[0]} alt="search-business"/>
                             <div className="search-biz-title-rating-review">
                                 <h2 className="all-these-biz-titles">{business.title}</h2>
-                                <GrabRatings businessId={business.id}/>
+                                <div className="star-rating-all-div">
+                                    <GrabRatings businessId={business.id}/>
+
+                                </div>
                                 <button className="all-biz-cat-btn">{business.category}</button>
                                 <div>
                                     <p>{business.address}</p>

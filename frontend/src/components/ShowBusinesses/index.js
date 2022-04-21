@@ -72,8 +72,8 @@ function ShowBusinesses({ isLoaded }) {
                     <div className="main-nav-links">
                         {/* {sessionUser ?
                         <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
-                        : ''} */}
-                        <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                        // : ''} */}
+                        <NavLink className="navbar-links" to="/businesses">Explore all</NavLink>
                         {isLoaded && sessionLinks}
                 </div>
             </div>
@@ -86,7 +86,10 @@ function ShowBusinesses({ isLoaded }) {
                             <img onClick={() => history.push(`/business/${business.id}`)}className="search-business-pic"src={business.imageUrls[0]} alt="search-business"/>
                             <div className="search-biz-title-rating-review">
                                 <h2 className="all-these-biz-titles">{business.title}</h2>
-                                <GrabRatings businessId={business.id}/>
+                                <div className="star-rating-all-div">
+                                    <GrabRatings businessId={business.id}/>
+
+                                </div>
                                 <button className="all-biz-cat-btn">{business.category}</button>
                                 <div>
                                     <p>{business.address}</p>
