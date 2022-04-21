@@ -188,9 +188,6 @@ function OneBusinessPage({ isLoaded }) {
                                 <img src={img} key={(i + 1) * 3} className="banner-image-array" alt="biz-pics"/>
                             ))
                         }
-                        {/* <img className="one-biz-photo"src={business.imageUrl} alt="one-biz-pic"/>
-                        <img className="one-biz-photo"src={business.imageUrlTwo} alt="one-biz-pic"/>
-                    <img className="one-biz-photo"src={business.imageUrlThree} alt="one-biz-pic"/> */}
                     </div>
                     <div className="business-show-info">
                         <p className="one-biz-title">{business.title}</p>
@@ -216,20 +213,22 @@ function OneBusinessPage({ isLoaded }) {
                         <div className="update-delete-btn-container">
                             {/* <RiArrowDropDownLine onClick={() => setShowBizDropdown(prev => prev === false ? true : false)}/> */}
                             {/* {showBizDropdown ? */}
-                                <div>
+                                <div className="biz-edit-btn-div">
                                     <button className="update-biz-dropdown-btn"onClick={goToBusinessEditPage}>Update Business</button>
                                     <button className="delete-biz-dropdown-btn"onClick={() => setYouSureDeleteBiz(true)}>Delete Business</button>
                                     {youSureDeleteBiz ?
-                                        <div>
-                                            <p className="are-u-sure-p">Deleting a business is permanent. Are you sure?</p>
-                                            <button className="yes-delete-btn" onClick={deleteBusiness}>Yes</button>
-                                            <button className="no-delete-btn" onClick={() => setYouSureDeleteBiz(false)}>No</button>
+                                        <div className="are-u-sure-div">
+                                            <p className="are-u-sure-p">{`Are you sure you want to delete ${business.title}`}</p>
+                                            <div className="yes-no-btns-div">
+                                                <button className="yes-delete-btn" onClick={deleteBusiness}>Yes</button>
+                                                <button className="no-delete-btn" onClick={() => setYouSureDeleteBiz(false)}>No</button>
+                                            </div>
                                         </div>
                                     : ''}
                                 </div>
                             {/* : ''} */}
                         </div>
-                    : <button className="write-review-btn" onClick={checkingUser}><AiOutlineStar className="outline-star"/>Write a Review</button>}
+                    : <div><button className="write-review-btn" onClick={checkingUser}><AiOutlineStar className="outline-star"/>Write a Review</button></div>}
                 </div>
             ))}
 

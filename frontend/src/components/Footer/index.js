@@ -18,7 +18,7 @@ function Footer() {
                 </div>
 
                 <div className="linked-in-div">
-                    <FaLinkedin className="linked-in-logo" /><p className="linked-in-link">Linkedin</p>
+                    <FaLinkedin className="linked-in-logo" /><a className="linkedin-link"href='www.linkedin.com/in/leahk1m'>Linkedin</a>
                 </div>
             </div>
 

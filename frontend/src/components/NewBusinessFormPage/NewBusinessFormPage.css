@@ -34,10 +34,14 @@
     resize: none;
     width: 426px;
     height: 111px;
+    border: double;
+    border-color: forestgreen;
 }
 
 .new-biz-input {
     height: 25px;
+    border: double;
+    border-color: forestgreen;
 }
 
 .add-business-btn {
@@ -80,6 +84,8 @@
 .new-biz-addy-input {
     height: 30px;
     width: 48%;
+    border: double;
+    border-color: forestgreen;
 }
 
 .new-biz-directions {
@@ -91,6 +97,8 @@
 
 .new-biz-category-input {
     height: 30px;
+    border: double;
+    border-color: forestgreen;
 
 }
 
@@ -109,6 +117,7 @@ input[type="file"] {
 
 .add-photo-new-biz-btn {
     border: 1px solid #ccc;
+    color: grey;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
@@ -121,6 +130,7 @@ input[type="file"] {
 .add-photo-new-biz-btn:hover {
     color: white;
     background-color: rgb(188, 187, 187);
+    transition: 0.5s ease;
 
 }
 

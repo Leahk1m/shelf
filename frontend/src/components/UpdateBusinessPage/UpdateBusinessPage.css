@@ -1,3 +1,4 @@
+
 .update-business-form-container {
     display: flex;
     flex-direction: column;
@@ -5,16 +6,33 @@
     align-content: center;
     align-items: center;
     padding-bottom: 300px;
-    background-image: url(https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/orange-fruit-bg.png?raw=true);
+    background-image: url(https://github.com/Leahk1m/shelf_app/blob/aws_time/frontend/src/components/IconPics/orange-fruit-bg.png?raw=true)
 
 }
 
-.update-biz-inputs {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+.update-biz-input {
+    border: double;
+    border-color: darkorange;
+    height: 25px;
+}
 
+.update-biz-addy-input {
+    height: 30px;
+    width: 48%;
+    border: double;
+    border-color: darkorange;
+}
+
+.update-biz-category-input {
+    height: 30px;
+    border: double;
+    border-color: darkorange;
+}
+
+.update-biz-text-area {
+    resize: none;
+    width: 426px;
+    height: 111px;
+    border: double;
+    border-color: darkorange;
 }
