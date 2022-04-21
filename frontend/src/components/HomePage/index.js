@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import './HomePage.css';
 import largeShelfLogo from '../IconPics/new-shelf.png';
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ProfileButton from '../Navigation/ProfileButton';
 import magnify from '../IconPics/mag.png';
 
@@ -20,9 +20,9 @@ function HomePage({isLoaded}) {
         sessionLinks = (
         <>
             <div>
-                <button className="home-nav-all-biz-btn"onClick={() => history.push('/login')}>Log in</button>
+                <button className="splash-home-nav-all-biz-btn"onClick={() => history.push('/login')}>Log in</button>
             </div>
-            <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
+            <button className="splash-signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
         </>
         );
     }
@@ -45,7 +45,7 @@ function HomePage({isLoaded}) {
         <div>
             <div className="splash-search-container">
                 <div className="splash-navbar-container">
-                   <button className="home-nav-all-biz-btn"onClick={() => history.push('/businesses')}>Businesses</button>
+                   <button className="splash-home-nav-all-biz-btn"onClick={() => history.push('/businesses')}>Businesses</button>
 
                     {/* <NavLink className="splash-navbar-links" to="/businesses">Businesses</NavLink> */}
 

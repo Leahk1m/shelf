@@ -103,9 +103,30 @@
     width: 34%;
 }
 
-.signup-home-btn {
+.splash-signup-home-btn {
     transition: all .5s ease;
     color: #fff;
+    border: 2px solid white;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    line-height: 1;
+    font-size: 15px;
+    background-color: transparent;
+    padding: 10px;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+.splash-signup-home-btn:hover {
+    color: grey;
+    background-color: #fff;
+
+}
+
+.signup-home-btn {
+    transition: all .5s ease;
+    color: rgb(149, 149, 149);
     border: 2px solid white;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
@@ -123,7 +144,7 @@
     background-color: #fff;
 }
 
-.home-nav-all-biz-btn {
+.splash-home-nav-all-biz-btn {
     border: none;
     background: transparent;
     font-size: 18px;
@@ -132,11 +153,31 @@
     cursor: pointer;
 
 }
-
-.home-nav-all-biz-btn:hover {
+.splash-home-nav-all-biz-btn:hover {
     border-bottom: 2px solid white;
     font-weight: bold;
 
+}
+
+.home-nav-all-biz-btn {
+    transition: all .5s ease;
+    color: rgb(149, 149, 149);
+    border: 2px solid white;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    line-height: 1;
+    font-size: 15px;
+    background-color: transparent;
+    padding: 10px;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+.home-nav-all-biz-btn:hover {
+    color: grey;
+    background-color: #fff;
 }
 
 .shelf-bay-area {

@@ -106,11 +106,11 @@ function SearchPage({isLoaded}) {
 
                                 </div>
                                 <button className="all-biz-cat-btn">{business.category}</button>
-                                <div>
+                                <div className="search-biz-info-holder">
                                     <p>{business.address}</p>
                                     <p>{business.city} {business.state}</p>
                                     <div className="rev-preview-search-pg">
-                                        <FaRegCommentDots/><div>{specificBizReview(business.id)}</div>
+                                        <FaRegCommentDots style={{fontSize: '69px'}}/><div>{specificBizReview(business.id)}</div>
 
                                     </div>
                                 </div>
