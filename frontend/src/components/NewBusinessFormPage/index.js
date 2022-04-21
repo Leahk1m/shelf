@@ -192,7 +192,7 @@ function NewBusinessFormPage({ isLoaded }) {
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="If words can't do your store justice, feel free to just include your hours of operation here! "
                     />
-                    <p className="new-biz-directions">Finally, show off your place with three photos!</p>
+                    <p className="new-biz-directions">Finally, show off your place with three photos! <br/>Please hold down your cmd key and select three photos that best represent your business</p>
 
                     <div className="aws-upload-input-div">
                         <label className="add-photo-new-biz-btn">
