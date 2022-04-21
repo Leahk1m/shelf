@@ -20,7 +20,7 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <button onClick={() => history.push('/login')}>Log in</button>
+        <button className="home-nav-all-biz-btn"onClick={() => history.push('/login')}>Log in</button>
         <button className="signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
       </>
     );

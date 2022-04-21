@@ -20,15 +20,11 @@
 }
 
 .navbar-links {
-  /* text-decoration: none;
-  color: black;
+  text-decoration: none;
+  color: white;
   font-family: 'Montserrat', sans-serif;
-  width: 25%; */
-    text-decoration: none;
-    color: #b0b0b0;
-    font-family: 'Montserrat', sans-serif;
-    width: 25%;
-    cursor: pointer;
+  width: 25%;
+  cursor: pointer;
 }
 .navbar-links:hover {
   border-bottom: 1px solid white;
@@ -44,6 +40,7 @@
   position: sticky;
   top: 0;
   background-color: whitesmoke;
+  background: linear-gradient(to top, rgb(199,194,194, 0) , rgb(131 131 131 / 44%));
 }
 .review-navbar-container {
   width: 100%;

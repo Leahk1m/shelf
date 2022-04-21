@@ -18,6 +18,7 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+    margin-top: 1%;
 }
 
 .priv-policy-msg {
@@ -116,4 +117,31 @@
 .back-to-login {
     display: flex;
     flex-direction: row-reverse;
+}
+
+.prof-pic-aws-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-photo-new-user-btn {
+    margin-top: 6%;
+    width: 100%;
+    border: 1px solid #ccc;
+    color: grey;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+
+}
+.add-photo-new-user-btn:hover {
+    color: white;
+    background-color: rgb(188, 187, 187);
+    transition: 0.5s ease;
+
 }

@@ -4,6 +4,7 @@ import { Redirect, NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 import shelfIcon from '../IconPics/new-shelf.png';
+import { FcCheckmark } from 'react-icons/fc';
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -101,7 +102,7 @@ function SignupFormPage() {
               />
             </div>
           </div>
-          <label className="add-photo-new-biz-btn">
+          <label className="add-photo-new-user-btn">
             Image Upload
             <input
             type="file"
