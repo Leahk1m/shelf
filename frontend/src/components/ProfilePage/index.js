@@ -74,7 +74,8 @@ function ProfilePage({ isLoaded }) {
                 {/* {sessionUser ?
                 <NavLink className="navbar-links" exact to="/host">Add Business</NavLink>
                 : ''} */}
-                <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+                <p style={{color: 'grey'}}>{`Hello, ${sessionUser.firstName}`}!</p>
+                {/* <NavLink className="navbar-links" to="/businesses">Businesses</NavLink> */}
                 {isLoaded && sessionLinks}
 
             </div>

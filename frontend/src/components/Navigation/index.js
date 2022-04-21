@@ -59,7 +59,7 @@ function Navigation({ isLoaded }){
 
 
       <div className="main-nav-links">
-        <NavLink className="navbar-links" to="/businesses">Businesses</NavLink>
+        {/* <NavLink className="navbar-links" to="/businesses">Businesses</NavLink> */}
         {isLoaded && sessionLinks}
 
       </div>
