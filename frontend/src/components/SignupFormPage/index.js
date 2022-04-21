@@ -17,8 +17,27 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [profilePhoto, setProfilePhoto] = useState("");
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   if (sessionUser) return <Redirect to="/" />;
+
+//   const errorChecks = () => {
+//     const frontErrors = [];
+//     if(firstName.length === 0) frontErrors.push('Please provide your first name')
+//     if(lastName.length === 0) frontErrors.push('Please provide your last name')
+//     if(firstName.length < 3 || firstName.length > 20) frontErrors.push('First name must be between 3-20 characters')
+//     if(lastName.length < 3 || lastName.length > 20) frontErrors.push('Last name must be between 3-20 characters')
+//     if(city.length === 0) frontErrors.push('Please provide the city that you reside in')
+//     if(city.length < 4 || city.length > 25) frontErrors.push('Please provide a valid city')
+//     if(email.length === 0) frontErrors.push('Please provide an email')
+
+
+//     if(zipCode.length < 5) frontErrors.push('Please provide a zip code')
+//     if(category.length === 0) frontErrors.push('Please provide a category')
+
+//     setErrors(frontErrors);
+
+// };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -102,12 +121,14 @@ function SignupFormPage() {
               />
             </div>
           </div>
-          <label className="add-photo-new-user-btn">
-            Image Upload
-            <input
-            type="file"
-            onChange={updateFile} />
-          </label>
+            <div className="prof-pic-input-div">
+              <input className="prof-pic-input"
+              type="file"
+              required
+              onChange={updateFile} />
+
+            </div>
+
           <button className="signup-btn"type="submit">Sign Up</button>
           <div className="back-to-login">
             <p className="already-on-shelf-p">Already on shelf? <NavLink className="changed-mind" to="/login">Log in</NavLink></p>

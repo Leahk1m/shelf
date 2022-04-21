@@ -312,3 +312,18 @@
     align-items: center;
     gap: 20px;
 }
+
+.signed-in-home-nav-all-biz-btn {
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+
+}
+.signed-in-home-nav-all-biz-btn:hover {
+    border-bottom: 2px solid white;
+    font-weight: bold;
+
+}

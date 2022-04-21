@@ -7,6 +7,7 @@ import ProfileButton from '../Navigation/ProfileButton';
 import magnify from '../IconPics/mag.png';
 
 function HomePage({isLoaded}) {
+    const pathName = window.location.pathname;
     const sessionUser = useSelector(state => state.session.user);
     const [search, setSearch] = useState('');
     const history = useHistory();

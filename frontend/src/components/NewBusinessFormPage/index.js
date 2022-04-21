@@ -198,7 +198,7 @@ function NewBusinessFormPage({ isLoaded }) {
                     <div className="aws-upload-input-div">
                         <label className="add-photo-new-biz-btn">
                             Upload photos
-                            <input
+                            <input className="img-upload-none"
                             type="file"
                             multiple
                             onChange={updateFiles} />

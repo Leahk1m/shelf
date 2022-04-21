@@ -145,3 +145,14 @@
     transition: 0.5s ease;
 
 }
+
+.prof-pic-input {
+    /* display: block; */
+}
+
+.prof-pic-input-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+}
