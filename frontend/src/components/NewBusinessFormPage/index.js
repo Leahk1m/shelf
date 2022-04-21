@@ -149,8 +149,8 @@ function NewBusinessFormPage({ isLoaded }) {
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Title"
                     />
+                    <p className="new-biz-directions">Let's get your business address</p>
                     <div className="new-biz-addy-info">
-                        <p className="new-biz-directions">Let's get your business address</p>
                         <input className="new-biz-addy-input"
                         type="text"
                         value={address}
@@ -190,11 +190,11 @@ function NewBusinessFormPage({ isLoaded }) {
                     type="text"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Description"
+                    placeholder="If words can't do your store justice, feel free to just include your hours of operation here! "
                     />
                     <p className="new-biz-directions">Finally, show off your place with three photos!</p>
 
-                    <div>
+                    <div className="aws-upload-input-div">
                         <label className="add-photo-new-biz-btn">
                             Upload photos
                             <input
@@ -208,9 +208,12 @@ function NewBusinessFormPage({ isLoaded }) {
 
                     </div>
 
-                    <button className="add-business-btn"type="submit">I'm ready to add my business!</button>
+                    <div className="submit-biz-button-div">
+                        <button className="add-business-btn"type="submit">I'm ready to show off my business!</button>
+
+                    </div>
                 </form>
-                {/* : <p>Please log in to add a new business</p>} */}
+
             </div>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
