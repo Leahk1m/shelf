@@ -1,7 +1,7 @@
 
 .search-business-pic {
     height: 200px;
-    width: 300px;
+    width: 40%;
     border-radius: 4px;
     object-fit: cover;
     margin-top: 3px;
@@ -17,7 +17,7 @@
 
 .search-biz-info {
     text-decoration: none;
-    width: 50%;
+    width: 100%;
     min-width: 680px;
     max-width: 800px;
     height: 205px;
@@ -30,6 +30,7 @@
     flex-direction: row;
     align-items: center;
     align-content: center;
+    justify-content: center;
 }
 
 .search-pg-contents-div {
@@ -46,6 +47,7 @@
 
 .search-biz-title-rating-review {
     height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
 }
@@ -53,13 +55,20 @@
 .rev-preview-search-pg {
     display: flex;
     grid-gap: 10px;
+    grid-gap: 10px;
     gap: 10px;
+    width: 100%;
     align-items: center;
     margin-top: -21px;
     font-size: 12px;
+    min-block-size: -moz-fit-content;
     min-block-size: fit-content;
 }
 
 .search-biz-info-holder {
     /* overflow: hidden; */
+}
+
+.below-svg {
+    width: 90%;
 }

@@ -19,10 +19,10 @@ function HomePage({isLoaded}) {
     } else {
         sessionLinks = (
         <>
-            <div>
+            <div className="splash-buttons-cont">
                 <button className="splash-home-nav-all-biz-btn"onClick={() => history.push('/login')}>Log in</button>
+                <button className="splash-signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
             </div>
-            <button className="splash-signup-home-btn" onClick={() => history.push('/signup')}>Sign up</button>
         </>
         );
     }

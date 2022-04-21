@@ -110,7 +110,7 @@ function SearchPage({isLoaded}) {
                                     <p>{business.address}</p>
                                     <p>{business.city} {business.state}</p>
                                     <div className="rev-preview-search-pg">
-                                        <FaRegCommentDots style={{fontSize: '69px'}}/><div>{specificBizReview(business.id)}</div>
+                                        <FaRegCommentDots style={{fontSize: '30px', width: '5%'}}/><div className="below-svg">{specificBizReview(business.id)}</div>
 
                                     </div>
                                 </div>
