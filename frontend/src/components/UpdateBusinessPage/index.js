@@ -85,7 +85,7 @@ function UpdateBusinessPage({ isLoaded }) {
         <div className="update-business-form-container">
             <div className="review-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
-                <div className="double-search-not-home">
+                <form className="double-search-not-home">
                         <p className="find-near-p-nh">Find</p>
                         <input className="find-name-nh"
                         type="text"
@@ -100,7 +100,7 @@ function UpdateBusinessPage({ isLoaded }) {
                         />
                         <button className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
 
-                </div>
+                </form>
 
                 <div className="main-nav-links">
                     {sessionUser ?
@@ -166,7 +166,7 @@ function UpdateBusinessPage({ isLoaded }) {
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder="If words can't do your store justice, feel free to just include your hours of operation here! "
                         />
-                        <p className="new-biz-directions">New photos? <br/>Don't forget to hold down the cmd key as you select your photos!</p>
+                        <p className="new-biz-directions">New photos? <br/>Don't forget to hold down the cmd key as you select three photos!</p>
 
                         <div className="aws-upload-input-div">
                             <label className="add-photo-new-biz-btn">

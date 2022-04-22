@@ -27,6 +27,7 @@ function OneBusinessPage({ isLoaded }) {
     let bizAddress;
     let bizCity;
     let bizState;
+    let bizZipCode;
 
     let avg;
     let specificReviews;
@@ -146,7 +147,7 @@ function OneBusinessPage({ isLoaded }) {
             <div className="one-biz-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
-                <div className="double-search-not-home">
+                <form className="double-search-not-home">
                     <p className="find-near-p-nh">Find</p>
                     <input className="find-name-nh"
                     type="text"
@@ -163,7 +164,7 @@ function OneBusinessPage({ isLoaded }) {
                     />
                     <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
 
-                </div>
+                </form>
 
                 <div className="main-nav-links">
                     {sessionUser ?
@@ -182,6 +183,7 @@ function OneBusinessPage({ isLoaded }) {
                     <p className="hide-this">{bizAddress= business.address}</p>
                     <p className="hide-this">{bizCity = business.city}</p>
                     <p className="hide-this">{bizState = business.state}</p>
+                    <p className="hide-this">{bizZipCode = business.zipCode}</p>
                     <div className="one-biz-pic-container">
                         {
                             business.imageUrls.map((img, i) => (
@@ -242,9 +244,9 @@ function OneBusinessPage({ isLoaded }) {
 
                 <div className="biz-description-cont-div">
                     <p className="biz-description-p">{bizDescription}</p>
-                    <p>{bizAddress}</p>
-                    <p className="the-city">{bizCity}</p>
-                    <p className="the-state">{bizState}</p>
+                    <p>{bizAddress} {bizCity}, {bizState} {bizZipCode}</p>
+                    {/* <p className="the-city">{bizCity}</p>
+                    <p className="the-state">{bizState}</p> */}
 
                 </div>
 

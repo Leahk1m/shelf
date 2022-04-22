@@ -60,7 +60,7 @@ function HomePage({isLoaded}) {
                 <div className="splash-nav-logo-container">
                     <img className="home-pg-shelf-logo"src={largeShelfLogo} alt="shelf-icon"/>
 
-                    <div className="double-search">
+                    <form className="double-search">
                         <p className="find-near-p">Find</p>
                         <input className="find-name"
                         type="text"
@@ -76,7 +76,7 @@ function HomePage({isLoaded}) {
                         readOnly = {true}
                         />
                         <button onClick={searching}className="magnifying"><img className="mag-glass-icon"src={magnify} alt="mag-glass"/></button>
-                    </div>
+                    </form>
                 </div>
             </div>
 

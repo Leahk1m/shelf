@@ -7,6 +7,7 @@ import shelfIcon from '../IconPics/shelf.png';
 import GrabRatings from '../GrabRatings';
 import { FaRegCommentDots } from 'react-icons/fa';
 import magnify from '../IconPics/mag.png';
+import noResults from '../IconPics/no-results.gif';
 
 function SearchPage({isLoaded}) {
     const history = useHistory();
@@ -20,11 +21,12 @@ function SearchPage({isLoaded}) {
     if(searchTerm.searchTerm === 'all') {
         catBusinesses = businesses;
     } else {
-        catBusinesses = businesses.filter((business) => business.category.toLowerCase() === searchTerm.searchTerm || business.title.toLowerCase().indexOf(searchTerm.searchTerm) > -1);
+        catBusinesses = businesses.filter((business) => business.category.toLowerCase() === searchTerm.searchTerm.toLowerCase() || business.title.toLowerCase().indexOf(searchTerm.searchTerm.toLowerCase()) > -1);
 
     };
 
     const searching = (e) => {
+        e.preventDefault();
         if(search.length === 0) {
             history.push(`/search/all`)
 
@@ -63,7 +65,7 @@ function SearchPage({isLoaded}) {
             <div className="navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
-                <div className="double-search-not-home">
+                <form className="double-search-not-home">
                     <p className="find-near-p-nh">Find</p>
                     <input className="find-name-nh"
                     type="text"
@@ -80,7 +82,7 @@ function SearchPage({isLoaded}) {
                     />
                     <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
 
-                </div>
+                </form>
 
                 <div className="main-nav-links">
                     {sessionUser ?
@@ -94,7 +96,14 @@ function SearchPage({isLoaded}) {
             </div>
 
             <div className="search-pg-contents-div">
-                <h3 className="all-results-title">{`Search results for ${search}`}</h3>
+                <h3 className="all-results-title">{`Search results for ${searchTerm.searchTerm}`}</h3>
+                {catBusinesses.length === 0 ?
+                    <div>
+                        <div className="no-results-div">
+                            <img className="no-results-gif"src={noResults} alt="no-results-gif"/>
+                            <p>Sorry, we couldn't find any results for your search :( <br/> Try searching by category name (Modern, Traditional, Family-owned, Rustic, Other...) or by business name for best results</p>
+                        </div>
+                    </div> : ''}
                 {catBusinesses.map((business) => (
                     <div key={business.id} className="search-business-info-cont">
                         <div className="search-biz-info">

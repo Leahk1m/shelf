@@ -7,6 +7,7 @@ import * as businessActions from '../../store/business'
 import shelfIcon from '../IconPics/shelf.png';
 import { FcCheckmark } from 'react-icons/fc';
 import magnify from '../IconPics/mag.png';
+import swal from 'sweetalert';
 
 function NewBusinessFormPage({ isLoaded }) {
     const dispatch = useDispatch();
@@ -17,7 +18,6 @@ function NewBusinessFormPage({ isLoaded }) {
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
     const [zipCode, setZipCode] = useState("");
-    const [category, setCategory] = useState("");
     const [imageUrls, setImageUrls] = useState([]);
     const ownerId = useSelector((state) => state.session?.user?.id)
     const history = useHistory();
@@ -26,7 +26,34 @@ function NewBusinessFormPage({ isLoaded }) {
     const [imgInputError, setImgInputError] = useState(false);
     const [imgLoaded, setImgLoaded] = useState(false);
     const [search, setSearch] = useState('');
+    // const [type, setType] = useState(options[0].value);
+    const businesses = useSelector(state => Object.values(state?.business));
 
+    const options = [
+        {
+            label: 'Traditional',
+            value: 'Traditional'
+        },
+        {
+            label: 'Family-owned',
+            value: 'Family-owned'
+
+        },
+        {
+            label: 'Modern',
+            value: 'Modern'
+        },
+        {
+            label: 'Rustic',
+            value: 'Rustic'
+        },
+        {
+            label: 'Other',
+            value: 'Other'
+        }
+    ];
+
+    const [category, setCategory] = useState(options[0].value);
 
     let sessionLinks;
     if (sessionUser) {
@@ -66,14 +93,18 @@ function NewBusinessFormPage({ isLoaded }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(businessActions.addNewBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrls }))
-            .then(() => history.push('/profile'))
-            .catch(async (res) => {
-                const data = await res.json();
-                if(data && data.errors) {
-                    setErrors(data.errors)
-                }
-            })
+        // if (businesses.filter(business => (business.address.toLowerCase() === address.toLowerCase() && business.city.toLowerCase() === city.toLowerCase() && business.state.toLowerCase() === state.toLowerCase()).length > 0)) {
+        //     swal('There is already a business on shelf with this location.')
+        // } else {
+            await dispatch(businessActions.addNewBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrls }))
+                .then(() => history.push('/profile'))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if(data && data.errors) {
+                        setErrors(data.errors)
+                    }
+                })
+        // }
     };
 
     const updateFiles = (e) => {
@@ -110,7 +141,7 @@ function NewBusinessFormPage({ isLoaded }) {
         <div className="new-business-form-container">
              <div className="review-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
-                <div className="double-search-not-home">
+                <form className="double-search-not-home">
                     <p className="find-near-p-nh">Find</p>
                     <input className="find-name-nh"
                     type="text"
@@ -127,7 +158,7 @@ function NewBusinessFormPage({ isLoaded }) {
                     />
                     <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
 
-                </div>
+                </form>
 
                 <div className="main-nav-links">
                     {sessionUser ?
@@ -178,13 +209,19 @@ function NewBusinessFormPage({ isLoaded }) {
                         />
                     </div>
                     <p className="new-biz-directions" id="vibes">What's the vibe like?</p>
-                    <select className="new-biz-category-input" value={category} onChange={(e) => setCategory(e.target.value)}>
-                        <option disabled="disabled">Select category...</option>
+                    <select className="new-biz-category-input" onChange={(e) => setCategory(e.target.value)}>
+                        {
+                            options.map((option) => (
+                                <option key={option.value} value={option.value}>{option.label}</option>
+                            ))
+                        }
+
+                        {/* <option disabled="disabled">Select category...</option>
                         <option value="Traditional">Traditional</option>
                         <option value="Family-owned">Family-owned</option>
                         <option value="Modern">Modern</option>
                         <option value="Rustic">Rustic</option>
-                        <option value="Other">Other</option>
+                        <option value="Other">Other</option> */}
                     </select>
                     <p className="new-biz-directions">Tell us more about your business - its hours, what inspired it, or whatever you want customers to know</p>
                     <textarea className="new-biz-text-area"

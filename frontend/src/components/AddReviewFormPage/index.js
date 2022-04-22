@@ -6,6 +6,7 @@ import './AddReviewFormPage.css';
 import { AiFillStar } from 'react-icons/ai';
 import ProfileButton from "../Navigation/ProfileButton";
 import shelfIcon from '../IconPics/shelf.png';
+import magnify from '../IconPics/mag.png';
 
 
 function AddReview({ isLoaded }) {
@@ -25,7 +26,7 @@ function AddReview({ isLoaded }) {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
     const [post, setPost] = useState("");
-
+    const [search, setSearch] = useState('');
     const [errors, setErrors] = useState([]);
 
     let sessionLinks;
@@ -58,6 +59,15 @@ function AddReview({ isLoaded }) {
                 }
             })
     }
+
+    const searching = (e) => {
+        if(search.length === 0) {
+            history.push(`/search/all`)
+
+        } else {
+            history.push(`/search/${search}`)
+        }
+    };
 
     const raterStars = (rating) => {
         if(rating === 1) {
@@ -105,11 +115,24 @@ function AddReview({ isLoaded }) {
              <div className="navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
-                <div className="search-container">
-                    <input className="search-input"
+                <form className="double-search-not-home">
+                    <p className="find-near-p-nh">Find</p>
+                    <input className="find-name-nh"
                     type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Family-owned, Traditional, Rustic stores..."
                     />
-                    </div>
+
+                    <p className="find-near-p-nh">Near</p>
+                    <input className="find-location-nh"
+                    type="text"
+                    placeholder="Bay Area, CA ONLY for now"
+                    readOnly = {true}
+                    />
+                    <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+
+                </form>
 
                     <div className="main-nav-links">
                         {sessionUser ?
