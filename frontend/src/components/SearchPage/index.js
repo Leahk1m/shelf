@@ -7,6 +7,7 @@ import shelfIcon from '../IconPics/shelf.png';
 import GrabRatings from '../GrabRatings';
 import { FaRegCommentDots } from 'react-icons/fa';
 import magnify from '../IconPics/mag.png';
+import noResults from '../IconPics/no-results.gif';
 
 function SearchPage({isLoaded}) {
     const history = useHistory();
@@ -96,6 +97,13 @@ function SearchPage({isLoaded}) {
 
             <div className="search-pg-contents-div">
                 <h3 className="all-results-title">{`Search results for ${searchTerm.searchTerm}`}</h3>
+                {catBusinesses.length === 0 ?
+                    <div>
+                        <div className="no-results-div">
+                            <img className="no-results-gif"src={noResults} alt="no-results-gif"/>
+                            <p>Sorry, we couldn't find any results for your search :( <br/> Try searching by category name (Modern, Traditional, Family-owned, Rustic, Other...) or by business name for best results</p>
+                        </div>
+                    </div> : ''}
                 {catBusinesses.map((business) => (
                     <div key={business.id} className="search-business-info-cont">
                         <div className="search-biz-info">
