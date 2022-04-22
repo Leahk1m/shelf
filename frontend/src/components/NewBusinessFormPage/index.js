@@ -67,7 +67,7 @@ function NewBusinessFormPage({ isLoaded }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        if (businesses.filter(business => business.address.lowerCase() === address.toLowerCase() ).length > 0) {
+        if (businesses.filter(business => (business.address.toLowerCase() === address.toLowerCase() && business.city.toLowerCase() === city.toLowerCase() && business.state.toLowerCase() === state.toLowerCase()).length > 0)) {
             alert('This address already exists!')
         } else {
             await dispatch(businessActions.addNewBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrls }))
