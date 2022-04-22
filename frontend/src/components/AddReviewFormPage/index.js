@@ -6,6 +6,7 @@ import './AddReviewFormPage.css';
 import { AiFillStar } from 'react-icons/ai';
 import ProfileButton from "../Navigation/ProfileButton";
 import shelfIcon from '../IconPics/shelf.png';
+import magnify from '../IconPics/mag.png';
 
 
 function AddReview({ isLoaded }) {
@@ -25,7 +26,7 @@ function AddReview({ isLoaded }) {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
     const [post, setPost] = useState("");
-
+    const [search, setSearch] = useState('');
     const [errors, setErrors] = useState([]);
 
     let sessionLinks;
@@ -58,6 +59,15 @@ function AddReview({ isLoaded }) {
                 }
             })
     }
+
+    const searching = (e) => {
+        if(search.length === 0) {
+            history.push(`/search/all`)
+
+        } else {
+            history.push(`/search/${search}`)
+        }
+    };
 
     const raterStars = (rating) => {
         if(rating === 1) {

@@ -20,11 +20,12 @@ function SearchPage({isLoaded}) {
     if(searchTerm.searchTerm === 'all') {
         catBusinesses = businesses;
     } else {
-        catBusinesses = businesses.filter((business) => business.category.toLowerCase() === searchTerm.searchTerm || business.title.toLowerCase().indexOf(searchTerm.searchTerm) > -1);
+        catBusinesses = businesses.filter((business) => business.category.toLowerCase() === searchTerm.searchTerm.toLowerCase() || business.title.toLowerCase().indexOf(searchTerm.searchTerm.toLowerCase()) > -1);
 
     };
 
     const searching = (e) => {
+        e.preventDefault();
         if(search.length === 0) {
             history.push(`/search/all`)
 
@@ -94,7 +95,7 @@ function SearchPage({isLoaded}) {
             </div>
 
             <div className="search-pg-contents-div">
-                <h3 className="all-results-title">{`Search results for ${search}`}</h3>
+                <h3 className="all-results-title">{`Search results for ${searchTerm.searchTerm}`}</h3>
                 {catBusinesses.map((business) => (
                     <div key={business.id} className="search-business-info-cont">
                         <div className="search-biz-info">
