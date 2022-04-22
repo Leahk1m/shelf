@@ -7,6 +7,7 @@ import * as businessActions from '../../store/business'
 import shelfIcon from '../IconPics/shelf.png';
 import { FcCheckmark } from 'react-icons/fc';
 import magnify from '../IconPics/mag.png';
+import swal from 'sweetalert';
 
 function NewBusinessFormPage({ isLoaded }) {
     const dispatch = useDispatch();
@@ -68,7 +69,7 @@ function NewBusinessFormPage({ isLoaded }) {
         e.preventDefault();
         setErrors([]);
         if (businesses.filter(business => (business.address.toLowerCase() === address.toLowerCase() && business.city.toLowerCase() === city.toLowerCase() && business.state.toLowerCase() === state.toLowerCase()).length > 0)) {
-            alert('This address already exists!')
+            swal('There is already a business on shelf with this location.')
         } else {
             await dispatch(businessActions.addNewBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrls }))
                 .then(() => history.push('/profile'))
