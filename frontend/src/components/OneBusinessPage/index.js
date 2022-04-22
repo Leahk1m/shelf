@@ -27,6 +27,7 @@ function OneBusinessPage({ isLoaded }) {
     let bizAddress;
     let bizCity;
     let bizState;
+    let bizZipCode;
 
     let avg;
     let specificReviews;
@@ -182,6 +183,7 @@ function OneBusinessPage({ isLoaded }) {
                     <p className="hide-this">{bizAddress= business.address}</p>
                     <p className="hide-this">{bizCity = business.city}</p>
                     <p className="hide-this">{bizState = business.state}</p>
+                    <p className="hide-this">{bizZipCode = business.zipCode}</p>
                     <div className="one-biz-pic-container">
                         {
                             business.imageUrls.map((img, i) => (
@@ -242,9 +244,9 @@ function OneBusinessPage({ isLoaded }) {
 
                 <div className="biz-description-cont-div">
                     <p className="biz-description-p">{bizDescription}</p>
-                    <p>{bizAddress}</p>
-                    <p className="the-city">{bizCity}</p>
-                    <p className="the-state">{bizState}</p>
+                    <p>{bizAddress} {bizCity}, {bizState} {bizZipCode}</p>
+                    {/* <p className="the-city">{bizCity}</p>
+                    <p className="the-state">{bizState}</p> */}
 
                 </div>
 

@@ -166,7 +166,7 @@ function UpdateBusinessPage({ isLoaded }) {
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder="If words can't do your store justice, feel free to just include your hours of operation here! "
                         />
-                        <p className="new-biz-directions">New photos? <br/>Don't forget to hold down the cmd key as you select your photos!</p>
+                        <p className="new-biz-directions">New photos? <br/>Don't forget to hold down the cmd key as you select three photos!</p>
 
                         <div className="aws-upload-input-div">
                             <label className="add-photo-new-biz-btn">
