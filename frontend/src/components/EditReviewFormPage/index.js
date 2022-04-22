@@ -6,6 +6,7 @@ import ProfileButton from "../Navigation/ProfileButton";
 import './EditReviewFormPage.css';
 import { AiFillStar } from 'react-icons/ai';
 import shelfIcon from '../IconPics/shelf.png';
+import magnify from '../IconPics/mag.png';
 
 
 function EditReviewFormPage({ isLoaded }) {
@@ -29,6 +30,7 @@ function EditReviewFormPage({ isLoaded }) {
     const [hover, setHover] = useState(null);
     const [post, setPost] = useState(myReview[0]?.post);
     const [errors, setErrors] = useState([]);
+    const [search, setSearch] = useState('');
 
 
     const sessionUser = useSelector((state) => state.session.user);
@@ -59,6 +61,15 @@ function EditReviewFormPage({ isLoaded }) {
             })
     }
 
+    const searching = (e) => {
+        if(search.length === 0) {
+            history.push(`/search/all`)
+
+        } else {
+            history.push(`/search/${search}`)
+        }
+    };
+
 
     const ratingMessage = (num) => {
         if(num === 1) {
@@ -88,11 +99,26 @@ function EditReviewFormPage({ isLoaded }) {
         <div className="navbar-container">
            <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
-           <div className="search-container">
-               <input className="search-input"
-               type="text"
-               />
-               </div>
+           {/* <div className="search-container"> */}
+                <form className="double-search-not-home">
+                    <p className="find-near-p-nh">Find</p>
+                    <input className="find-name-nh"
+                    type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Family-owned, Traditional, Rustic stores..."
+                    />
+
+                    <p className="find-near-p-nh">Near</p>
+                    <input className="find-location-nh"
+                    type="text"
+                    placeholder="Bay Area, CA ONLY for now"
+                    readOnly = {true}
+                    />
+                    <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+
+                </form>
+            {/* </div> */}
 
                <div className="main-nav-links">
                    {sessionUser ?

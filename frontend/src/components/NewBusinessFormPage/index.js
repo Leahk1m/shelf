@@ -26,6 +26,7 @@ function NewBusinessFormPage({ isLoaded }) {
     const [imgInputError, setImgInputError] = useState(false);
     const [imgLoaded, setImgLoaded] = useState(false);
     const [search, setSearch] = useState('');
+    const businesses = useSelector(state => Object.values(state?.business));
 
 
     let sessionLinks;
@@ -66,14 +67,18 @@ function NewBusinessFormPage({ isLoaded }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        await dispatch(businessActions.addNewBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrls }))
-            .then(() => history.push('/profile'))
-            .catch(async (res) => {
-                const data = await res.json();
-                if(data && data.errors) {
-                    setErrors(data.errors)
-                }
-            })
+        if (businesses.filter(business => business.address.lowerCase() === address.toLowerCase() ).length > 0) {
+            alert('This address already exists!')
+        } else {
+            await dispatch(businessActions.addNewBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrls }))
+                .then(() => history.push('/profile'))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if(data && data.errors) {
+                        setErrors(data.errors)
+                    }
+                })
+        }
     };
 
     const updateFiles = (e) => {
@@ -110,7 +115,7 @@ function NewBusinessFormPage({ isLoaded }) {
         <div className="new-business-form-container">
              <div className="review-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
-                <div className="double-search-not-home">
+                <form className="double-search-not-home">
                     <p className="find-near-p-nh">Find</p>
                     <input className="find-name-nh"
                     type="text"
@@ -127,7 +132,7 @@ function NewBusinessFormPage({ isLoaded }) {
                     />
                     <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
 
-                </div>
+                </form>
 
                 <div className="main-nav-links">
                     {sessionUser ?

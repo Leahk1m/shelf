@@ -85,7 +85,7 @@ function UpdateBusinessPage({ isLoaded }) {
         <div className="update-business-form-container">
             <div className="review-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
-                <div className="double-search-not-home">
+                <form className="double-search-not-home">
                         <p className="find-near-p-nh">Find</p>
                         <input className="find-name-nh"
                         type="text"
@@ -100,7 +100,7 @@ function UpdateBusinessPage({ isLoaded }) {
                         />
                         <button className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
 
-                </div>
+                </form>
 
                 <div className="main-nav-links">
                     {sessionUser ?

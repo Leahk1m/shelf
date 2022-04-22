@@ -50,7 +50,7 @@ function ShowBusinesses({ isLoaded }) {
             <div className="navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 
-                <div className="double-search-not-home">
+                <form className="double-search-not-home">
                         <p className="find-near-p-nh">Find</p>
                         <input className="find-name-nh"
                         type="text"
@@ -67,7 +67,7 @@ function ShowBusinesses({ isLoaded }) {
                         />
                         <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
 
-                </div>
+                </form>
 
                     <div className="main-nav-links">
                         {sessionUser ?
