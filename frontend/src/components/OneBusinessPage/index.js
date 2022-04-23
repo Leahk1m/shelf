@@ -134,7 +134,8 @@ function OneBusinessPage({ isLoaded }) {
 
     const deleteReview = async(e) => {
         e.preventDefault();
-        dispatch(reviewActions.deleteMyReview(+specificReviews[0].id))
+        let reviewId = e.target.value;
+        dispatch(reviewActions.deleteMyReview(+reviewId))
 
     };
 
@@ -230,7 +231,7 @@ function OneBusinessPage({ isLoaded }) {
                                 </div>
                             {/* : ''} */}
                         </div>
-                    : <div className="write-review-btn-div"><button className="write-review-btn" onClick={checkingUser}><AiOutlineStar className="outline-star"/>Write a Review</button></div>}
+                    : <div className="write-review-btn-div"><button className="write-review-btn" onClick={checkingUser} ><AiOutlineStar className="outline-star"/>Write a Review</button></div>}
                 </div>
             ))}
 
@@ -256,7 +257,7 @@ function OneBusinessPage({ isLoaded }) {
                 </div>
                 {reviews && specificReviews ?
                     <div className="peoples-reviews-cont">
-                        {console.log(specificReviews)}
+                        {/* {console.log(specificReviews)} */}
                         {specificReviews.map(review => (
                             <div className="review-person-info-cont" key={review.id}>
                                 <div className="review-person-info">
@@ -293,7 +294,7 @@ function OneBusinessPage({ isLoaded }) {
                                             <div>{showRevDropdown ?
                                                 <div className="comment-edit-dropdown">
                                                     <button className="update-comment-btn"onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>Edit review</button>
-                                                    <button className="delete-comment-btn" onClick={deleteReview}>Delete review</button>
+                                                    <button className="delete-comment-btn" onClick={deleteReview} value={review.id}>Delete review</button>
 
                                                 </div>
                                             : ''}</div>

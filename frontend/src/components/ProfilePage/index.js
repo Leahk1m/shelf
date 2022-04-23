@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useHistory, NavLink } from "react-router-dom";
+import { useHistory, NavLink, Link } from "react-router-dom";
 import ProfileButton from "../Navigation/ProfileButton";
 import './ProfilePage.css';
 import shelfIcon from '../IconPics/shelf.png';
@@ -95,7 +95,7 @@ function ProfilePage({ isLoaded }) {
 
             <h1 className="my-businesses-prof-title">My Businesses</h1>
             <div className="user-prof-biz-list">
-                    {myBusinesses ?
+                    {myBusinesses.length > 0 ?
                         <div className="fat-prof-div">
                             {myBusinesses.reverse().map(business => (
                                 <div className="my-prof-biz-info" key={business.id}>
@@ -109,7 +109,12 @@ function ProfilePage({ isLoaded }) {
                                 </div>
                             ))}
                         </div>
-                    : <p>You have no businesses</p>}
+                    :
+                    <div className="you-have-no-biz-div">
+                        <p>You have no businesses listed yet <br/> If you would like to share your business on shelf click <Link to="/host">here</Link> to get started</p>
+
+                    </div>
+                    }
 
 
                     {/* {myReviews ?
