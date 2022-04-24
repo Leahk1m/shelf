@@ -8,8 +8,10 @@
 .signup-input-container {
     display: flex;
     flex-direction: column;
+    grid-gap: 23px;
     gap: 23px;
 }
+
 
 .signup-form-container {
     width: 100%;
@@ -38,6 +40,7 @@
 .signup-for-shelf {
     margin-bottom: -3px;
     color: #d32323;
+    margin-top: 3%;
 }
 
 .signup-red-nav {
@@ -153,6 +156,7 @@
 .prof-pic-input-div {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     margin-top: 5%;
+    width: 100%;
 }

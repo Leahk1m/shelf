@@ -178,8 +178,8 @@ function OneBusinessPage({ isLoaded }) {
                 </div>
             </div>
 
-            {specificBusiness.map(business => (
-                <div key={business.id}>
+            {specificBusiness?.map(business => (
+                <div key={business?.id}>
                     <p className="hide-this">{bizDescription = business.description}</p>
                     <p className="hide-this">{bizAddress= business.address}</p>
                     <p className="hide-this">{bizCity = business.city}</p>
@@ -212,7 +212,7 @@ function OneBusinessPage({ isLoaded }) {
 
 
                    </div>
-                    {sessionUser && business.ownerId === sessionUser.id ?
+                    {sessionUser && business.ownerId === sessionUser?.id ?
                         <div className="update-delete-btn-container">
                             {/* <RiArrowDropDownLine onClick={() => setShowBizDropdown(prev => prev === false ? true : false)}/> */}
                             {/* {showBizDropdown ? */}
@@ -258,22 +258,21 @@ function OneBusinessPage({ isLoaded }) {
                 {reviews && specificReviews ?
                     <div className="peoples-reviews-cont">
                         {/* {console.log(specificReviews)} */}
-                        {specificReviews.map(review => (
-                            <div className="review-person-info-cont" key={review.id}>
+                        {specificReviews?.map(review => (
+                            <div className="review-person-info-cont" key={review?.id}>
                                 <div className="review-person-info">
                                     <div className="review-person-img-and-name">
-                                        <img className="review-prof-icon"src={review.profilePhoto} alt="prof-icon"/>
-                                        <p className="review-person-name">{review.firstName} {review.lastName}</p>
+                                        <img className="review-prof-icon"src={review?.profilePhoto} alt="prof-icon"/>
+                                        <p className="review-person-name">{review?.firstName} {review?.lastName}</p>
 
                                     </div>
-                                    
-                                    {review.userId === sessionUser.id ?
+                                    {review.userId === sessionUser?.id ?
                                         <AiOutlineEllipsis onClick={ () => setShowRevDropdown(prev => prev === false ? true : false) } />
                                     : ''}
 
                                 </div>
                                         <div className="review-stars-and-post">
-                                            <p className="hide-this">{myReview = review.id}</p>
+                                            <p className="hide-this">{myReview = review?.id}</p>
                                             {review.rating === 1 &&
                                                 <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true" alt="1-star"/>
                                             }
@@ -293,11 +292,11 @@ function OneBusinessPage({ isLoaded }) {
                                                 <p>{review.post}</p>
                                             </div>
                                         </div>
-                                    {sessionUser && review.userId === sessionUser.id ?
+                                    {sessionUser && review.userId === sessionUser?.id ?
                                             <div>{showRevDropdown ?
                                                 <div className="comment-edit-dropdown">
-                                                    <button className="update-comment-btn"onClick={() => history.push(`/business/reviews/edit/${review.id}`)}>Edit review</button>
-                                                    <button className="delete-comment-btn" onClick={deleteReview} value={review.id}>Delete review</button>
+                                                    <button className="update-comment-btn"onClick={() => history.push(`/business/reviews/edit/${review?.id}`)}>Edit review</button>
+                                                    <button className="delete-comment-btn" onClick={deleteReview} value={review?.id}>Delete review</button>
 
                                                 </div>
                                             : ''}</div>
