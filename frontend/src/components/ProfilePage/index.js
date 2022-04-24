@@ -111,7 +111,7 @@ function ProfilePage({ isLoaded }) {
                         </div>
                     :
                     <div className="you-have-no-biz-div">
-                        <p>You have no businesses listed yet <br/> If you would like to share your business on shelf click <Link to="/host">here</Link> to get started</p>
+                        <p>You have no businesses listed yet <br/> If you would like to share your business on shelf click <Link className="link-to-host"to="/host">here</Link> to get started</p>
 
                     </div>
                     }

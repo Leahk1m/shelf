@@ -96,4 +96,13 @@
 
 .you-have-no-biz-div {
     height: 200px;
+    text-align: center;
+}
+
+.link-to-host {
+    text-decoration: none;
+    color: #de0102;
+}
+.link-to-host:hover {
+    border-bottom: 1px solid #de0102;
 }
