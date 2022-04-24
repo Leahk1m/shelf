@@ -96,11 +96,6 @@ function NewBusinessFormPage({ isLoaded }) {
         if (businesses.filter(business => (business.title.toLowerCase() === title.toLowerCase() && business.address.toLowerCase() === address.toLowerCase() && business.city.toLowerCase() === city.toLowerCase() && business.state.toLowerCase() === state.toLowerCase())).length > 0) {
             swal('This business is already on shelf.')
 
-            // setTitle("");
-            // setAddress("");
-            // setCity("");
-            // setState("");
-
         } else {
             await dispatch(businessActions.addNewBusiness({ ownerId, title, description, address, city, state, zipCode, category, imageUrls }))
                 .then(() => history.push('/profile'))

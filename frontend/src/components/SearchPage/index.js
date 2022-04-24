@@ -61,7 +61,7 @@ function SearchPage({isLoaded}) {
 
 
     return(
-        <div>
+        <div className="search-pg-container">
             <div className="navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
 

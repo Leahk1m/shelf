@@ -33,6 +33,24 @@ function UpdateBusinessPage({ isLoaded }) {
 
     const history = useHistory();
 
+
+    const errorChecks = () => {
+        const frontErrors = [];
+        if(title.length === 0) frontErrors.push('Please provide a title')
+        if(title.length < 4 || title.length > 20) frontErrors.push('Title must be between 4-20 characters')
+        if(description.length === 0) frontErrors.push('Please provide a description')
+        if(description.length < 10) frontErrors.push('Description must be at least 10 characters long')
+        if(city.length === 0) frontErrors.push('Please provide a city')
+        if(city.length < 4) frontErrors.push('City must have at least 4 characters')
+        if(state.length === 0) frontErrors.push('Please provide a state')
+        if(state.length < 4) frontErrors.push('State must have at least 4 characters')
+        if(zipCode.length < 5) frontErrors.push('Please provide a zip code')
+        if(category.length === 0) frontErrors.push('Please provide a category')
+
+        setErrors(frontErrors);
+
+    };
+
     const searching = (e) => {
         if(search.length === 0) {
             history.push(`/search/all`)
@@ -65,16 +83,19 @@ function UpdateBusinessPage({ isLoaded }) {
             setImgInputError(true);
             setPassedImgsLength(false);
             setImgLoaded(false);
+            errorChecks();
         } else {
             setPassedImgsLength(true);
             setImageUrls(files);
             setImgLoaded(true);
+            setImgInputError(false);
         }
     };
 
     const preventRefresh = (e) => {
         e.preventDefault();
         setImgInputError(true);
+        errorChecks();
     };
 
     let sessionLinks;
@@ -95,7 +116,7 @@ function UpdateBusinessPage({ isLoaded }) {
         <div className="update-business-form-container">
             <div className="review-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
-                
+
                 <form className="double-search-not-home">
                         <p className="find-near-p-nh">Find</p>
                         <input className="find-name-nh"
