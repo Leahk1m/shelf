@@ -23,7 +23,7 @@ function OneBusinessPage({ isLoaded }) {
     const [youSureDeleteBiz, setYouSureDeleteBiz] = useState(false);
     const [search, setSearch] = useState('');
     let bizDescription;
-    let myReview;
+
     let bizAddress;
     let bizCity;
     let bizState;
@@ -31,9 +31,14 @@ function OneBusinessPage({ isLoaded }) {
 
     let avg;
     let specificReviews;
-    if(specificBusiness.length > 0 && reviews.length > 0) {
+    if (specificBusiness.length > 0 && reviews.length > 0) {
         specificReviews = reviews.filter(review => review.businessId === +specificBusiness[0].id);
     };
+
+    let myReview;
+    if (specificReviews.length > 0) {
+        myReview = specificReviews.filter((review) => review?.userId === sessionUser?.id);
+    }
 
     const avgCalculator = () => {
         let sum = 0;
@@ -112,7 +117,7 @@ function OneBusinessPage({ isLoaded }) {
         e.preventDefault();
 
         if(sessionUser && checkingReview()) {
-            history.push(`/business/reviews/edit/${myReview}`)
+            history.push(`/business/reviews/edit/${myReview[0]?.id}`)
         } else if(sessionUser){
             history.push(`/business/reviews/${businessId}`)
         } else {
@@ -272,7 +277,7 @@ function OneBusinessPage({ isLoaded }) {
 
                                 </div>
                                         <div className="review-stars-and-post">
-                                            <p className="hide-this">{myReview = review?.id}</p>
+                                            {/* <p className="hide-this">{myReview = review?.id}</p> */}
                                             {review.rating === 1 &&
                                                 <img className="review-show-star"src="https://github.com/Leahk1m/shelf_app/blob/styling_stuff/frontend/src/components/IconPics/one-star.png?raw=true" alt="1-star"/>
                                             }
