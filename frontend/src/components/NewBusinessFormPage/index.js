@@ -261,7 +261,7 @@ function NewBusinessFormPage({ isLoaded }) {
             </div>
             <ul style={{listStyle: "none"}}>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                {imgInputError || errors.length > 0 ?
+                {imgInputError ?
                     <p>
                         Please submit 3 photos of your business
                     </p>

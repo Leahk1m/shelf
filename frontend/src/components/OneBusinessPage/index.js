@@ -31,12 +31,12 @@ function OneBusinessPage({ isLoaded }) {
 
     let avg;
     let specificReviews;
-    if (specificBusiness.length > 0 && reviews.length > 0) {
+    if (specificBusiness?.length > 0 && reviews?.length > 0) {
         specificReviews = reviews.filter(review => review.businessId === +specificBusiness[0].id);
     };
 
     let myReview;
-    if (specificReviews.length > 0) {
+    if (specificReviews?.length > 0) {
         myReview = specificReviews.filter((review) => review?.userId === sessionUser?.id);
     }
 
