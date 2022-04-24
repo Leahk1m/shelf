@@ -266,7 +266,10 @@ function OneBusinessPage({ isLoaded }) {
                                         <p className="review-person-name">{review.firstName} {review.lastName}</p>
 
                                     </div>
-                                    <AiOutlineEllipsis onClick={ () => setShowRevDropdown(prev => prev === false ? true : false) } />
+                                    
+                                    {review.userId === sessionUser.id ?
+                                        <AiOutlineEllipsis onClick={ () => setShowRevDropdown(prev => prev === false ? true : false) } />
+                                    : ''}
 
                                 </div>
                                         <div className="review-stars-and-post">
