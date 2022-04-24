@@ -23,6 +23,7 @@ function UpdateBusinessPage({ isLoaded }) {
     const [category, setCategory] = useState(thisBusiness[0]?.category);
     const [imageUrls, setImageUrls] = useState(thisBusiness[0]?.imageUrls);
     const [imgLoaded, setImgLoaded] = useState(true);
+    const [search, setSearch] = useState('');
 
     const [errors, setErrors] = useState([]);
     const [passedImgsLength, setPassedImgsLength] = useState(true);
@@ -31,6 +32,15 @@ function UpdateBusinessPage({ isLoaded }) {
     const ownerId = useSelector((state) => state.session.user.id)
 
     const history = useHistory();
+
+    const searching = (e) => {
+        if(search.length === 0) {
+            history.push(`/search/all`)
+
+        } else {
+            history.push(`/search/${search}`)
+        }
+    };
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -85,10 +95,13 @@ function UpdateBusinessPage({ isLoaded }) {
         <div className="update-business-form-container">
             <div className="review-navbar-container">
                 <NavLink className="navbar-links" exact to="/"> <img src={shelfIcon} alt="shelf-icon"/></NavLink>
+                
                 <form className="double-search-not-home">
                         <p className="find-near-p-nh">Find</p>
                         <input className="find-name-nh"
                         type="text"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
                         placeholder="Family-owned, Traditional, Rustic stores..."
                         />
 
@@ -98,9 +111,10 @@ function UpdateBusinessPage({ isLoaded }) {
                         placeholder="Bay Area, CA ONLY for now"
                         readOnly = {true}
                         />
-                        <button className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
+                        <button onClick={searching}className="magnifying-nh"><img className="mag-glass-icon-nh"src={magnify} alt="mag-glass"/></button>
 
                 </form>
+
 
                 <div className="main-nav-links">
                     {sessionUser ?
