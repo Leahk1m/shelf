@@ -8,7 +8,7 @@ function Footer() {
         <div className="footer-div">
             <div className="about-div">
                 <h3>About</h3>
-                <p>shelf is a clone of Yelp, in which users can explore and rate businesses that center around artisanal grocery stores. It is meant for those who love shopping at unconventional places, made easy, with eccentric locations all listed in one spot.  </p>
+                {/* <p>shelf is a clone of Yelp, in which users can explore and rate businesses that center around artisanal grocery stores. It is meant for those who love shopping at unconventional places, made easy, with eccentric locations all listed in one spot.  </p> */}
 
             </div>
 
