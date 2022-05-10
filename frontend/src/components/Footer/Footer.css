@@ -54,3 +54,10 @@
     display: flex;
     flex-direction: column;
 }
+
+.portfolio-link-footer {
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+    cursor: pointer;
+}
