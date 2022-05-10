@@ -2,13 +2,14 @@
     background-color: whitesmoke;
     width: 100%;
     position: absolute;
+    /* bottom: 0; */
     padding: 15px;
     display: flex;
-    align-items: flex-end;
     flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
 }
+
 
 .github-div {
     display: flex;
@@ -31,7 +32,10 @@
     text-decoration: none;
     font-size: 15px;
     color: black;
-
+}
+.github-link:hover {
+    border-bottom: 1px solid rgb(225, 225, 225);
+    transition: 0.5s;
 }
 
 .linkedin-link {
@@ -40,9 +44,13 @@
     color: black;
 
 }
+.linkedin-link:hover {
+    border-bottom: 1px solid rgb(225, 225, 225);
+    transition: 0.5s;
+}
 
 .github-logo {
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .linked-in-logo {
@@ -53,11 +61,41 @@
 .about-div {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 
 .portfolio-link-footer {
     text-decoration: none;
-    font-size: 15px;
+    font-size: 16px;
     color: black;
     cursor: pointer;
+}
+.portfolio-link-footer:hover {
+    border-bottom: 1px solid rgb(225, 225, 225);
+    transition: 0.5s;
+}
+
+.discover-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.about-links-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 13px;
+
+}
+
+.discover-h3 {
+    margin-bottom: 10px;
 }
