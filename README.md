@@ -1,9 +1,16 @@
-# shelf_app
+# shelf
 
-This is a clone of yelp, that is centered around helping people discover and explore local and/or artisanal grocery stores.
+![Image 4-27-22 at 11 08 AM](https://user-images.githubusercontent.com/86897050/167748903-280c8c35-733a-4185-b304-5f3708427a5d.jpg)
 
-# Technology Used
-Javascript, React, Redux, Postgres
+[shelf](https://shelf-checkout.herokuapp.com/) is a location-based social application that was inspired by Yelp, where users can explore artisanal grocery stores located in Bay Area, CA, as well as create new businesses, and share their experiences per store.
+
+# Technologies Used
+
+shelf is built on a React / Redux frontend, a Javascript / Express backend, and a PostgreSQL database.
+
+It also makes use of AWS S3 for image uploads, and Google Maps API to allow users to explore business locations on a map.
+
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height=40/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" height=40/>
 
 ## Getting started finding the memes
 
