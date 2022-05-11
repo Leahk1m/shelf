@@ -121,3 +121,7 @@
     overflow: hidden;
 
 }
+
+.error-msg {
+    color: #d32324;
+}

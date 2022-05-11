@@ -255,9 +255,9 @@ function NewBusinessFormPage({ isLoaded }) {
 
             </div>
             <ul style={{listStyle: "none"}}>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                {errors.map((error, idx) => <li className="error-msg"key={idx}>{error}</li>)}
                 {imgInputError ?
-                    <p>
+                    <p className="error-msg">
                         Please submit 3 photos of your business
                     </p>
                 : ''}

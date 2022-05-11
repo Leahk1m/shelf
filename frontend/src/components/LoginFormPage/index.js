@@ -40,14 +40,14 @@ function LoginFormPage() {
       </div>
 
       <div className="log-in-container-form">
-        <h2 className="login-to-shelf-title">Log in to shelf</h2>
-        <p className="new-to-shelf">New to shelf? <NavLink className="login-pg-signup-nav-link" to="/signup">Sign up</NavLink></p>
+        <h1 className="login-to-shelf-title">Log in to shelf</h1>
+        <h3 className="new-to-shelf">New to shelf? <NavLink className="login-pg-signup-nav-link" to="/signup">Sign up</NavLink></h3>
         <p className="by-logging-in-p">By logging in, you agree to shelf's Terms of Service and Privacy Policy</p>
 
         <form className="login-form"onSubmit={handleSubmit}>
           <ul style={{listStyle: "none"}}>
             {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
+              <li className="error-msg" key={idx}>{error}</li>
             ))}
           </ul>
 
