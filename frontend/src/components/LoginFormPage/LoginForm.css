@@ -26,11 +26,12 @@
 .login-pg-signup-nav-link {
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
-    color: grey;
+    color: #bababa;
 }
 
 .login-pg-signup-nav-link:hover {
-    border-bottom: 1px solid grey;
+    color: grey;
+    transition: 0.5s;
 }
 
 .demo-login-btn {

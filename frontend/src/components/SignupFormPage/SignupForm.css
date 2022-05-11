@@ -77,11 +77,12 @@
 .changed-mind {
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
-    color: grey;
+    color: #bababa;
     font-size: 15px;
 }
 .changed-mind:hover {
-    border-bottom: 1px solid grey;
+    color: grey;
+    transition: 0.5s;
 }
 
 .shelf-signup-navlink {
