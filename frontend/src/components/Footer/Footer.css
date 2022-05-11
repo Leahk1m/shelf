@@ -2,12 +2,15 @@
     background-color: whitesmoke;
     width: 100%;
     position: absolute;
-    /* bottom: 0; */
+    bottom: 0;
     padding: 15px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    border-top: 1px solid rgb(235, 235, 235);
+    height: 150px;
+
 }
 
 
@@ -64,11 +67,12 @@
     align-items: center;
     justify-content: center;
     align-content: center;
+
 }
 
 .portfolio-link-footer {
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
     color: black;
     cursor: pointer;
 }

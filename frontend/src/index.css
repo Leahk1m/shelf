@@ -10,5 +10,21 @@ html, body{
     font: caption;
     background-color: whitesmoke;
     object-fit: cover;
+    position: relative;
+    min-height: 100vh;
+
+
+}
+
+footer {
+    bottom: 0;
+    color: #707070;
+    height: 2em;
+    left: 0;
+    /* position: fixed; OldProperty */
+    position: static;/* Updated Property */
+    font-size: small;
+    width:100%;
+    margin-top:150px;
 
 }
