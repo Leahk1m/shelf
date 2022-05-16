@@ -10,7 +10,7 @@ function Footer() {
             <div className="about-div">
                 <h3>About</h3>
                 <div className="about-links-div">
-                    <a className="portfolio-link-footer"target="_blank" href="http://www.leahkim.net/">Personal Portfolio</a>
+                    <a className="portfolio-link-footer"target="_blank" href="http://www.leahkim.net/">Creator Portfolio</a>
                     <Link className="portfolio-link-footer"onClick={() => window.location = 'mailto:lk.leahkim@gmail.com'}>Contact Me</Link>
                 </div>
 
