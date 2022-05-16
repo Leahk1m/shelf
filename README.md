@@ -76,12 +76,7 @@ Users have the ability to leave a rating and review for a business, which change
 
 ![shelf-reviews-gif](https://user-images.githubusercontent.com/86897050/168511495-eee5d566-9d88-44dd-92fc-85a5a5d64e85.gif)
 
-### Conclusion
-shelf is my capstone project that showcases all of the skills I have learned as a student from App Academy - some of which include:
-- creating a database to seamlessly and coherently connect data
-- setting up a backend server with user authentication, error handling, and API routes following RESTful conventions
-- designing a frontend application with React components and connecting it to the backend
-- setting up Amazon Web Services S3 to handle image uploads
+
 
 
 
